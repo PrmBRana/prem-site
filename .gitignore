@@ -1,6 +1,10 @@
 # Config and content directories
 /config.yaml
+/archetypes
+/assets
 /content
+/public
+/data
 /static/images
 .vscode
 
