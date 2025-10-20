@@ -9,21 +9,11 @@
 &lt;/ul&gt;
 &lt;h3 id="-objectives"&gt;🎯 Objectives&lt;/h3&gt;
 &lt;p&gt;To inspire young students in space science and technology through practical learning and teamwork.&lt;/p&gt;</description></item><item><title>Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</title><link>https://premrana.com.np/projects/yolo-fruit-detection/</link><pubDate>Thu, 10 Aug 2023 00:00:00 +0000</pubDate><guid>https://premrana.com.np/projects/yolo-fruit-detection/</guid><description>&lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project focuses on detecting and classifying fruits as &lt;strong&gt;fresh or rotten&lt;/strong&gt; using the &lt;strong&gt;YOLOv5 deep learning algorithm&lt;/strong&gt;.&lt;br&gt;
-The system uses &lt;strong&gt;Python&lt;/strong&gt;, &lt;strong&gt;OpenCV&lt;/strong&gt;, and &lt;strong&gt;PyTorch&lt;/strong&gt;, achieving &lt;strong&gt;over 90% accuracy&lt;/strong&gt; on test datasets.&lt;/p&gt;
-&lt;h2 id="objectives"&gt;Objectives&lt;/h2&gt;
+&lt;p&gt;Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.&lt;/p&gt;
+&lt;p&gt;The system is designed for real-time operation on a conveyor belt, integrating:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Build a real-time detection system for fruit classification&lt;/li&gt;
-&lt;li&gt;Train YOLOv5 on a custom fruit dataset&lt;/li&gt;
-&lt;li&gt;Separate fresh and rotten fruits automatically&lt;/li&gt;
+&lt;li&gt;Raspberry Pi for edge computing&lt;/li&gt;
+&lt;li&gt;Two webcams for multiple viewing angles&lt;/li&gt;
+&lt;li&gt;Servo motors to automatically separate rotten fruits from fresh ones&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="technologies-used"&gt;Technologies Used&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;YOLOv5&lt;/li&gt;
-&lt;li&gt;Python&lt;/li&gt;
-&lt;li&gt;OpenCV&lt;/li&gt;
-&lt;li&gt;PyTorch&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="results"&gt;Results&lt;/h2&gt;
-&lt;p&gt;Achieved high accuracy and real-time processing speed.&lt;br&gt;
-Below is one of the output results:&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.&lt;/p&gt;</description></item></channel></rss>
