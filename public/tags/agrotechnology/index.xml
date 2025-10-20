@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agrotechnology on Prem Protfolio</title>
+    <link>http://localhost:1313/tags/agrotechnology/</link>
+    <description>Recent content in Agrotechnology on Prem Protfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/agrotechnology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</title>
+      <link>http://localhost:1313/projects/yolo-fruit-detection/</link>
+      <pubDate>Thu, 10 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/yolo-fruit-detection/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.&lt;/p&gt;&#xA;&lt;p&gt;The system is designed for real-time operation on a conveyor belt, integrating:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Raspberry Pi for edge computing&lt;/li&gt;&#xA;&lt;li&gt;Two webcams for multiple viewing angles&lt;/li&gt;&#xA;&lt;li&gt;Servo motors to automatically separate rotten fruits from fresh ones&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
