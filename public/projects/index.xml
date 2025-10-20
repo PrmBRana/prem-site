@@ -6,8 +6,22 @@
     <description>Recent content in Projects on Prem Protfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Earthquake Precursor Detection Mission (EPDM)</title>
+      <link>http://localhost:1313/projects/epdm/</link>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/epdm/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Nepal&amp;rsquo;s First Middle School Nano-Satellite Project — Earthquake Precursor Detection Mission (EPDM)&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;The &lt;strong&gt;Earthquake Precursor Detection Mission (EPDM)&lt;/strong&gt; is designed to use a &lt;strong&gt;Quad-Mag technology payload&lt;/strong&gt;, consisting of four &lt;strong&gt;PNI RM3100 magnetometers&lt;/strong&gt;, to detect and analyze electromagnetic signals in the &lt;strong&gt;Ultra-Low Frequency (ULF: below 3 Hz)&lt;/strong&gt; and &lt;strong&gt;Extremely Low Frequency (ELF: 3 Hz to 3 kHz)&lt;/strong&gt; ranges, which are generated from the Earth&amp;rsquo;s surface before an earthquake.&lt;/p&gt;&#xA;&lt;p&gt;Unlike traditional satellites that rely on long telescopic or deployable booms to protect magnetometers from stray magnetic fields caused by internal electric subsystems, the &lt;strong&gt;EPDM&lt;/strong&gt; employs &lt;strong&gt;Quad-Mag technology&lt;/strong&gt; and the &lt;strong&gt;Undetermined Blind Source Separation (UBSS)&lt;/strong&gt; algorithm — both tested at the &lt;strong&gt;University of Michigan lab&lt;/strong&gt; — to remove interference and accurately measure the Earth’s magnetic field.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Slippers2Sat (S2S)</title>
+      <link>http://localhost:1313/projects/slippers2sat/</link>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/slippers2sat/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Nepal&amp;rsquo;s First Middle School Nano-Satellite Project — Slippers2Sat (S2S)&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Slippers2Sat (S2S) is a &lt;strong&gt;1U CubeSat project&lt;/strong&gt; initiated by &lt;em&gt;Antarikchya Pratisthan Nepal (APN)&lt;/em&gt; with support from &lt;em&gt;Amateur Radio Digital Communications (ARDC)&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The &lt;em&gt;Space System Laboratory (SSL)&lt;/em&gt; has been established at &lt;strong&gt;Navodaya School&lt;/strong&gt;, where students live, learn, and engage in hands-on satellite development.&lt;/p&gt;&#xA;&lt;p&gt;The mission is scheduled for &lt;strong&gt;launch in Q2 2025&lt;/strong&gt;, marking a pioneering step for Nepal in educational space technology.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Dharan Satellite Bootcamp</title>
       <link>http://localhost:1313/projects/dharan-bootcamp/</link>
@@ -20,7 +34,7 @@
       <link>http://localhost:1313/projects/yolo-fruit-detection/</link>
       <pubDate>Thu, 10 Aug 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/yolo-fruit-detection/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;This project focuses on detecting and classifying fruits as &lt;strong&gt;fresh or rotten&lt;/strong&gt; using the &lt;strong&gt;YOLOv5 deep learning algorithm&lt;/strong&gt;.&lt;br&gt;&#xA;The system uses &lt;strong&gt;Python&lt;/strong&gt;, &lt;strong&gt;OpenCV&lt;/strong&gt;, and &lt;strong&gt;PyTorch&lt;/strong&gt;, achieving &lt;strong&gt;over 90% accuracy&lt;/strong&gt; on test datasets.&lt;/p&gt;&#xA;&lt;h2 id=&#34;objectives&#34;&gt;Objectives&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Build a real-time detection system for fruit classification&lt;/li&gt;&#xA;&lt;li&gt;Train YOLOv5 on a custom fruit dataset&lt;/li&gt;&#xA;&lt;li&gt;Separate fresh and rotten fruits automatically&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;technologies-used&#34;&gt;Technologies Used&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;YOLOv5&lt;/li&gt;&#xA;&lt;li&gt;Python&lt;/li&gt;&#xA;&lt;li&gt;OpenCV&lt;/li&gt;&#xA;&lt;li&gt;PyTorch&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;&#xA;&lt;p&gt;Achieved high accuracy and real-time processing speed.&lt;br&gt;&#xA;Below is one of the output results:&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.&lt;/p&gt;&#xA;&lt;p&gt;The system is designed for real-time operation on a conveyor belt, integrating:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Raspberry Pi for edge computing&lt;/li&gt;&#xA;&lt;li&gt;Two webcams for multiple viewing angles&lt;/li&gt;&#xA;&lt;li&gt;Servo motors to automatically separate rotten fruits from fresh ones&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,16 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/projects/dharan-bootcamp/</loc>
-    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/cubesat/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/projects/epdm/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/education/</loc>
-    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nepal/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/projects/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/projects/slippers2sat/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/projects/dharan-bootcamp/</loc>
     <lastmod>2024-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/satellite/</loc>
@@ -20,11 +35,11 @@
     <loc>http://localhost:1313/tags/stem/</loc>
     <lastmod>2024-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/training/</loc>
     <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/agrotechnology/</loc>
+    <lastmod>2023-08-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/computer-vision/</loc>
     <lastmod>2023-08-10T00:00:00+00:00</lastmod>

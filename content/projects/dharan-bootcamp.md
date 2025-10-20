@@ -7,6 +7,7 @@ cover:
   alt: "Dharan Satellite Bootcamp"
   caption: "Students participating in the satellite bootcamp."
 draft: false
+image: "/images/boot.jpeg"
 ---
 
 ## Overview
@@ -22,12 +23,10 @@ The **Dharan Satellite Bootcamp** was a 4-day hands-on STEM training for school 
 To inspire young students in space science and technology through practical learning and teamwork.
 
 ### 🖼️ Photos
-![Bootcamp Group](/images/dharan-bootcamp-group.jpg)
-![Students Working on Circuits](/images/dharan-bootcamp-soldering.jpg)
-![Parachute Deployment](/images/dharan-bootcamp-deploy.jpg)
+![Bootcamp Group](/images/dharan/d3.jpg)
+![Students Working on Circuits](/images/dharan/p1.jpg)
+![Parachute Deployment](/images/dharan/d15.jpg)
 
 ---
 
-### 🔗 External Links
-- [ResearchGate Program Overview](https://www.researchgate.net/profile/YourProfileName)
-- [Facebook Album](https://facebook.com/yourbootcampalbum)
+

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
-<link rel="icon" href=/images/favicon1.jpeg type="image/gif">
+<link rel="icon" href=/images/favicon1.png type="image/gif">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,10 +31,9 @@
 <meta property="og:url" content="http://localhost:1313/projects/yolo-fruit-detection/">
   <meta property="og:site_name" content="Prem Protfolio">
   <meta property="og:title" content="Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm">
-  <meta property="og:description" content="Overview This project focuses on detecting and classifying fruits as fresh or rotten using the YOLOv5 deep learning algorithm.
-The system uses Python, OpenCV, and PyTorch, achieving over 90% accuracy on test datasets.
-Objectives Build a real-time detection system for fruit classification Train YOLOv5 on a custom fruit dataset Separate fresh and rotten fruits automatically Technologies Used YOLOv5 Python OpenCV PyTorch Results Achieved high accuracy and real-time processing speed.
-Below is one of the output results:">
+  <meta property="og:description" content="Overview Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.
+The system is designed for real-time operation on a conveyor belt, integrating:
+Raspberry Pi for edge computing Two webcams for multiple viewing angles Servo motors to automatically separate rotten fruits from fresh ones This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
@@ -44,14 +43,14 @@ Below is one of the output results:">
     <meta property="article:tag" content="Deep Learning">
     <meta property="article:tag" content="Computer Vision">
     <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Agrotechnology">
 
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm">
-  <meta name="twitter:description" content="Overview This project focuses on detecting and classifying fruits as fresh or rotten using the YOLOv5 deep learning algorithm.
-The system uses Python, OpenCV, and PyTorch, achieving over 90% accuracy on test datasets.
-Objectives Build a real-time detection system for fruit classification Train YOLOv5 on a custom fruit dataset Separate fresh and rotten fruits automatically Technologies Used YOLOv5 Python OpenCV PyTorch Results Achieved high accuracy and real-time processing speed.
-Below is one of the output results:">
+  <meta name="twitter:description" content="Overview Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.
+The system is designed for real-time operation on a conveyor belt, integrating:
+Raspberry Pi for edge computing Two webcams for multiple viewing angles Servo motors to automatically separate rotten fruits from fresh ones This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.">
 
 
 <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
@@ -190,7 +189,7 @@ Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm | Pre
             
             <a class="navbar-brand primary-font text-wrap" href="/">
                 
-                <img src="/images/favicon1.jpeg" width="30" height="30"
+                <img src="/images/favicon1.png" width="30" height="30"
                     class="d-inline-block align-top">
                 𝒫𝓇𝑒𝓂
                 
@@ -257,13 +256,6 @@ Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm | Pre
                     </li>
                     
 
-                    
-                    <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#achievements"
-                            aria-label="achievements">
-                            Achievements
-                        </a>
-                    </li>
                     
 
                     
@@ -350,31 +342,59 @@ Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm | Pre
             </div>
           </div>
           
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/images/fruits.png" alt="Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm">
+          </div>
+          
           <article class="page-content  p-2">
           <h2 id="overview">Overview</h2>
-<p>This project focuses on detecting and classifying fruits as <strong>fresh or rotten</strong> using the <strong>YOLOv5 deep learning algorithm</strong>.<br>
-The system uses <strong>Python</strong>, <strong>OpenCV</strong>, and <strong>PyTorch</strong>, achieving <strong>over 90% accuracy</strong> on test datasets.</p>
+<p>Developed a computer vision system that detects and classifies fruits as fresh or rotten using state-of-the-art deep learning algorithms, including YOLOv7-tiny, R-CNN, DETR, YOLOv8, and YOLOv12S.</p>
+<p>The system is designed for real-time operation on a conveyor belt, integrating:</p>
+<ul>
+<li>Raspberry Pi for edge computing</li>
+<li>Two webcams for multiple viewing angles</li>
+<li>Servo motors to automatically separate rotten fruits from fresh ones</li>
+</ul>
+<p>This setup enables automated quality control in fruit processing lines, improving efficiency and reducing human error.</p>
+<p>The scientific and technological principles applied in <strong>agrotechnology</strong> improve the effectiveness, productivity, and sustainability of the agricultural system. Four high-performance object detection models—YOLOv8, YOLOv12S, DETR, and Faster R-CNN—were compared using key performance metrics including <strong>mean Average Precision (mAP)</strong> and <strong>F1-Score</strong> to classify rotten and fresh tomatoes and apples.</p>
+<p><strong>YOLOv12S</strong> stands out among the four models on a custom dataset of size 11,675, achieving <strong>mAP of 99.31%</strong> and <strong>F1-Score of 98.28%</strong>. Its CNN backbone enables fast inference, making it well-suited for real-time applications, while DETR’s transformer-based global context modeling offers strong accuracy for complex scenes.</p>
+<p>Unlike past efforts focusing on single models, this comparison spans multiple architectures, revealing their strengths, weaknesses, and practical roles in farming.</p>
+<p>Fruit quality evaluation is crucial in today&rsquo;s food processing and distribution systems to assure consumer safety and minimize food waste. Fruits are often sorted manually, which is time-consuming, labor-intensive, and error-prone. This project leverages <strong>computer vision and deep learning</strong> to automate fruit quality evaluation, providing a <strong>real-time, efficient, and accurate system</strong>.</p>
+<p>For the project, images of <strong>Apple</strong> and <strong>Tomato</strong> were collected and annotated in different orientations and shades. The dataset was divided into four classes for training the YOLO models.</p>
+<p>This work presents a novel approach for the automated <strong>recognition and separation of fresh and rotten fruits</strong> on conveyor belts using YOLO algorithms and Raspberry Pi. The system bridges the gap between <strong>AI and agriculture</strong>, showcasing the potential of technology to revolutionize food quality inspection.</p>
+<hr>
 <h2 id="objectives">Objectives</h2>
 <ul>
 <li>Build a real-time detection system for fruit classification</li>
-<li>Train YOLOv5 on a custom fruit dataset</li>
-<li>Separate fresh and rotten fruits automatically</li>
+<li>Train YOLOv7-tiny, R-CNN, YOLOv8, YOLOv12S on a custom fruit dataset</li>
+<li>Automatically separate fresh and rotten fruits</li>
 </ul>
+<hr>
 <h2 id="technologies-used">Technologies Used</h2>
 <ul>
-<li>YOLOv5</li>
+<li>YOLOv7-tiny</li>
+<li>R-CNN</li>
+<li>YOLOv8</li>
+<li>YOLOv12S</li>
 <li>Python</li>
 <li>OpenCV</li>
 <li>PyTorch</li>
 </ul>
+<hr>
 <h2 id="results">Results</h2>
-<p>Achieved high accuracy and real-time processing speed.<br>
-Below is one of the output results:</p>
-<p><img src="/images/fruit-detection-sample.jpg" alt="YOLO Detection Sample"></p>
+<p>Achieved high accuracy and real-time processing speed.</p>
+<h3 id="sample-outputs">Sample Outputs</h3>
+<p><img src="/images/y1.jpg" alt="YOLO Detection Sample">
+<img src="/images/c1.jpg" alt="YOLO Detection Sample">
+<img src="/images/y5.jpeg" alt="YOLO Detection Sample">
+<img src="/images/y4.jpeg" alt="YOLO Detection Sample">
+<img src="/images/y8.jpeg" alt="YOLO Detection Sample"></p>
+<hr>
 <h2 id="external-links">External Links</h2>
 <ul>
-<li>🔗 <a href="https://www.researchgate.net/profile/YourProfileName">ResearchGate Paper</a></li>
-<li>💻 <a href="https://github.com/yourusername/fruit-detection">GitHub Repository</a></li>
+<li>🔗 <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S">ResearchGate Paper 1</a></li>
+<li>🔗 <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm">ResearchGate Paper 2</a></li>
+<li>💻 <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation">GitHub Repository</a></li>
 </ul>
 
           </article>
@@ -393,7 +413,11 @@ Below is one of the output results:</p>
     <li><a href="#overview">Overview</a></li>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#technologies-used">Technologies Used</a></li>
-    <li><a href="#results">Results</a></li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li><a href="#sample-outputs">Sample Outputs</a></li>
+      </ul>
+    </li>
     <li><a href="#external-links">External Links</a></li>
   </ul>
 </nav>
@@ -422,6 +446,10 @@ Below is one of the output results:</p>
                 target="_blank"
               >Python</a></li>
               
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/agrotechnology"
+                target="_blank"
+              >Agrotechnology</a></li>
+              
             </ul>
           </aside>
           
@@ -437,7 +465,7 @@ Below is one of the output results:</p>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href='https://twitter.com/share?text=Recognition%20and%20Separation%20of%20Fresh%20and%20Rotten%20Fruits%20using%20YOLO%20Algorithm&url=http%3a%2f%2flocalhost%3a1313%2fprojects%2fyolo-fruit-detection%2f&hashtags=YOLO%2cDeep%20Learning%2cComputer%20Vision%2cPython'>
+                  <a target="_blank" href='https://twitter.com/share?text=Recognition%20and%20Separation%20of%20Fresh%20and%20Rotten%20Fruits%20using%20YOLO%20Algorithm&url=http%3a%2f%2flocalhost%3a1313%2fprojects%2fyolo-fruit-detection%2f&hashtags=YOLO%2cDeep%20Learning%2cComputer%20Vision%2cPython%2cAgrotechnology'>
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
@@ -557,56 +585,9 @@ Below is one of the output results:</p>
     
 
     
-    <a href="https://twitter.com" target="_blank" aria-label="twitter">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
-            <path fill="#03a9f4"
-                d="M42,37c0,2.762-2.239,5-5,5H11c-2.762,0-5-2.238-5-5V11c0-2.762,2.238-5,5-5h26c2.761,0,5,2.238,5,5 V37z" />
-            <path fill="#fff"
-                d="M36,17.12c-0.882,0.391-1.999,0.758-3,0.88c1.018-0.604,2.633-1.862,3-3 c-0.951,0.559-2.671,1.156-3.793,1.372C31.311,15.422,30.033,15,28.617,15C25.897,15,24,17.305,24,20v2c-4,0-7.9-3.047-10.327-6 c-0.427,0.721-0.667,1.565-0.667,2.457c0,1.819,1.671,3.665,2.994,4.543c-0.807-0.025-2.335-0.641-3-1c0,0.016,0,0.036,0,0.057 c0,2.367,1.661,3.974,3.912,4.422C16.501,26.592,16,27,14.072,27c0.626,1.935,3.773,2.958,5.928,3c-1.686,1.307-4.692,2-7,2 c-0.399,0-0.615,0.022-1-0.023C14.178,33.357,17.22,34,20,34c9.057,0,14-6.918,14-13.37c0-0.212-0.007-0.922-0.018-1.13 C34.95,18.818,35.342,18.104,36,17.12" />
-        </svg>
-    </a>
-    
 
     
-    <a href="https://instagram.com" target="_blank" aria-label="instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
-            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#fd5" />
-                <stop offset=".328" stop-color="#ff543f" />
-                <stop offset=".348" stop-color="#fc5245" />
-                <stop offset=".504" stop-color="#e64771" />
-                <stop offset=".643" stop-color="#d53e91" />
-                <stop offset=".761" stop-color="#cc39a4" />
-                <stop offset=".841" stop-color="#c837ab" />
-            </radialGradient>
-            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
-                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
-            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
-                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#4168c9" />
-                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
-            </radialGradient>
-            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
-                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
-            <path fill="#fff"
-                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
-            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
-            <path fill="#fff"
-                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
-        </svg>
-    </a>
-    
 
-    
-    <a href="https://facebook.com" target="_blank" aria-label="facebook">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
-            <path fill="#3F51B5"
-                d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z" />
-            <path fill="#FFF"
-                d="M34.368,25H31v13h-5V25h-3v-4h3v-2.41c0.002-3.508,1.459-5.59,5.592-5.59H35v4h-2.287C31.104,17,31,17.6,31,18.723V21h4L34.368,25z" />
-        </svg>
-    </a>
     
 </div><div class="container py-4">
     <div class="row justify-content-center">
@@ -614,7 +595,7 @@ Below is one of the output results:</p>
             
                 <div class="pb-2">
                     <a href="http://localhost:1313/" title="Prem Protfolio">
-                        <img alt="Footer logo" src="/images/favicon1.jpeg"
+                        <img alt="Footer logo" src="/images/favicon1.png"
                             height="40px" width="40px">
                     </a>
                 </div>
