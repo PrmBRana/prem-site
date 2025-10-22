@@ -204,12 +204,10 @@ params:
         
                <div class="slideshow-yolo" style="max-width:400px; margin:20px auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2); background:#000; overflow:hidden;">
                 <img class="slide-yolo" src="/images/y1.jpg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
-                <img class="slide-yolo" src="/images/y2.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
                 <img class="slide-yolo" src="/images/y3.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
                 <img class="slide-yolo" src="/images/y4.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
                 <img class="slide-yolo" src="/images/y5.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
                 <img class="slide-yolo" src="/images/y6.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
-                <img class="slide-yolo" src="/images/y7.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
                 <img class="slide-yolo" src="/images/y8.jpeg" style="width:100%; height:250px; object-fit:contain; padding:10px;">
               </div>
 
