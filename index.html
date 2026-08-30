@@ -59,10 +59,10 @@
       </ul>
 
       <div class="nav-actions">
-        <!-- Canvas Mode Switcher -->
-        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()" title="Switch Background Animation (Fab & RF / Litho / RF Waves / Orbit)">
+        <!-- Canvas Telemetry Status Indicator -->
+        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="toggleCircuitPause()" title="Click to Pause/Resume Animation">
           <span class="pulse-dot"></span>
-          <span id="circuit-mode-name">FAB &amp; RF WAFER</span>
+          <span id="circuit-mode-name">ORBIT &amp; SILICON LIVE</span>
         </div>
 
         <!-- UI Sound Effects Toggle -->
@@ -2031,15 +2031,16 @@ end</code></pre>
     </div>
   </div>
 
-  <!-- Background mode cycling helper -->
+  <!-- Canvas interaction helper -->
   <script>
-    const modes = ['fab_rf', 'litho', 'rf_waves', 'orbit'];
-    let modeIdx = 0;
-    function cycleCircuitMode() {
+    function toggleCircuitPause() {
       if (window.playUiSound) window.playUiSound('click');
-      modeIdx = (modeIdx + 1) % modes.length;
-      if (window.setCircuitMode) {
-        window.setCircuitMode(modes[modeIdx]);
+      if (window.toggleCircuitPause) {
+        const isPaused = window.toggleCircuitPause();
+        const labelEl = document.getElementById('circuit-mode-name');
+        if (labelEl) {
+          labelEl.textContent = isPaused ? 'SIMULATION PAUSED' : 'ORBIT & SILICON LIVE';
+        }
       }
     }
   </script>
