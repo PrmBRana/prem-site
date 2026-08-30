@@ -45,6 +45,7 @@
         <li><a href="#missions" class="nav-link">Flight Missions</a></li>
         <li><a href="#field-stream" class="nav-link">Lab Archive</a></li>
         <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#articles" class="nav-link">Notes &amp; Articles</a></li>
         <li><a href="#background" class="nav-link">Background &amp; Outreach</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -692,6 +693,24 @@
   </section>
 
   <!-- ==========================================================================
+       TECHNICAL NOTES & ENGINEERING ARTICLES
+       ========================================================================== -->
+  <section id="articles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Notes &amp; Tutorials</span>
+        <h2 class="section-title">Technical Articles &amp; Laboratory Logs</h2>
+        <p class="section-subtitle">
+          In-depth implementation notes, hardware walkthroughs, sensor calibration techniques, and microarchitecture analysis authored by Prem Bahadur Rana.
+        </p>
+      </div>
+
+      <!-- Populated dynamically from js/articles.js -->
+      <div class="articles-grid" id="articles-container"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        BACKGROUND, MENTORSHIP & SCHOLARLY PROFILE
        ========================================================================== -->
   <section id="background">
@@ -840,7 +859,24 @@
     </div>
   </div>
 
-  <!-- Lightweight Script -->
+  <!-- Academic Article Reader Modal -->
+  <div class="article-reader-backdrop" id="article-reader-modal">
+    <div class="article-reader-box">
+      <div class="article-reader-header">
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-emerald);" id="article-reader-meta"></span>
+          <h3 style="font-size: 1.15rem; color: #fff; margin-top: 0.2rem; margin-bottom: 0;" id="article-reader-title"></h3>
+        </div>
+        <button class="article-reader-close" id="article-reader-close" aria-label="Close article reader">✕</button>
+      </div>
+      <div class="article-reader-content" id="article-reader-body">
+        <!-- Content dynamically injected from js/articles.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightweight Scripts -->
+  <script src="js/articles.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
