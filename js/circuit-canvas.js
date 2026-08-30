@@ -1,21 +1,18 @@
 /**
- * Advanced Orbital Avionics & Silicon Semiconductor Telemetry Engine 4.0
+ * Advanced Orbital Avionics & Silicon Semiconductor Telemetry Engine 5.0
  * 
- * Feat:
- * 1. Deep Silicon Semiconductor Substrate: SkyWater 130nm ASIC dies, CTS clock pulses,
- *    standard cell rows, microstrip transmission lines actively generating RF carrier waves.
- * 2. 3D Continuously Rotating Earth:
- *    - Orthographic 3D projection of rotating globe with latitude/longitude meridians,
- *      atmospheric ozone glow, and rotating landmass contours (including Himalayas/Nepal).
- *    - Kathmandu Ground Station (27.7°N, 85.3°E) beacon rotating with Earth.
- * 3. Continuously Orbiting Satellite (Slippers2Sat 1U CubeSat):
- *    - Full 3D orbital trajectory with inclined plane and depth occlusion (orbiting in front and behind Earth).
- *    - Deployed solar arrays, chassis, and dipole antenna.
- * 4. Travelling Communication Signals:
- *    - RF transceiver block on the silicon chip synthesizes the modulated signal.
- *    - High-speed transmission line directs RF power to the satellite antenna.
- *    - Continuous travelling electromagnetic sinusoidal wavefronts and telemetry data packets (AX.25, GMSK, EPDM)
- *      propagating through space towards the rotating Earth and ground station.
+ * Upgrades:
+ * 1. Big 3D Rotating Earth: Substantially larger globe with rich atmosphere,
+ *    continents (South Asia, Himalayas, Africa, Americas), and Kathmandu ground beacon.
+ * 2. Larger Satellite: Detailed 1U CubeSat model with multi-cell solar wings,
+ *    gold busbars, optic aperture, and dipole antennas. No satellite text name label.
+ * 3. Dedicated Left-Side Animated Silicon Chip:
+ *    - Prominent ASIC Die layout on the left side with wire-bond pads.
+ *    - RV32I Core with register flashes, IPCC Mailbox SRAM, and Quad-Mag DSP filter.
+ *    - Active RF Power Amplifier (PA) block with glowing planar inductor coils.
+ *    - Clock distribution pulses and electron packets along M1-M5 metal tracks.
+ *    - High-frequency microstrip RF trace transmitting signals from the chip across to the satellite & Earth!
+ * 4. Travelling RF signals: Electromagnetic wavefronts and data packets flowing smoothly.
  */
 
 (function () {
@@ -41,8 +38,7 @@
     amberGlow: 'rgba(255, 183, 3, ',
     purple: '#c084fc',
     purpleGlow: 'rgba(192, 132, 252, ',
-    earthBlue: '#0ea5e9',
-    earthLand: '#10b981'
+    goldPad: '#f59e0b'
   };
 
   function resize() {
@@ -62,20 +58,20 @@
   });
 
   /* =============================================================
-     1. CONTINUOUSLY ROTATING 3D EARTH MODEL
+     1. CONTINUOUSLY ROTATING 3D EARTH MODEL (BIGGER)
      ============================================================= */
   let earth = {
     x: 0,
     y: 0,
-    radius: 160,
+    radius: 280, // Noticeably larger globe
     rotation: 0,
-    rotSpeed: 0.0035, // Smooth continuous rotation
-    tilt: 0.28 // Earth axial tilt (~16 degrees for projection)
+    rotSpeed: 0.003, // Smooth continuous rotation
+    tilt: 0.26 // Axial tilt
   };
 
-  // Simplified continent polygons in spherical coordinates [lat (deg), lon (deg)]
+  // Continent polygons in spherical coordinates [lat (deg), lon (deg)]
   const CONTINENTS = [
-    // Eurasia & South Asia (including Indian subcontinent & Himalayas)
+    // Eurasia & South Asia (including Indian subcontinent & Himalayas/Nepal)
     [
       { lat: 70, lon: 30 }, { lat: 72, lon: 90 }, { lat: 65, lon: 140 }, { lat: 50, lon: 140 },
       { lat: 35, lon: 120 }, { lat: 22, lon: 114 }, { lat: 10, lon: 105 }, { lat: 5, lon: 80 },
@@ -106,209 +102,348 @@
   const KTM_LON = 85.3 * (Math.PI / 180);
 
   /* =============================================================
-     2. 3D ORBITING SATELLITE (SLIPPERS2SAT 1U CUBESAT)
+     2. 3D ORBITING SATELLITE (BIGGER, NO NAME LABEL)
      ============================================================= */
   let satellite = {
     orbitAngle: 0,
-    orbitSpeed: 0.0075, // continuous orbit
-    orbitRadiusX: 280,
-    orbitRadiusY: 110,
-    orbitInclination: 0.45, // 3D tilt
+    orbitSpeed: 0.007,
+    orbitRadiusX: 380,
+    orbitRadiusY: 150,
+    orbitInclination: 0.42,
     x: 0,
     y: 0,
-    z: 0, // Depth relative to Earth center (>0 in front, <0 behind)
+    z: 0,
     isOccluded: false
   };
 
   /* =============================================================
-     3. DEEP SILICON SEMICONDUCTOR FAB SUBSTRATE
+     3. DEDICATED LEFT-SIDE ANIMATED SILICON CHIP (ASIC DIE)
      ============================================================= */
-  let siliconDies = [];
-  let siliconTraces = [];
+  let leftChip = {
+    x: 35,
+    y: 90,
+    w: 360,
+    h: 460,
+    blocks: [],
+    pads: [],
+    electrons: [],
+    ctsWave: 0
+  };
+
   let starfield = [];
   let travellingSignals = [];
 
   function initScene() {
-    // Dynamic Earth positioning: placed comfortably in lower center/right for maximum visual balance
     const isMobile = width < 768;
-    earth.radius = isMobile ? Math.min(width * 0.28, 120) : Math.min(width * 0.18, 190);
-    earth.x = isMobile ? width * 0.5 : width * 0.72;
-    earth.y = isMobile ? height * 0.65 : height * 0.52;
 
-    satellite.orbitRadiusX = earth.radius * 1.85;
-    satellite.orbitRadiusY = earth.radius * 0.75;
+    // 1. Earth Size & Position (significantly bigger)
+    earth.radius = isMobile ? Math.min(width * 0.42, 190) : Math.min(width * 0.25, 290);
+    earth.x = isMobile ? width * 0.5 : width * 0.72;
+    earth.y = isMobile ? height * 0.68 : height * 0.52;
+
+    satellite.orbitRadiusX = earth.radius * 1.72;
+    satellite.orbitRadiusY = earth.radius * 0.78;
+
+    // 2. Left-Side Silicon Chip Configuration
+    const chipWidth = isMobile ? Math.min(width * 0.88, 320) : Math.min(width * 0.32, 400);
+    const chipHeight = isMobile ? 320 : Math.min(height * 0.78, 540);
+    leftChip.x = isMobile ? (width - chipWidth) / 2 : Math.max(30, width * 0.04);
+    leftChip.y = isMobile ? 80 : (height - chipHeight) / 2;
+    leftChip.w = chipWidth;
+    leftChip.h = chipHeight;
+
+    // Internal ASIC Blocks on Left Chip
+    const padMargin = 28;
+    const innerW = chipWidth - padMargin * 2;
+    const innerH = chipHeight - padMargin * 2;
+    const startX = leftChip.x + padMargin;
+    const startY = leftChip.y + padMargin;
+
+    leftChip.blocks = [
+      {
+        x: startX,
+        y: startY,
+        w: innerW * 0.58,
+        h: innerH * 0.46,
+        label: 'RV32I_5STAGE_CPU',
+        sub: '32-BIT PIPELINED CORE',
+        type: 'core',
+        color: COLORS.cyan
+      },
+      {
+        x: startX + innerW * 0.62,
+        y: startY,
+        w: innerW * 0.38,
+        h: innerH * 0.46,
+        label: 'IPCC_SRAM',
+        sub: 'MAILBOX FIFO',
+        type: 'ram',
+        color: COLORS.amber
+      },
+      {
+        x: startX,
+        y: startY + innerH * 0.52,
+        w: innerW * 0.46,
+        h: innerH * 0.48,
+        label: 'QUAD_MAG_DSP',
+        sub: 'UBSS FILTER & DMA',
+        type: 'dsp',
+        color: COLORS.purple
+      },
+      {
+        x: startX + innerW * 0.5,
+        y: startY + innerH * 0.52,
+        w: innerW * 0.5,
+        h: innerH * 0.48,
+        label: 'RF_PA_MODEM_437M',
+        sub: 'GMSK/GFSK TRANSMITTER',
+        type: 'rf_tx',
+        color: COLORS.emerald
+      }
+    ];
+
+    // Wire-bond Pads around chip perimeter
+    leftChip.pads = [];
+    const padCountSide = 6;
+    for (let i = 0; i < padCountSide; i++) {
+      // Top pads
+      leftChip.pads.push({ x: leftChip.x + 30 + (i * (leftChip.w - 60) / (padCountSide - 1)), y: leftChip.y + 8, label: `P_T${i}` });
+      // Bottom pads
+      leftChip.pads.push({ x: leftChip.x + 30 + (i * (leftChip.w - 60) / (padCountSide - 1)), y: leftChip.y + leftChip.h - 8, label: `P_B${i}` });
+    }
+    for (let i = 1; i < 5; i++) {
+      // Left pads
+      leftChip.pads.push({ x: leftChip.x + 8, y: leftChip.y + (i * leftChip.h / 5), label: `P_L${i}` });
+      // Right pads (RF output pads)
+      leftChip.pads.push({ x: leftChip.x + leftChip.w - 8, y: leftChip.y + (i * leftChip.h / 5), label: `P_RF${i}`, isRfOut: true });
+    }
+
+    // Electron current pulses inside left chip
+    leftChip.electrons = [];
+    for (let i = 0; i < 28; i++) {
+      leftChip.electrons.push({
+        x: startX + Math.random() * innerW,
+        y: startY + Math.random() * innerH,
+        speed: 0.8 + Math.random() * 1.5,
+        direction: Math.random() > 0.5 ? 1 : -1,
+        color: Math.random() > 0.5 ? COLORS.cyan : COLORS.emerald
+      });
+    }
 
     // Starfield
     starfield = [];
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 110; i++) {
       starfield.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: 0.8 + Math.random() * 1.7,
-        alpha: 0.15 + Math.random() * 0.7,
+        size: 0.8 + Math.random() * 1.8,
+        alpha: 0.15 + Math.random() * 0.75,
         twinkleSpeed: 0.002 + Math.random() * 0.004
       });
     }
 
-    // Silicon Substrate Chips (Transmitting Hardware on Earth/Die)
-    siliconDies = [];
-    const chipW = Math.max(160, Math.floor(width / 6.5));
-    const chipH = Math.max(120, Math.floor(height / 5.5));
-    const cols = Math.ceil(width / chipW);
-    const rows = Math.ceil(height / chipH);
-
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const x = c * chipW;
-        const y = r * chipH;
-        const isTxModem = (c === 0 && r === 1);
-        const isCore = (c === 1 && r === 1);
-
-        siliconDies.push({
-          x: x,
-          y: y,
-          w: chipW,
-          h: chipH,
-          id: `DIE_${r}_${c}`,
-          label: isTxModem ? 'RF_TX_GMSK_MODEM' :
-                 isCore ? 'RV32I_5STAGE_CORE' :
-                 (c === 0 && r === 2) ? 'IPCC_SRAM3_MAILBOX' :
-                 (c === 1 && r === 2) ? 'QUAD_PNI_RM3100_IF' :
-                 (c === 0 && r === 0) ? 'MT25QL_1GB_FLASH' : `STD_CELL_${r}${c}`,
-          isTxModem: isTxModem,
-          isCore: isCore
-        });
-      }
-    }
-
-    // High-speed Microstrip RF Feedlines from Chip to Space Link
-    siliconTraces = [];
-    const txDie = siliconDies.find(d => d.isTxModem) || siliconDies[0];
-    if (txDie) {
-      siliconTraces.push({
-        x1: txDie.x + txDie.w * 0.85,
-        y1: txDie.y + txDie.h * 0.45,
-        x2: txDie.x + txDie.w + 60,
-        y2: txDie.y + txDie.h * 0.45,
-        color: COLORS.emerald
-      });
-      siliconTraces.push({
-        x1: txDie.x + txDie.w + 60,
-        y1: txDie.y + txDie.h * 0.45,
-        x2: txDie.x + txDie.w + 140,
-        y2: txDie.y + txDie.h * 0.15,
-        color: COLORS.cyan
-      });
-    }
-
-    // Travelling signal packets queue
+    // Travelling signal packets
     travellingSignals = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
       travellingSignals.push({
-        progress: (i / 7),
-        speed: 0.0065,
+        progress: (i / 8),
+        speed: 0.006,
         type: (i % 3 === 0) ? 'AX.25 UI_FRAME' : (i % 3 === 1) ? 'EPDM_QUAD_MAG' : 'GMSK_9600'
       });
     }
   }
 
   /* =============================================================
-     RENDER LAYER 1: DEEP SILICON DIE & RF TRANSMITTER STAGE
+     RENDER LAYER 1: DEDICATED LEFT-SIDE ANIMATED SILICON CHIP
      ============================================================= */
-  function drawSiliconSubstrate(time) {
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.055)';
-    ctx.lineWidth = 1;
+  function drawLeftSiliconChip(time) {
+    const c = leftChip;
 
-    siliconDies.forEach((die) => {
-      ctx.strokeRect(die.x + 2, die.y + 2, die.w - 4, die.h - 4);
+    // 1. Silicon Package Frame & Substrate
+    ctx.fillStyle = 'rgba(6, 11, 24, 0.82)';
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(c.x, c.y, c.w, c.h);
+    ctx.fillRect(c.x, c.y, c.w, c.h);
 
-      if (die.isTxModem) {
-        ctx.fillStyle = 'rgba(0, 255, 157, 0.04)';
-        ctx.fillRect(die.x + 4, die.y + 4, die.w - 8, die.h - 8);
-      } else if (die.isCore) {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.035)';
-        ctx.fillRect(die.x + 4, die.y + 4, die.w - 8, die.h - 8);
-      }
+    // Package Corner Cutout / Pin 1 Chamfer
+    ctx.fillStyle = COLORS.amber;
+    ctx.beginPath();
+    ctx.arc(c.x + 14, c.y + 14, 4, 0, Math.PI * 2);
+    ctx.fill();
 
-      // Standard cell internal metal rows
-      ctx.strokeStyle = die.isTxModem ? 'rgba(0, 255, 157, 0.12)' : 'rgba(148, 163, 184, 0.04)';
-      for (let ty = die.y + 16; ty < die.y + die.h - 10; ty += 12) {
-        ctx.beginPath();
-        ctx.moveTo(die.x + 8, ty);
-        ctx.lineTo(die.x + die.w - 8, ty);
-        ctx.stroke();
-      }
+    // Chip Package Header Label
+    ctx.font = 'bold 9px monospace';
+    ctx.fillStyle = COLORS.cyan;
+    ctx.fillText('SKY130 // PRM-ASIC-RV32I // ON-BOARD TRANSMITTER', c.x + 26, c.y + 17);
 
-      ctx.font = '8.5px monospace';
-      ctx.fillStyle = die.isTxModem ? COLORS.emerald : die.isCore ? COLORS.cyan : 'rgba(148, 163, 184, 0.4)';
-      ctx.fillText(die.label, die.x + 8, die.y + 14);
+    // 2. Wire-bond Pads (Gold Contacts)
+    c.pads.forEach((pad) => {
+      ctx.fillStyle = pad.isRfOut ? COLORS.emerald : COLORS.goldPad;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = 1;
+      ctx.fillRect(pad.x - 5, pad.y - 5, 10, 10);
+      ctx.strokeRect(pad.x - 5, pad.y - 5, 10, 10);
     });
 
-    // Chip Clock Tree Synthesis (CTS) Global Synchronizing Pulse
-    const ctsRadius = (time * 0.09) % (Math.max(width, height) * 0.75);
-    ctx.strokeStyle = `rgba(0, 240, 255, ${Math.max(0, 0.22 - ctsRadius / 1500)})`;
-    ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.arc(width * 0.15, height * 0.35, ctsRadius, 0, Math.PI * 2);
-    ctx.stroke();
+    // 3. Internal Functional Blocks (RV32I Core, SRAM Mailbox, DSP, RF Transmitter)
+    c.blocks.forEach((blk) => {
+      ctx.fillStyle = 'rgba(10, 18, 38, 0.75)';
+      ctx.strokeStyle = blk.color + '0.45)';
+      ctx.lineWidth = 1.2;
+      ctx.strokeRect(blk.x, blk.y, blk.w, blk.h);
+      ctx.fillRect(blk.x, blk.y, blk.w, blk.h);
 
-    // High-Frequency RF Carrier Generation at Transmitter Die
-    const txDie = siliconDies.find(d => d.isTxModem);
-    if (txDie) {
-      const txPadX = txDie.x + txDie.w * 0.85;
-      const txPadY = txDie.y + txDie.h * 0.45;
+      // Block header
+      ctx.font = 'bold 9.5px monospace';
+      ctx.fillStyle = blk.color;
+      ctx.fillText(blk.label, blk.x + 8, blk.y + 16);
 
-      // Active pulsing RF power amplifier stage
-      const rfGlow = 0.5 + Math.sin(time * 0.01) * 0.4;
-      ctx.fillStyle = `rgba(0, 255, 157, ${rfGlow * 0.35})`;
-      ctx.beginPath();
-      ctx.arc(txPadX, txPadY, 14, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.font = '7.5px monospace';
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.65)';
+      ctx.fillText(blk.sub, blk.x + 8, blk.y + 28);
 
-      ctx.fillStyle = COLORS.emerald;
-      ctx.beginPath();
-      ctx.arc(txPadX, txPadY, 5, 0, Math.PI * 2);
-      ctx.fill();
+      // Block-specific dynamic animations
+      if (blk.type === 'core') {
+        // CPU logic standard cell rows flashing
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+        ctx.lineWidth = 1;
+        for (let ly = blk.y + 36; ly < blk.y + blk.h - 8; ly += 9) {
+          ctx.beginPath();
+          ctx.moveTo(blk.x + 8, ly);
+          ctx.lineTo(blk.x + blk.w - 8, ly);
+          ctx.stroke();
 
-      ctx.font = '9px monospace';
-      ctx.fillStyle = COLORS.emerald;
-      ctx.fillText('PA_STAGE_437MHz_ACTIVE', txPadX - 60, txPadY - 18);
-
-      // Microstrip RF feedline with traveling sine wave
-      siliconTraces.forEach((trace) => {
-        ctx.strokeStyle = trace.color + '0.4)';
-        ctx.lineWidth = 1.8;
+          // Blinking register states
+          const step = Math.floor((time * 0.005 + ly) % 6);
+          ctx.fillStyle = (step === 0) ? COLORS.cyan : 'rgba(0, 240, 255, 0.25)';
+          ctx.fillRect(blk.x + 12 + step * 14, ly - 3, 7, 5);
+        }
+      } else if (blk.type === 'ram') {
+        // Memory cell matrix array
+        const cols = 5;
+        const cellW = (blk.w - 20) / cols;
+        for (let cx = 0; cx < cols; cx++) {
+          for (let cy = 0; cy < 6; cy++) {
+            const isRead = ((time * 0.008 + cx * 2 + cy) % 8 < 1);
+            ctx.fillStyle = isRead ? COLORS.amber : 'rgba(255, 183, 3, 0.1)';
+            ctx.fillRect(blk.x + 10 + cx * cellW, blk.y + 36 + cy * 12, cellW - 4, 7);
+          }
+        }
+      } else if (blk.type === 'dsp') {
+        // DSP waveform spectrum
+        ctx.strokeStyle = COLORS.purple;
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
-        const dist = Math.hypot(trace.x2 - trace.x1, trace.y2 - trace.y1);
-        const steps = Math.floor(dist / 4);
-        for (let s = 0; s <= steps; s++) {
-          const t = s / steps;
-          const bx = trace.x1 + (trace.x2 - trace.x1) * t;
-          const by = trace.y1 + (trace.y2 - trace.y1) * t;
-          const wave = Math.sin(s * 0.2 - time * 0.012) * 5;
-          if (s === 0) ctx.moveTo(bx, by + wave);
-          else ctx.lineTo(bx, by + wave);
+        for (let dx = 0; dx < blk.w - 16; dx += 4) {
+          const dy = Math.sin(dx * 0.15 + time * 0.008) * 12;
+          const px = blk.x + 8 + dx;
+          const py = blk.y + blk.h * 0.65 + dy;
+          if (dx === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
         }
         ctx.stroke();
-      });
+      } else if (blk.type === 'rf_tx') {
+        // RF Power Amplifier (PA) stage with concentric inductor coil pulses
+        const paCenterX = blk.x + blk.w * 0.55;
+        const paCenterY = blk.y + blk.h * 0.58;
+
+        // Planar spiral inductor coil
+        ctx.strokeStyle = COLORS.emerald;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        for (let a = 0; a < Math.PI * 6; a += 0.2) {
+          const r = 4 + a * 2.2;
+          const px = paCenterX + Math.cos(a + time * 0.005) * r;
+          const py = paCenterY + Math.sin(a + time * 0.005) * r;
+          if (a === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+
+        // Pulsing transmitter active core
+        const pulse = 0.5 + Math.sin(time * 0.012) * 0.45;
+        ctx.fillStyle = `rgba(0, 255, 157, ${pulse * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(paCenterX, paCenterY, 18, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.font = '8px monospace';
+        ctx.fillStyle = COLORS.emerald;
+        ctx.fillText('437.375MHz TX PA', blk.x + 8, blk.y + blk.h - 10);
+      }
+    });
+
+    // 4. Clock Tree Synthesis (CTS) Global Synchronizing Pulse across Chip
+    c.ctsWave = (time * 0.07) % Math.max(c.w, c.h);
+    ctx.strokeStyle = `rgba(0, 240, 255, ${Math.max(0, 0.35 - c.ctsWave / (c.w * 1.1))})`;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(c.x + c.w * 0.5, c.y + c.h * 0.5, c.ctsWave, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // 5. Electron packet traffic along multi-layer metal tracks
+    c.electrons.forEach((el) => {
+      el.x += el.speed * el.direction;
+      if (el.x > c.x + c.w - 30) { el.x = c.x + 30; el.y = c.y + 40 + Math.random() * (c.h - 80); }
+      if (el.x < c.x + 30) { el.x = c.x + c.w - 30; el.y = c.y + 40 + Math.random() * (c.h - 80); }
+
+      ctx.fillStyle = el.color;
+      ctx.shadowColor = el.color;
+      ctx.shadowBlur = 6;
+      ctx.beginPath();
+      ctx.arc(el.x, el.y, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    // 6. High-Frequency RF Transmission Line from Left Chip to Satellite & Earth
+    // Output launches from RF PA Block pad on the right of the chip
+    const rfOutX = c.x + c.w;
+    const rfOutY = c.y + c.h * 0.76;
+
+    // Launch trajectory curving into space
+    const launchDist = Math.hypot(satellite.x - rfOutX, satellite.y - rfOutY);
+    ctx.strokeStyle = 'rgba(0, 255, 157, 0.45)';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    const steps = Math.floor(launchDist / 6);
+
+    for (let s = 0; s <= steps; s++) {
+      const t = s / steps;
+      // Quadratic bezier control point lifting towards upper orbit
+      const cx = (rfOutX + satellite.x) * 0.5 - 40;
+      const cy = Math.min(rfOutY, satellite.y) - 60;
+
+      const bx = (1 - t) * (1 - t) * rfOutX + 2 * (1 - t) * t * cx + t * t * satellite.x;
+      const by = (1 - t) * (1 - t) * rfOutY + 2 * (1 - t) * t * cy + t * t * satellite.y;
+
+      // High frequency carrier sine ripple on transmission line
+      const wave = Math.sin(s * 0.35 - time * 0.015) * 5 * (1 - t * 0.2);
+      if (s === 0) ctx.moveTo(bx, by + wave);
+      else ctx.lineTo(bx, by + wave);
     }
+    ctx.stroke();
+
+    // Data label on RF feedline
+    ctx.font = '8px monospace';
+    ctx.fillStyle = COLORS.emerald;
+    ctx.fillText('RF_TRANSMIT_BUS >>', rfOutX + 15, rfOutY - 8);
   }
 
   /* =============================================================
-     RENDER LAYER 2: 3D ROTATING EARTH GLOBE & KATHMANDU BEACON
+     RENDER LAYER 2: BIGGER 3D ROTATING EARTH GLOBE & KATHMANDU BEACON
      ============================================================= */
-  // 3D coordinate transformation on rotating sphere
   function projectSpherePoint(latRad, lonRad, rotAngle) {
     const lon = lonRad + rotAngle;
     const cosLat = Math.cos(latRad);
     const sinLat = Math.sin(latRad);
 
-    // 3D coordinates (with axial tilt)
     const x3 = earth.radius * cosLat * Math.sin(lon);
     const y3 = -earth.radius * sinLat;
     const z3 = earth.radius * cosLat * Math.cos(lon);
 
-    // Apply earth.tilt around X-axis
+    // Apply tilt around X-axis
     const cosTilt = Math.cos(earth.tilt);
     const sinTilt = Math.sin(earth.tilt);
     const yProj = y3 * cosTilt - z3 * sinTilt;
@@ -318,7 +453,7 @@
       x: earth.x + x3,
       y: earth.y + yProj,
       z: zProj,
-      visible: zProj > 0 // true if facing the camera
+      visible: zProj > 0
     };
   }
 
@@ -328,9 +463,9 @@
     earth.rotation += earth.rotSpeed;
 
     // Atmospheric Ozone Rim Glow
-    const atmosGrad = ctx.createRadialGradient(earth.x, earth.y, earth.radius * 0.85, earth.x, earth.y, earth.radius * 1.25);
-    atmosGrad.addColorStop(0, 'rgba(14, 165, 233, 0.28)');
-    atmosGrad.addColorStop(0.5, 'rgba(0, 240, 255, 0.12)');
+    const atmosGrad = ctx.createRadialGradient(earth.x, earth.y, earth.radius * 0.88, earth.x, earth.y, earth.radius * 1.25);
+    atmosGrad.addColorStop(0, 'rgba(14, 165, 233, 0.32)');
+    atmosGrad.addColorStop(0.55, 'rgba(0, 240, 255, 0.14)');
     atmosGrad.addColorStop(1, 'rgba(4, 7, 17, 0)');
 
     ctx.fillStyle = atmosGrad;
@@ -338,8 +473,8 @@
     ctx.arc(earth.x, earth.y, earth.radius * 1.25, 0, Math.PI * 2);
     ctx.fill();
 
-    // Deep Ocean Sphere
-    const oceanGrad = ctx.createRadialGradient(earth.x - earth.radius * 0.3, earth.y - earth.radius * 0.3, earth.radius * 0.1, earth.x, earth.y, earth.radius);
+    // Deep Ocean Sphere with lighting gradient
+    const oceanGrad = ctx.createRadialGradient(earth.x - earth.radius * 0.3, earth.y - earth.radius * 0.3, earth.radius * 0.08, earth.x, earth.y, earth.radius);
     oceanGrad.addColorStop(0, '#0c4a6e');
     oceanGrad.addColorStop(0.65, '#072540');
     oceanGrad.addColorStop(1, '#020d18');
@@ -356,15 +491,14 @@
     ctx.clip();
 
     // 1. Latitude & Longitude Meridians (Wireframe Grid)
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.13)';
     ctx.lineWidth = 1;
 
-    // Latitude parallels
     for (let lat = -60; lat <= 60; lat += 30) {
       const latRad = lat * (Math.PI / 180);
       ctx.beginPath();
       let started = false;
-      for (let lon = -180; lon <= 180; lon += 8) {
+      for (let lon = -180; lon <= 180; lon += 6) {
         const pt = projectSpherePoint(latRad, lon * (Math.PI / 180), earth.rotation);
         if (pt.visible) {
           if (!started) { ctx.moveTo(pt.x, pt.y); started = true; }
@@ -376,12 +510,11 @@
       ctx.stroke();
     }
 
-    // Longitude meridians
     for (let lon = -180; lon < 180; lon += 30) {
       const lonRad = lon * (Math.PI / 180);
       ctx.beginPath();
       let started = false;
-      for (let lat = -90; lat <= 90; lat += 6) {
+      for (let lat = -90; lat <= 90; lat += 5) {
         const pt = projectSpherePoint(lat * (Math.PI / 180), lonRad, earth.rotation);
         if (pt.visible) {
           if (!started) { ctx.moveTo(pt.x, pt.y); started = true; }
@@ -394,9 +527,9 @@
     }
 
     // 2. Continents & Landmass Polygons Rotating
-    ctx.fillStyle = 'rgba(16, 185, 129, 0.28)';
-    ctx.strokeStyle = 'rgba(0, 255, 157, 0.45)';
-    ctx.lineWidth = 1.2;
+    ctx.fillStyle = 'rgba(16, 185, 129, 0.32)';
+    ctx.strokeStyle = 'rgba(0, 255, 157, 0.5)';
+    ctx.lineWidth = 1.4;
 
     CONTINENTS.forEach((poly) => {
       ctx.beginPath();
@@ -423,34 +556,33 @@
     ktmPos = projectSpherePoint(KTM_LAT, KTM_LON, earth.rotation);
 
     if (ktmPos.visible) {
-      // Pulsing reception ring
       const ktmPulse = (time * 0.005) % 1;
       ctx.strokeStyle = `rgba(255, 183, 3, ${1 - ktmPulse})`;
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = 1.6;
       ctx.beginPath();
-      ctx.arc(ktmPos.x, ktmPos.y, 8 + ktmPulse * 16, 0, Math.PI * 2);
+      ctx.arc(ktmPos.x, ktmPos.y, 8 + ktmPulse * 20, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.fillStyle = COLORS.amber;
       ctx.shadowColor = COLORS.amber;
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 12;
       ctx.beginPath();
-      ctx.arc(ktmPos.x, ktmPos.y, 4, 0, Math.PI * 2);
+      ctx.arc(ktmPos.x, ktmPos.y, 4.5, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      ctx.font = '9px monospace';
+      ctx.font = 'bold 9.5px monospace';
       ctx.fillStyle = '#fff';
-      ctx.fillText('APN_KATHMANDU (27.7°N)', ktmPos.x + 8, ktmPos.y - 6);
+      ctx.fillText('APN_KATHMANDU (27.7°N)', ktmPos.x + 9, ktmPos.y - 6);
     }
 
-    ctx.restore(); // Restore Earth clip
+    ctx.restore();
 
     // Earth Limb Atmosphere Ring
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.48)';
+    ctx.lineWidth = 2.2;
     ctx.shadowColor = '#00f0ff';
-    ctx.shadowBlur = 18;
+    ctx.shadowBlur = 20;
     ctx.beginPath();
     ctx.arc(earth.x, earth.y, earth.radius, 0, Math.PI * 2);
     ctx.stroke();
@@ -458,35 +590,30 @@
   }
 
   /* =============================================================
-     RENDER LAYER 3: CONTINUOUSLY ORBITING SATELLITE (3D LEO)
+     RENDER LAYER 3: CONTINUOUSLY ORBITING SATELLITE (LARGER, NO NAME)
      ============================================================= */
-  function updateSatelliteOrbit(time) {
+  function updateSatelliteOrbit() {
     satellite.orbitAngle += satellite.orbitSpeed;
 
-    // 3D Elliptical Inclined Orbit Equation
     const cosA = Math.cos(satellite.orbitAngle);
     const sinA = Math.sin(satellite.orbitAngle);
 
-    // Coordinate along orbit plane
     const orbitX3 = satellite.orbitRadiusX * cosA;
     const orbitY3 = satellite.orbitRadiusY * sinA;
 
-    // Rotate with inclination
     const cosInc = Math.cos(satellite.orbitInclination);
     const sinInc = Math.sin(satellite.orbitInclination);
 
     satellite.x = earth.x + orbitX3;
     satellite.y = earth.y + (orbitY3 * cosInc);
-    satellite.z = orbitY3 * sinInc; // depth: >0 in front of Earth, <0 behind Earth
+    satellite.z = orbitY3 * sinInc;
 
-    // Occlusion test: when behind Earth and inside radius
     const distFromCenter = Math.hypot(satellite.x - earth.x, satellite.y - earth.y);
     satellite.isOccluded = (satellite.z < 0 && distFromCenter < earth.radius * 0.95);
   }
 
   function drawSatelliteTrajectory() {
-    // Render full orbital elliptical track
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.18)';
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.16)';
     ctx.lineWidth = 1;
     ctx.setLineDash([4, 6]);
     ctx.beginPath();
@@ -504,59 +631,97 @@
   }
 
   function drawSatelliteBody(time) {
-    if (satellite.isOccluded) return; // Orbiting behind Earth
+    if (satellite.isOccluded) return;
 
     ctx.save();
     ctx.translate(satellite.x, satellite.y);
 
-    // Subtle tumble/attitude motion
-    ctx.rotate(Math.sin(time * 0.001) * 0.18 + 0.1);
+    // Subtle attitude motion
+    ctx.rotate(Math.sin(time * 0.001) * 0.16 + 0.08);
 
-    // Scale slightly with 3D depth
-    const depthScale = 0.85 + (satellite.z / satellite.orbitRadiusY) * 0.25;
+    // Scale with 3D depth (moderately larger size)
+    const depthScale = 1.05 + (satellite.z / satellite.orbitRadiusY) * 0.3;
     ctx.scale(depthScale, depthScale);
 
-    // Solar Wings
+    // --- Solar Wings (Larger, Multi-Cell Grid with Gold Busbars) ---
+    // Left Wing
     ctx.fillStyle = '#0284c7';
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = 1;
-    ctx.fillRect(-32, -8, 20, 16);
-    ctx.fillRect(12, -8, 20, 16);
-    ctx.strokeRect(-32, -8, 20, 16);
-    ctx.strokeRect(12, -8, 20, 16);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+    ctx.lineWidth = 1.2;
+    ctx.fillRect(-48, -12, 32, 24);
+    ctx.strokeRect(-48, -12, 32, 24);
 
-    // 1U Chassis Body
+    // Left solar cells divisions
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+    ctx.beginPath();
+    ctx.moveTo(-32, -12); ctx.lineTo(-32, 12);
+    ctx.moveTo(-48, 0); ctx.lineTo(-16, 0);
+    ctx.stroke();
+
+    // Right Wing
+    ctx.fillStyle = '#0284c7';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+    ctx.lineWidth = 1.2;
+    ctx.fillRect(16, -12, 32, 24);
+    ctx.strokeRect(16, -12, 32, 24);
+
+    // Right solar cells divisions
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+    ctx.beginPath();
+    ctx.moveTo(32, -12); ctx.lineTo(32, 12);
+    ctx.moveTo(16, 0); ctx.lineTo(48, 0);
+    ctx.stroke();
+
+    // --- 1U CubeSat Chassis (Larger: 32x32px) ---
     ctx.fillStyle = '#1e293b';
     ctx.strokeStyle = COLORS.cyan;
-    ctx.lineWidth = 1.8;
-    ctx.fillRect(-12, -12, 24, 24);
-    ctx.strokeRect(-12, -12, 24, 24);
+    ctx.lineWidth = 2.2;
+    ctx.fillRect(-16, -16, 32, 32);
+    ctx.strokeRect(-16, -16, 32, 32);
+
+    // Aluminum Rail Standoffs
+    ctx.fillStyle = '#64748b';
+    ctx.fillRect(-17, -17, 5, 5);
+    ctx.fillRect(12, -17, 5, 5);
+    ctx.fillRect(-17, 12, 5, 5);
+    ctx.fillRect(12, 12, 5, 5);
 
     // Optical Camera Aperture / Quad-Mag Sensor Port
     ctx.fillStyle = COLORS.amber;
     ctx.beginPath();
-    ctx.arc(0, 0, 4, 0, Math.PI * 2);
+    ctx.arc(0, 0, 5.5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Monopole / Dipole Transceiver Whip Antennas
-    ctx.strokeStyle = COLORS.emerald;
-    ctx.lineWidth = 1.6;
+    ctx.fillStyle = '#040711';
     ctx.beginPath();
-    ctx.moveTo(0, 12);
-    ctx.lineTo(0, 30);
+    ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Transceiver Dipole Whip Antennas with Glowing Beacon Tips
+    ctx.strokeStyle = COLORS.emerald;
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.moveTo(0, 16);
+    ctx.lineTo(0, 42);
     ctx.stroke();
 
+    ctx.fillStyle = COLORS.emerald;
     ctx.beginPath();
-    ctx.moveTo(0, -12);
-    ctx.lineTo(0, -26);
+    ctx.arc(0, 42, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(0, -16);
+    ctx.lineTo(0, -38);
     ctx.stroke();
+
+    ctx.fillStyle = COLORS.emerald;
+    ctx.beginPath();
+    ctx.arc(0, -38, 2, 0, Math.PI * 2);
+    ctx.fill();
 
     ctx.restore();
-
-    // Satellite HUD Tag
-    ctx.font = '9.5px monospace';
-    ctx.fillStyle = COLORS.cyan;
-    ctx.fillText('SLIPPERS2SAT (1U LEO // 520km)', satellite.x - 75, satellite.y - 24);
+    // NOTICE: Satellite text name label removed per user directive!
   }
 
   /* =============================================================
@@ -565,7 +730,6 @@
   function drawTravellingSignals(time) {
     if (satellite.isOccluded) return;
 
-    // Destination: Kathmandu Ground Station if visible, otherwise Earth surface center
     const targetX = ktmPos.visible ? ktmPos.x : earth.x;
     const targetY = ktmPos.visible ? ktmPos.y : earth.y;
 
@@ -577,8 +741,8 @@
 
     // 1. Concentrated RF Carrier Downlink Beam (437.375 MHz)
     const beamPulse = (time * 0.09) % 80;
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
-    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.38)';
+    ctx.lineWidth = 1.6;
     ctx.setLineDash([8, 8]);
     ctx.lineDashOffset = -beamPulse;
     ctx.beginPath();
@@ -593,17 +757,16 @@
       const alpha = Math.max(0, 0.45 * (1 - waveRadius / 140));
 
       ctx.strokeStyle = `rgba(0, 255, 157, ${alpha})`;
-      ctx.lineWidth = 1.4;
+      ctx.lineWidth = 1.5;
       ctx.beginPath();
-      // Wave directed forward towards Earth
       const angleToEarth = Math.atan2(targetY - sourceY, targetX - sourceX);
       ctx.arc(sourceX, sourceY, waveRadius, angleToEarth - 0.9, angleToEarth + 0.9);
       ctx.stroke();
     }
 
-    // 3. Modulated Signal Wavefront Traversal (Sinusoidal RF Ripple along the beam)
-    ctx.strokeStyle = 'rgba(0, 255, 157, 0.55)';
-    ctx.lineWidth = 1.6;
+    // 3. Modulated Sinusoidal RF Ripple along the beam
+    ctx.strokeStyle = 'rgba(0, 255, 157, 0.6)';
+    ctx.lineWidth = 1.8;
     ctx.beginPath();
     const steps = Math.floor(dist / 4);
     const normalX = -(targetY - sourceY) / dist;
@@ -613,7 +776,6 @@
       const t = s / steps;
       const bx = sourceX + (targetX - sourceX) * t;
       const by = sourceY + (targetY - sourceY) * t;
-      // GMSK continuous-phase sine ripple
       const wave = Math.sin(s * 0.28 - time * 0.015) * 6 * (1 - t * 0.3);
       const px = bx + normalX * wave;
       const py = by + normalY * wave;
@@ -631,44 +793,24 @@
       const px = sourceX + (targetX - sourceX) * pkt.progress;
       const py = sourceY + (targetY - sourceY) * pkt.progress;
 
-      // Glowing Data Packet Node
       ctx.fillStyle = COLORS.cyan;
       ctx.shadowColor = COLORS.cyan;
       ctx.shadowBlur = 12;
       ctx.beginPath();
-      ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+      ctx.arc(px, py, 4, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Packet Label
       if (pkt.progress > 0.15 && pkt.progress < 0.85) {
-        ctx.font = '8px monospace';
+        ctx.font = 'bold 8.5px monospace';
         ctx.fillStyle = COLORS.emerald;
         ctx.fillText(pkt.type, px + 8, py - 4);
       }
     });
-
-    // 5. Direct Silicon Chip to Space Link (Trace tying the on-board chip to satellite transmission)
-    const txDie = siliconDies.find(d => d.isTxModem);
-    if (txDie) {
-      const chipTxX = txDie.x + txDie.w + 140;
-      const chipTxY = txDie.y + txDie.h * 0.15;
-
-      const uplinkPulse = (time * 0.05) % 60;
-      ctx.strokeStyle = 'rgba(0, 255, 157, 0.22)';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 6]);
-      ctx.lineDashOffset = -uplinkPulse;
-      ctx.beginPath();
-      ctx.moveTo(chipTxX, chipTxY);
-      ctx.quadraticCurveTo(width * 0.35, height * 0.2, satellite.x, satellite.y);
-      ctx.stroke();
-      ctx.setLineDash([]);
-    }
   }
 
   /* =============================================================
-     MAIN ENGINE LOOP & CONTROLS
+     MAIN ENGINE LOOP
      ============================================================= */
   function loop(time) {
     if (!isPaused) {
@@ -681,21 +823,21 @@
         ctx.fillRect(s.x, s.y, s.size, s.size);
       });
 
-      // 2. Semiconductor Silicon Substrate & RF Transceiver Die
-      drawSiliconSubstrate(time);
+      // 2. Dedicated Left-Side Animated Silicon Chip (ASIC & RF Transmitter)
+      drawLeftSiliconChip(time);
 
       // 3. Orbital Trajectory line
       drawSatelliteTrajectory();
 
       // 4. Update satellite 3D orbit
-      updateSatelliteOrbit(time);
+      updateSatelliteOrbit();
 
       // 5. Draw satellite if behind Earth
       if (satellite.z <= 0) {
         drawSatelliteBody(time);
       }
 
-      // 6. 3D Rotating Earth (with continuous rotation & Kathmandu beacon)
+      // 6. Big 3D Rotating Earth (continuous rotation & Kathmandu beacon)
       drawRotatingEarth(time);
 
       // 7. Draw satellite if in front of Earth
@@ -731,14 +873,6 @@
 
   resize();
   animationFrameId = requestAnimationFrame(loop);
-
-  window.setCircuitMode = function (mode) {
-    // Unified engine combines all components into a synchronized real-time aerospace simulation
-    const labelEl = document.getElementById('circuit-mode-name');
-    if (labelEl) {
-      labelEl.textContent = 'ORBIT & SILICON LIVE';
-    }
-  };
 
   window.toggleCircuitPause = function () {
     isPaused = !isPaused;
