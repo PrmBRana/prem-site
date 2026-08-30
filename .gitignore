@@ -1,25 +1,13 @@
-# Config and content directories
-/config.yaml
-/archetypes
-/assets
-/content
-/public
-/data
-/static/images
-.vscode
+# Environment & OS artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*~
 
-### Hugo ###
-# Generated files by hugo
-/public/
-/exampleSite/public/
-/resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
+# IDE & Editor files
+.vscode/
+.idea/
 
-# Executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
-
-# Temporary lock file while building
-.hugo_build.lock
+# Local server & logs
+*.log

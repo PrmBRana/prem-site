@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prem Bahadur Rana | Electronics & Aerospace Engineer | RISC-V & CubeSat</title>
+  <meta name="description" content="Portfolio of Prem Bahadur Rana - Satellite Research Fellow, RISC-V & ASIC Hardware Developer, and Embedded Systems Engineer specializing in STM32 dual-core IPCC, RF Modems (GMSK, GFSK, AX.25, G3RUH), CubeSats, and Edge AI.">
+  <meta name="keywords" content="Prem Bahadur Rana, RISC-V, CubeSat, STM32 Dual Core, IPCC, Ring Buffer, GMSK, GFSK, AX.25, G3RUH, LittleFS, Tiny Tapeout, ASIC, Antarikchya Pratisthan Nepal, Slippers2Sat, EPDM">
+  <meta name="author" content="Prem Bahadur Rana">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://premrana.com.np/">
+  <meta property="og:title" content="Prem Bahadur Rana | Electronics & Aerospace Engineer">
+  <meta property="og:description" content="Satellite Research Fellow & RISC-V ASIC Developer. Explore interactive hardware simulators: STM32 IPCC, Lock-Free Ring Buffer, RF Oscilloscope, and Tiny Tapeout RISC-V.">
+  <meta property="og:image" content="https://premrana.com.np/images/prem.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon1.png">
+
+  <!-- Modern Typography (Inter, Outfit, Space Grotesk, JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Electronics Background Canvas -->
+  <canvas id="circuit-bg-canvas"></canvas>
+  <div class="grid-overlay"></div>
+
+  <!-- Avionics HUD Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"></path>
+          </svg>
+        </div>
+        <div class="brand-text">PREM<span>.RANA</span></div>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#labs" class="nav-link">Hardware Labs</a></li>
+        <li><a href="#missions" class="nav-link">Space Missions</a></li>
+        <li><a href="#silicon" class="nav-link">Silicon & ASIC</a></li>
+        <li><a href="#ai-research" class="nav-link">AI & Vision</a></li>
+        <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#contact" class="nav-link">Terminal & Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Background Animation Switcher -->
+        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()">
+          <span class="pulse-dot"></span>
+          <span id="circuit-mode-name">CHIP MODE</span>
+        </div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-telemetry-bar">
+          <span class="pulse-dot"></span>
+          <span>AVIONICS ACTIVE // LEO ORBIT // DUAL-CORE M7+M4 // RV32I ASIC</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering The Future Of
+          <span class="gradient-text">Silicon & Spacecraft.</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          Prem Bahadur Rana — Satellite Research Fellow & ASIC Hardware Developer
+        </div>
+
+        <p class="hero-bio">
+          Electronics & Communication Engineer at <strong>Antarikchya Pratisthan Nepal (APN)</strong>. Mission architect for <strong>Slippers2Sat (1U CubeSat)</strong> and <strong>Earthquake Precursor Detection Mission (EPDM)</strong>. Specialized in custom <strong>RISC-V core design</strong> on open-source silicon shuttles (Tiny Tapeout), high-reliability <strong>STM32 dual-core IPCC firmware</strong>, fail-safe <strong>LittleFS</strong> storage, and aerospace RF digital modems (<strong>GMSK, GFSK, AX.25, G3RUH</strong>).
+        </p>
+
+        <div class="hero-badges-row">
+          <span class="badge badge-cyan">Tiny Tapeout RISC-V</span>
+          <span class="badge badge-emerald">STM32 IPCC Dual-Core</span>
+          <span class="badge badge-amber">GMSK / GFSK / AX.25</span>
+          <span class="badge badge-purple">CubeSat Avionics</span>
+          <span class="badge badge-cyan">LittleFS</span>
+          <span class="badge badge-emerald">Lock-Free FIFO</span>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#labs" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Interactive Hardware Labs
+          </a>
+          <a href="#missions" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            Space Missions
+          </a>
+          <a href="mailto:prembdrana999@gmail.com" class="btn btn-emerald">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Get In Touch
+          </a>
+        </div>
+
+        <div class="hero-telemetry-metrics">
+          <div class="metric-card">
+            <span class="metric-value">4<span>+</span></span>
+            <span class="metric-label">Satellite Missions & Bootcamps</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">130<span>nm</span></span>
+            <span class="metric-label">SkyWater Tiny Tapeout Silicon</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">99.31<span>%</span></span>
+            <span class="metric-label">YOLOv12S Edge AI mAP Accuracy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Silicon Die Avatar Frame -->
+      <div class="hero-visual-wrapper">
+        <div class="silicon-die-card">
+          <div class="die-header">
+            <span>CHIP_ID: PRM-ASIC-01</span>
+            <span class="die-corner-mark">SKY130 // DIE 1.5x1.5mm</span>
+          </div>
+
+          <div class="profile-image-container">
+            <img src="images/prem.jpg" alt="Prem Bahadur Rana" loading="eager">
+            <div class="profile-overlay-scanline"></div>
+          </div>
+
+          <div class="die-footer">
+            <div class="die-status-beacon">
+              <span class="pulse-dot"></span>
+              <span>CORE CLK: 480MHz SYNC</span>
+            </div>
+            <span>LOC: KATHMANDU, NP</span>
+          </div>
+        </div>
+
+        <!-- Floating HUD badges -->
+        <div class="floating-hud-tag floating-tag-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span>5-Stage RV32I Pipeline</span>
+        </div>
+
+        <div class="floating-hud-tag floating-tag-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>STM32 IPCC Shared Mailbox</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE HARDWARE & SILICON ENGINEERING LABS
+       ========================================================================== -->
+  <section id="labs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Interactive Flight Deck & Engineering Simulators</div>
+        <h2 class="section-title">Deep Hardware Systems & Silicon Labs</h2>
+        <p class="section-subtitle">
+          Hands-on live architectural demonstrators showcasing low-level firmware synchronization, lock-free queues, radio telemetry modems, open-source ASIC pipeline execution, and fail-safe flash storage.
+        </p>
+      </div>
+
+      <!-- Lab Switcher Navigation -->
+      <div class="lab-tabs">
+        <button class="lab-tab-btn active" data-lab="ipcc">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+          STM32 Dual-Core IPCC
+        </button>
+
+        <button class="lab-tab-btn" data-lab="ring">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+          Lock-Free Ring Buffer
+        </button>
+
+        <button class="lab-tab-btn" data-lab="rf">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 12h5l3 9 4-18 3 9h5"></path>
+          </svg>
+          RF Scope (GMSK / AX.25 / G3RUH / CW)
+        </button>
+
+        <button class="lab-tab-btn" data-lab="riscv">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+          </svg>
+          Tiny Tapeout RISC-V ASIC
+        </button>
+
+        <button class="lab-tab-btn" data-lab="littlefs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          LittleFS Fail-Safe Flash
+        </button>
+      </div>
+
+      <!-- LAB 1: STM32 DUAL-CORE IPCC -->
+      <div class="lab-panel active" id="lab-panel-ipcc">
+        <div class="lab-grid">
+          <div class="lab-interactive-view">
+            <div class="lab-header-bar">
+              <span class="lab-title-text">
+                <span class="pulse-dot"></span>
+                STM32H7 / STM32WB DUAL-CORE INTER-PROCESSOR BUS
+              </span>
+              <span class="badge badge-cyan">SRAM3 D3 DOMAIN</span>
+            </div>
+
+            <div class="ipcc-architecture-view">
+              <div class="ipcc-cores-row">
+                <!-- Core 1 -->
+                <div class="core-block" id="core1-block">
+                  <div class="core-title">CORE 1 (Cortex-M7)</div>
+                  <div class="core-meta">480 MHz // DSP & ADCS</div>
+                  <div class="core-role">Real-time Telemetry Acquisition</div>
+                  <div class="core-state" id="c1-status">IDLE (MONITORING OBC)</div>
+                </div>
+
+                <!-- Bus Bridge -->
+                <div class="ipcc-bus-bridge">
+                  <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-cyan);">IPCC CH1</span>
+                  <div class="bus-indicator" id="ipcc-bus"></div>
+                  <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">MAILBOX IRQ</span>
+                </div>
+
+                <!-- Core 2 -->
+                <div class="core-block" id="core2-block">
+                  <div class="core-title">CORE 2 (Cortex-M4)</div>
+                  <div class="core-meta">240 MHz // COMMS & FS</div>
+                  <div class="core-role">LittleFS & RF Downlink Task</div>
+                  <div class="core-state" id="c2-status">READY (LISTENING CH1)</div>
+                </div>
+              </div>
+
+              <!-- Hardware IPCC Registers & Shared SRAM -->
+              <div class="ipcc-hardware-mailbox">
+                <div class="mailbox-header">
+                  <span>HARDWARE IPCC REGISTERS & SEMAPHORES (HSEM)</span>
+                  <span>BASE: 0x58000C00</span>
+                </div>
+                <div class="mailbox-registers">
+                  <div class="reg-box">
+                    <span class="reg-name">IPCC_C1MR</span>
+                    <span class="reg-val" id="reg-c1mr">0x0000</span>
+                  </div>
+                  <div class="reg-box">
+                    <span class="reg-name">IPCC_C1SCR</span>
+                    <span class="reg-val" id="reg-c1scr">0x0000</span>
+                  </div>
+                  <div class="reg-box">
+                    <span class="reg-name">IPCC_C2TOC1SR</span>
+                    <span class="reg-val" id="reg-c2toc1">0x0000</span>
+                  </div>
+                  <div class="reg-box">
+                    <span class="reg-name">HSEM_R[0]</span>
+                    <span class="reg-val" id="reg-hsem">LOCKED_M7</span>
+                  </div>
+                </div>
+
+                <div class="shared-sram-box">
+                  <div class="sram-header">
+                    <span>SHARED SRAM BUFFER (NON-CACHEABLE / COHERENT D-CACHE)</span>
+                    <span>ADDR: 0x38000400</span>
+                  </div>
+                  <div class="sram-payload-view" id="sram-payload">
+                    CMD_TELEMETRY_LOG -> [OBC] BATT=4.12V | CURR=380mA | TEMP=18.4C
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ipcc-controls">
+              <button class="btn btn-primary btn-sm" onclick="dispatchIpccPacket()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Dispatch Inter-Core Telemetry Packet
+              </button>
+            </div>
+          </div>
+
+          <!-- Specifications & Low-Level Code -->
+          <div class="glass-panel lab-spec-card">
+            <h3>STM32 Dual-Core IPCC Engineering</h3>
+            <div class="lab-tech-pills">
+              <span class="badge badge-cyan">STM32H747 / WB55</span>
+              <span class="badge badge-emerald">Zero-Copy Mailbox</span>
+              <span class="badge badge-amber">Cache Coherency</span>
+              <span class="badge badge-purple">Hardware Semaphores</span>
+            </div>
+            <p class="lab-description">
+              Designed robust asymmetric multiprocessing (AMP) firmware architectures separating critical real-time attitude control (Cortex-M7) from communication protocol stacks and file system operations (Cortex-M4).
+            </p>
+            <ul class="lab-key-features">
+              <li><strong>Zero-Copy Mailbox Architecture:</strong> Uses bidirectional IPCC hardware channels to exchange 32-bit pointers referencing shared SRAM3 without memory copying penalties.</li>
+              <li><strong>Hardware Cache Coherency:</strong> Implemented precise cache maintenance using <code>SCB_CleanDCache_by_Addr()</code> prior to transmission and <code>SCB_InvalidateDCache_by_Addr()</code> on the receiving core.</li>
+              <li><strong>Atomic Resource Protection:</strong> Hardware Semaphores (HSEM) prevent concurrent access to shared SPI busses, NOR Flash, and transceiver radios.</li>
+            </ul>
+
+            <div class="code-preview-box">
+              <div class="code-header">
+                <span>ipcc_mailbox_tx.c</span>
+                <span>ARM Cortex-M Embedded C</span>
+              </div>
+              <pre class="code-body"><code>/* Clean D-Cache to push Core 1 write from L1 Cache to physical SRAM */
+SCB_CleanDCache_by_Addr((uint32_t*)pMsgBuffer, sizeof(TelemetryPacket_t));
+
+/* Acquire Hardware Semaphore for Mailbox Channel 1 */
+if (HAL_HSEM_FastTake(HSEM_CH_MAILBOX) == HAL_OK) {
+  /* Set transmit channel flag to generate IRQ on Core 2 */
+  LL_IPCC_MakeTxChannelBusy(IPCC, LL_IPCC_CHANNEL_1);
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 2: LOCK-FREE CIRCULAR RING BUFFER -->
+      <div class="lab-panel" id="lab-panel-ring">
+        <div class="lab-grid">
+          <div class="lab-interactive-view">
+            <div class="lab-header-bar">
+              <span class="lab-title-text">
+                <span class="pulse-dot"></span>
+                HIGH-THROUGHPUT ISR-SAFE RING BUFFER (SIZE = 16)
+              </span>
+              <span class="badge badge-emerald">LOCK-FREE FIFO</span>
+            </div>
+
+            <div class="ring-buffer-visual-wrapper">
+              <div class="ring-circular-canvas-container">
+                <canvas id="ring-buffer-canvas"></canvas>
+              </div>
+
+              <div class="ring-stats-grid">
+                <div class="ring-stat-item">
+                  <span class="ring-stat-label">HEAD (PRODUCER)</span>
+                  <span class="ring-stat-value" id="ring-head-val">0x00</span>
+                </div>
+                <div class="ring-stat-item">
+                  <span class="ring-stat-label">TAIL (CONSUMER)</span>
+                  <span class="ring-stat-value" id="ring-tail-val">0x00</span>
+                </div>
+                <div class="ring-stat-item">
+                  <span class="ring-stat-label">OCCUPIED</span>
+                  <span class="ring-stat-value" id="ring-count-val">0</span>
+                </div>
+                <div class="ring-stat-item">
+                  <span class="ring-stat-label">OVERRUNS</span>
+                  <span class="ring-stat-value" style="color: var(--accent-crimson);" id="ring-overrun-val">0</span>
+                </div>
+              </div>
+
+              <div class="ring-buffer-controls">
+                <button class="btn btn-primary btn-sm" onclick="ringPushByte()">
+                  + Push 1 Byte (ISR / DMA)
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="ringPopByte()">
+                  - Pop 1 Byte (Task)
+                </button>
+                <button class="btn btn-emerald btn-sm" onclick="ringBurstPush()">
+                  Burst Write 4 Bytes
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="ringReset()">
+                  Reset Buffer
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specs -->
+          <div class="glass-panel lab-spec-card">
+            <h3>Lock-Free Circular FIFO Architecture</h3>
+            <div class="lab-tech-pills">
+              <span class="badge badge-emerald">Single-Producer Single-Consumer</span>
+              <span class="badge badge-cyan">Power-of-2 Indexing</span>
+              <span class="badge badge-amber">__DMB() Memory Barrier</span>
+            </div>
+            <p class="lab-description">
+              Engineered high-frequency, non-blocking ring buffers to pipe UART/SPI telemetry and DMA ADC samples between hardware ISR routines and FreeRTOS processing tasks without disabling interrupts or risking race conditions.
+            </p>
+            <ul class="lab-key-features">
+              <li><strong>Zero Modulo Overhead:</strong> Uses powers-of-two capacity (<code>SIZE = 2^N</code>) so indices wrap effortlessly via bitwise AND: <code>head & (SIZE - 1)</code>, saving precious CPU cycles on microcontrollers without hardware division.</li>
+              <li><strong>Memory Barriers:</strong> Inlined ARM CMSIS <code>__DMB()</code> data memory barriers ensure data bytes are flushed into RAM before advancing volatile pointer indices.</li>
+              <li><strong>Interrupt Safety:</strong> Safe for single-producer single-consumer execution without disabling interrupts (<code>__disable_irq()</code>), preserving deterministic low latency.</li>
+            </ul>
+
+            <div class="code-preview-box">
+              <div class="code-header">
+                <span>ring_buffer.c</span>
+                <span>Lock-Free C Implementation</span>
+              </div>
+              <pre class="code-body"><code>bool RingBuf_Push(RingBuf_t *rb, uint8_t byte) {
+  uint32_t head = rb->head;
+  uint32_t tail = rb->tail;
+  if ((head - tail) >= RING_BUFFER_SIZE) return false; /* Overflow */
+  
+  rb->buffer[head & (RING_BUFFER_SIZE - 1)] = byte;
+  __DMB(); /* Data Memory Barrier ensures write commits before index update */
+  rb->head = head + 1;
+  return true;
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 3: SATELLITE RF OSCILLOSCOPE (GMSK / GFSK / CW / AX.25 / G3RUH) -->
+      <div class="lab-panel" id="lab-panel-rf">
+        <div class="lab-grid">
+          <div class="lab-interactive-view">
+            <div class="lab-header-bar">
+              <span class="lab-title-text">
+                <span class="pulse-dot"></span>
+                DIGITAL STORAGE OSCILLOSCOPE // SATELLITE TRANSCEIVER LAB
+              </span>
+              <span class="badge badge-amber">VHF/UHF TELEMETRY</span>
+            </div>
+
+            <!-- Phosphor Oscilloscope Screen -->
+            <div class="oscilloscope-screen-container">
+              <canvas id="rf-oscilloscope-canvas"></canvas>
+              <div class="scope-reticle-overlay"></div>
+              <div class="scope-hud-readout">
+                <span id="scope-readout-mod">MOD: GMSK (BT=0.5)</span>
+                <span id="scope-readout-freq">FREQ: 437.375 MHz</span>
+                <span id="scope-readout-baud">RATE: 9600 BAUD</span>
+              </div>
+            </div>
+
+            <!-- Modulation Selectors -->
+            <div class="rf-modulation-selector">
+              <button class="rf-mod-btn active" data-mod="gmsk" onclick="setRfModulation('gmsk')">
+                GMSK (BT=0.5)
+              </button>
+              <button class="rf-mod-btn" data-mod="gfsk" onclick="setRfModulation('gfsk')">
+                GFSK (h=0.5)
+              </button>
+              <button class="rf-mod-btn" data-mod="cw" onclick="setRfModulation('cw')">
+                CW Morse Beacon
+              </button>
+              <button class="rf-mod-btn" data-mod="ax25" onclick="setRfModulation('ax25')">
+                AX.25 Packet (HDLC)
+              </button>
+              <button class="rf-mod-btn" data-mod="g3ruh" onclick="setRfModulation('g3ruh')">
+                G3RUH 9600 Scrambler
+              </button>
+            </div>
+
+            <div class="rf-controls-row">
+              <button class="btn btn-outline btn-sm" id="cw-audio-btn" onclick="toggleCwAudio()">
+                Test CW Audio Beep (Web Audio)
+              </button>
+              <span style="color: var(--text-muted); font-size: 0.75rem;">
+                CARRIER: 437.375 MHz // HAM SATELLITE BAND
+              </span>
+            </div>
+          </div>
+
+          <!-- Specs -->
+          <div class="glass-panel lab-spec-card">
+            <h3>Space Telemetry & RF Modulation</h3>
+            <div class="lab-tech-pills">
+              <span class="badge badge-amber">GMSK BT=0.5</span>
+              <span class="badge badge-cyan">AX.25 HDLC UI Frame</span>
+              <span class="badge badge-emerald">G3RUH Scrambler</span>
+              <span class="badge badge-purple">CW Morse Beacon</span>
+            </div>
+            <p class="lab-description">
+              Designed digital RF modem processing chains for CubeSat transceivers (AX5043, CC1120, SX1268). Engineered packet framing conforming to international amateur satellite standards.
+            </p>
+            <ul class="lab-key-features">
+              <li><strong>GMSK / GFSK Pulse Shaping:</strong> Implemented Gaussian pre-modulation filters with bandwidth-time product $BT = 0.5$ and $BT = 0.3$ to eliminate sideband splatter and maintain constant RF envelope.</li>
+              <li><strong>AX.25 UI Frame Protocol:</strong> Assembled Layer-2 HDLC telemetry frames with opening/closing flags (<code>0x7E</code>), zero-bit insertion (bit stuffing after 5 consecutive 1s), and 16-bit CRC-CCITT polynomials.</li>
+              <li><strong>G3RUH 9600/19200 Scrambler:</strong> Applied polynomial $1 + x^{12} + x^{17}$ LFSR whitening scrambler to ensure continuous bit transitions, DC balance, and rapid clock recovery in ground station decoders (SatNOGS).</li>
+              <li><strong>Automated CW Beacon:</strong> C-based Morse code state machine transmitting satellite callsign, battery status, and temperatures for global amateur radio operators.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 4: TINY TAPEOUT RISC-V SILICON ASIC -->
+      <div class="lab-panel" id="lab-panel-riscv">
+        <div class="lab-grid">
+          <div class="lab-interactive-view">
+            <div class="lab-header-bar">
+              <span class="lab-title-text">
+                <span class="pulse-dot"></span>
+                TINY TAPEOUT SKYWATER 130nm // RV32I 5-STAGE PIPELINE
+              </span>
+              <span class="badge badge-cyan">CUSTOM ASIC DIE</span>
+            </div>
+
+            <div class="riscv-pipeline-view">
+              <!-- 5 Pipeline Stages -->
+              <div class="pipeline-stages-grid">
+                <div class="pipeline-stage-box active-stage">
+                  <span class="stage-code">IF</span>
+                  <span class="stage-desc">Instruction Fetch</span>
+                  <div class="stage-inst">LW x4, 0(x0)</div>
+                </div>
+                <div class="pipeline-stage-box">
+                  <span class="stage-code">ID</span>
+                  <span class="stage-desc">Decode / Reg Read</span>
+                  <div class="stage-inst">SW x3, 0(x0)</div>
+                </div>
+                <div class="pipeline-stage-box">
+                  <span class="stage-code">EX</span>
+                  <span class="stage-desc">ALU Execute</span>
+                  <div class="stage-inst">ADD x3, x1, x2</div>
+                </div>
+                <div class="pipeline-stage-box">
+                  <span class="stage-code">MEM</span>
+                  <span class="stage-desc">Memory Access</span>
+                  <div class="stage-inst">ADDI x2, x0, 10</div>
+                </div>
+                <div class="pipeline-stage-box">
+                  <span class="stage-code">WB</span>
+                  <span class="stage-desc">Writeback</span>
+                  <div class="stage-inst">ADDI x1, x0, 5</div>
+                </div>
+              </div>
+
+              <!-- Register File State -->
+              <div class="riscv-regs-grid">
+                <div class="reg-cell"><span>x0 (zero):</span><span>0x00</span></div>
+                <div class="reg-cell"><span>x1 (ra):</span><span id="reg-x1">0x05</span></div>
+                <div class="reg-cell"><span>x2 (sp):</span><span id="reg-x2">0x0A</span></div>
+                <div class="reg-cell"><span>x3 (gp):</span><span id="reg-x3">0x0F</span></div>
+                <div class="reg-cell"><span>x4 (tp):</span><span id="reg-x4">0x00</span></div>
+                <div class="reg-cell"><span>x5 (t0):</span><span id="reg-x5">0x00</span></div>
+                <div class="reg-cell"><span>x6 (t1):</span><span id="reg-x6">0x00</span></div>
+                <div class="reg-cell"><span>x7 (t2):</span><span id="reg-x7">0x00</span></div>
+              </div>
+
+              <div class="riscv-controls-bar">
+                <button class="btn btn-primary btn-sm" onclick="stepRiscvPipeline()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Step Clock Cycle
+                </button>
+                <div style="display: flex; gap: 1rem; align-items: center; font-family: var(--font-mono); font-size: 0.75rem;">
+                  <span>PC: <strong id="riscv-pc-val" style="color: var(--accent-cyan);">0x1000</strong></span>
+                  <span>ALU_OUT: <strong id="riscv-alu-val" style="color: var(--accent-emerald);">0x0015</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specs -->
+          <div class="glass-panel lab-spec-card">
+            <h3>Tiny Tapeout RISC-V ASIC Synthesis</h3>
+            <div class="lab-tech-pills">
+              <span class="badge badge-cyan">Verilog HDL</span>
+              <span class="badge badge-emerald">SkyWater SKY130</span>
+              <span class="badge badge-amber">OpenLane RTL-to-GDSII</span>
+              <span class="badge badge-purple">Cocotb Verification</span>
+            </div>
+            <p class="lab-description">
+              Architected and submitted an open-source silicon ASIC RV32I processor core via Tiny Tapeout on the SkyWater 130nm process node.
+            </p>
+            <ul class="lab-key-features">
+              <li><strong>Pipelined Architecture:</strong> Implemented standard 5-stage pipeline with hazard forwarding unit, branch prediction, and stall logic.</li>
+              <li><strong>Peripherals:</strong> Integrated on-chip UART transceiver, SPI master, and GPIO multiplexer into the Tiny Tapeout tile footprint.</li>
+              <li><strong>ASIC Toolchain:</strong> Synthesized with Yosys, placed and routed with OpenROAD, verified with Klayout DRC/LVS clean, and functional testbenches in cocotb.</li>
+            </ul>
+
+            <div class="code-preview-box">
+              <div class="code-header">
+                <span>rv32i_core.v</span>
+                <span>Verilog RTL snippet</span>
+              </div>
+              <pre class="code-body"><code>// Forwarding logic to resolve RAW data hazards
+always @(*) begin
+  forward_a = 2'b00;
+  if (ex_mem_regwrite && (ex_mem_rd != 0) && (ex_mem_rd == id_ex_rs1))
+    forward_a = 2'b10; // Forward from MEM stage
+  else if (mem_wb_regwrite && (mem_wb_rd != 0) && (mem_wb_rd == id_ex_rs1))
+    forward_a = 2'b01; // Forward from WB stage
+end</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 5: LITTLEFS FAIL-SAFE FLASH MEMORY -->
+      <div class="lab-panel" id="lab-panel-littlefs">
+        <div class="lab-grid">
+          <div class="lab-interactive-view">
+            <div class="lab-header-bar">
+              <span class="lab-title-text">
+                <span class="pulse-dot"></span>
+                SPI NOR FLASH BLOCK ARRAY (W25Q64 // LITTLEFS METADATA PAIRS)
+              </span>
+              <span class="badge badge-emerald">POWER-FAIL SAFE</span>
+            </div>
+
+            <div class="littlefs-storage-view">
+              <div class="flash-blocks-grid" id="flash-blocks-grid">
+                <!-- Injected via JavaScript -->
+              </div>
+
+              <div id="littlefs-status-msg" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald); min-height: 24px;">
+                Filesystem Mounted: All metadata pairs verified.
+              </div>
+
+              <div class="littlefs-controls">
+                <button class="btn btn-primary btn-sm" onclick="littlefsWriteChunk()">
+                  Write Telemetry Log Chunk
+                </button>
+                <button class="btn btn-outline btn-sm" style="border-color: var(--accent-crimson); color: var(--accent-crimson);" onclick="littlefsSimulatePowerLoss()">
+                  Simulate Mid-Write Power Cut
+                </button>
+                <button class="btn btn-emerald btn-sm" onclick="littlefsMountRecover()">
+                  Mount & Recover
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specs -->
+          <div class="glass-panel lab-spec-card">
+            <h3>Fail-Safe LittleFS for CubeSat OBC</h3>
+            <div class="lab-tech-pills">
+              <span class="badge badge-emerald">Power-Loss Resilient</span>
+              <span class="badge badge-cyan">Dynamic Wear Leveling</span>
+              <span class="badge badge-amber">Bounded RAM footprint</span>
+            </div>
+            <p class="lab-description">
+              Integrated LittleFS on external NOR Flash (W25Q64/W25Q128) for mission flight logging, attitude calibration tables, and camera image chunk storage.
+            </p>
+            <ul class="lab-key-features">
+              <li><strong>Copy-on-Write Metadata Pairs:</strong> Prevents corruption even if power is abruptly severed during solar eclipse or battery low-voltage cutoff.</li>
+              <li><strong>Dynamic Wear Leveling:</strong> Balances erase cycles across blocks to maximize flash lifetime in harsh space environments.</li>
+              <li><strong>Bounded Memory:</strong> Operates reliably with tiny RAM lookahead buffers, vital for memory-constrained flight computers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SPACE MISSIONS & CUBESAT INITIATIVES
+       ========================================================================== -->
+  <section id="missions">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">CubeSat Flight Projects & Field Missions</div>
+        <h2 class="section-title">Satellite Missions & Space Research</h2>
+        <p class="section-subtitle">
+          Leading satellite engineering, electromagnetic anomaly payloads, and STEM outreach projects at Antarikchya Pratisthan Nepal (APN).
+        </p>
+      </div>
+
+      <div class="missions-grid">
+        <!-- MISSION 1: Slippers2Sat (S2S) -->
+        <div class="glass-panel mission-card">
+          <div class="mission-image-wrapper">
+            <img src="images/s2s_logo.png" alt="Slippers2Sat 1U CubeSat" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat (S2S)', 'Nepal\'s First Middle School Nano-Satellite Project funded by ARDC')">
+            <div class="mission-badge-overlay">
+              <span class="badge badge-cyan">LAUNCH Q2 2025</span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <h3 class="mission-title">Slippers2Sat (S2S) 1U CubeSat</h3>
+            <div class="mission-org">Antarikchya Pratisthan Nepal (APN) / ARDC</div>
+            <p class="mission-excerpt">
+              Nepal’s pioneering educational nano-satellite mission developed by six APN engineers. S2S trains indigenous middle-school students (grades 7–8) from Chepang, Tamang, and Dalit communities at the Space System Laboratory (SSL) in Navodaya School to build, assemble, and test satellite subsystems.
+            </p>
+
+            <div class="mission-specs-list">
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">FORM FACTOR</span>
+                <span class="mission-spec-val">1U CubeSat (10x10x10 cm)</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">PAYLOADS</span>
+                <span class="mission-spec-val">DPM, CAM, ADCS, EPDM</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">TELEMETRY</span>
+                <span class="mission-spec-val">GMSK 9600 / CW Beacon</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">FUNDING</span>
+                <span class="mission-spec-val">ARDC Grant Award</span>
+              </div>
+            </div>
+
+            <div class="mission-actions">
+              <button class="btn btn-outline btn-sm" onclick="openLightbox('images/s14.png', 'Slippers2Sat SSL Lab', 'Middle school students assembling CubeSat prototype at Space System Laboratory')">
+                View Lab Photos
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openLightbox('images/s12.jpg', 'Subsystem Mentorship', 'Mentoring students on OBC and power distribution subsystem integration')">
+                Mentorship Gallery
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION 2: EPDM -->
+        <div class="glass-panel mission-card">
+          <div class="mission-image-wrapper">
+            <img src="images/epdm1.png" alt="Earthquake Precursor Detection Mission" onclick="openLightbox('images/epdm1.png', 'Earthquake Precursor Detection Mission (EPDM)', 'Quad-Mag technology with UBSS algorithm')">
+            <div class="mission-badge-overlay">
+              <span class="badge badge-emerald">GEOMAGNETIC RESEARCH</span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <h3 class="mission-title">Earthquake Precursor Mission (EPDM)</h3>
+            <div class="mission-org">Antarikchya Pratisthan Nepal (APN)</div>
+            <p class="mission-excerpt">
+              Boomless 1U CubeSat payload utilizing Quad-Mag technology (four PNI RM3100 magnetometers) and the Undetermined Blind Source Separation (UBSS) algorithm (tested at the University of Michigan lab) to isolate Ultra-Low Frequency (&lt;3Hz) and Extremely Low Frequency (3Hz–3kHz) geomagnetic earthquake precursors.
+            </p>
+
+            <div class="mission-specs-list">
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">SENSOR PAYLOAD</span>
+                <span class="mission-spec-val">4x PNI RM3100 Magnetometers</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">ALGORITHM</span>
+                <span class="mission-spec-val">UBSS Stray Field Removal</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">BANDWIDTH</span>
+                <span class="mission-spec-val">ULF (&lt;3Hz) &amp; ELF (3Hz-3kHz)</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">INNOVATION</span>
+                <span class="mission-spec-val">Boomless Sensing in 1U</span>
+              </div>
+            </div>
+
+            <div class="mission-actions">
+              <button class="btn btn-outline btn-sm" onclick="openLightbox('images/e1.jpeg', 'EPDM Quad-Mag Board', 'Quad-Mag sensor board layout and test setup')">
+                Sensor Board View
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION 3: Thin-Shell Calibration -->
+        <div class="glass-panel mission-card">
+          <div class="mission-image-wrapper">
+            <img src="images/boot.jpeg" alt="Magnetometer Calibration" onclick="openLightbox('images/boot.jpeg', 'Thin-Shell Magnetometer Calibration', 'Ellipsoid-to-sphere transformation and IGRF model verification')">
+            <div class="mission-badge-overlay">
+              <span class="badge badge-amber">SENSOR CHARACTERIZATION</span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <h3 class="mission-title">Thin-Shell Magnetometer Calibration</h3>
+            <div class="mission-org">Payload Validation Program</div>
+            <p class="mission-excerpt">
+              Rigorous 9-parameter calibration (3 scaling factors, 3 offsets, 3 angular misalignments) transforming raw ellipsoidal magnetic readings into ideal spherical geometries. Validated against scalar magnetometers and the International Geomagnetic Reference Field (IGRF) model at Budhanilkantha and Pulchowk.
+            </p>
+
+            <div class="mission-specs-list">
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">CALIBRATION</span>
+                <span class="mission-spec-val">9-Parameter Thin-Shell</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">TEST SITE 1</span>
+                <span class="mission-spec-val">Budhanilkantha (49,068.8 nT)</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">TEST SITE 2</span>
+                <span class="mission-spec-val">Pulchowk (49,015.8 nT)</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">REFERENCE</span>
+                <span class="mission-spec-val">IGRF Geomagnetic Model</span>
+              </div>
+            </div>
+
+            <div class="mission-actions">
+              <button class="btn btn-outline btn-sm" onclick="openLightbox('images/e3.jpeg', 'Field Calibration Site', 'Magnetic calibration test rig in field conditions')">
+                Calibration Rig
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION 4: Dharan Satellite Bootcamp -->
+        <div class="glass-panel mission-card">
+          <div class="mission-image-wrapper">
+            <img src="images/dharan/d3.jpg" alt="Dharan Satellite Bootcamp" onclick="openLightbox('images/dharan/d3.jpg', 'Dharan Satellite Bootcamp', '4-day hands-on STEM CubeSat training')">
+            <div class="mission-badge-overlay">
+              <span class="badge badge-purple">STEM OUTREACH</span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <h3 class="mission-title">Dharan CubeSat Bootcamp</h3>
+            <div class="mission-org">Public High School, Dharan, Nepal</div>
+            <p class="mission-excerpt">
+              Conducted an intensive 4-day hands-on satellite training bootcamp for 7th–10th grade students covering electronics fundamentals, soldering, CubeSat structure, OBC and power systems, sensor programming, and simulated parachute drop deployment with wireless telemetry.
+            </p>
+
+            <div class="mission-specs-list">
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">DURATION</span>
+                <span class="mission-spec-val">4-Day Intensive Workshop</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">STUDENTS</span>
+                <span class="mission-spec-val">Grades 7 to 10</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">HANDS-ON</span>
+                <span class="mission-spec-val">Soldering, OBC, Telemetry</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">FINAL TEST</span>
+                <span class="mission-spec-val">Parachute Drop Deployment</span>
+              </div>
+            </div>
+
+            <div class="mission-actions">
+              <button class="btn btn-outline btn-sm" onclick="openLightbox('images/dharan/d15.jpg', 'Parachute Simulated Drop', 'Simulated satellite deployment using parachute and wireless data transmission')">
+                Drop Test View
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openLightbox('images/dharan/d5.jpg', 'Student Soldering', 'Students learning component assembly and circuit design')">
+                Classroom Photos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SILICON & ASIC HARDWARE ENGINEERING
+       ========================================================================== -->
+  <section id="silicon">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">VLSI Design & Open-Source Silicon</div>
+        <h2 class="section-title">RISC-V Processor Design & ASIC Tapeout</h2>
+        <p class="section-subtitle">
+          From Verilog HDL specification to SkyWater 130nm silicon fabrication. Single-cycle and 5-stage pipelined processor implementations verified with cocotb and synthesized using OpenLane.
+        </p>
+      </div>
+
+      <div class="lab-grid">
+        <div class="glass-panel" style="padding: 2rem;">
+          <div style="margin-bottom: 1.5rem; text-align: center;">
+            <img src="images/RISC.jpeg" alt="RISC-V Core Layout" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-active); cursor: pointer;" onclick="openLightbox('images/RISC.jpeg', 'RISC-V Core Architecture', 'Custom RV32I processor pipeline and peripheral bus')">
+          </div>
+          <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem;">Custom RV32I Processor Architecture</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Designed and simulated a modular 32-bit RISC-V CPU adhering to the RV32I user-level ISA. Built in synthesizable Verilog HDL with memory-mapped UART, SPI, and GPIO peripherals.
+          </p>
+          <div class="hero-badges-row">
+            <span class="badge badge-cyan">RV32I ISA</span>
+            <span class="badge badge-emerald">ModelSim</span>
+            <span class="badge badge-amber">Verilator</span>
+            <span class="badge badge-purple">Cocotb</span>
+            <span class="badge badge-cyan">OpenLane</span>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-outline btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              View GitHub Repository
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-panel" style="padding: 2rem;">
+          <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">ASIC Implementation Workflow</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="border-left: 2px solid var(--accent-cyan); padding-left: 1rem;">
+              <h4 style="font-size: 1rem; color: #fff;">1. RTL Specification & Simulation</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                Authored synthesizable Verilog for the decode, ALU, control logic, register files, and data hazard forwarding units. Verified cycle accuracy with Verilator and Python-based Cocotb testbenches.
+              </p>
+            </div>
+
+            <div style="border-left: 2px solid var(--accent-emerald); padding-left: 1rem;">
+              <h4 style="font-size: 1rem; color: #fff;">2. Logic Synthesis & Static Timing Analysis</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                Synthesized RTL into SkyWater 130nm standard cell gate-level netlists using Yosys. Conducted Static Timing Analysis (STA) via OpenSTA to ensure zero setup and hold timing violations.
+              </p>
+            </div>
+
+            <div style="border-left: 2px solid var(--accent-amber); padding-left: 1rem;">
+              <h4 style="font-size: 1rem; color: #fff;">3. Floorplanning, Placement & CTS</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                Configured die boundaries, IO pad assignments, and power distribution grids (VDD/VSS rings). Executed Clock Tree Synthesis (CTS) for low-skew clock distribution.
+              </p>
+            </div>
+
+            <div style="border-left: 2px solid var(--accent-purple); padding-left: 1rem;">
+              <h4 style="font-size: 1rem; color: #fff;">4. Routing, DRC/LVS & GDSII Tapeout</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                Detailed metal layer routing (M1–M5), antenna diode insertion, and rigorous Design Rule Checking (DRC) and Layout Versus Schematic (LVS) verification via Magic and Klayout.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       AI & COMPUTER VISION RESEARCH
+       ========================================================================== -->
+  <section id="ai-research">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Edge AI & Agrotechnology Innovation</div>
+        <h2 class="section-title">Fresh and Rotten Fruit Detection & Robotic Separation</h2>
+        <p class="section-subtitle">
+          Real-time agricultural quality control deployed on conveyor systems using Raspberry Pi, computer vision, and comparative object detection architectures.
+        </p>
+      </div>
+
+      <div class="glass-panel ai-research-card">
+        <div class="ai-research-grid">
+          <div>
+            <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 1rem;">Real-Time Industrial Sorting Mechanism</h3>
+            <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.7;">
+              Engineered an automated conveyor system integrating dual web cameras for 360-degree fruit inspection, a Raspberry Pi 4 for edge deep-learning inference, and servo-actuated diverter flaps to mechanically separate rotten produce from pristine batches.
+            </p>
+            <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.7;">
+              Conducted a benchmark comparative evaluation across <strong>YOLOv12S, YOLOv8, DETR Transformer, and Faster R-CNN</strong> on a custom annotated dataset containing 11,675 images of apples and tomatoes across varying light conditions and orientations.
+            </p>
+
+            <table class="model-metrics-table">
+              <thead>
+                <tr>
+                  <th>Model Architecture</th>
+                  <th>Mean Avg Precision (mAP)</th>
+                  <th>F1-Score</th>
+                  <th>Inference Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td>YOLOv12S (Ours)</td>
+                  <td>99.31%</td>
+                  <td>98.28%</td>
+                  <td>Real-Time (Edge)</td>
+                </tr>
+                <tr>
+                  <td>YOLOv8</td>
+                  <td>97.84%</td>
+                  <td>96.50%</td>
+                  <td>Real-Time</td>
+                </tr>
+                <tr>
+                  <td>DETR (Transformer)</td>
+                  <td>96.12%</td>
+                  <td>95.40%</td>
+                  <td>High Latency</td>
+                </tr>
+                <tr>
+                  <td>Faster R-CNN</td>
+                  <td>94.75%</td>
+                  <td>93.20%</td>
+                  <td>Two-Stage (Slow)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
+                ResearchGate Publication (2025)
+              </a>
+              <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation" target="_blank" class="btn btn-primary btn-sm">
+                GitHub Repository
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <img src="images/fruits.png" alt="YOLO Fruit Detection Output" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-active); cursor: pointer;" onclick="openLightbox('images/y1.jpg', 'YOLO Fruit Detection', 'Automated bounding box detection classifying apples and tomatoes on conveyor belt')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACADEMIC PUBLICATIONS & CREDENTIALS
+       ========================================================================== -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Scholarly Contributions & Education</div>
+        <h2 class="section-title">Publications & Academic Background</h2>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Publications List -->
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Peer-Reviewed Research</h3>
+          <div class="publications-list">
+            <div class="glass-panel pub-card">
+              <div class="pub-info">
+                <h4>Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S</h4>
+                <div class="pub-authors">Prem Bahadur Rana, et al. — 2025</div>
+                <div class="pub-journal">ResearchGate // Agrotechnology & Computer Vision Research</div>
+              </div>
+              <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
+                Read Paper
+              </a>
+            </div>
+
+            <div class="glass-panel pub-card">
+              <div class="pub-info">
+                <h4>Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</h4>
+                <div class="pub-authors">Prem Bahadur Rana, et al. — 2023</div>
+                <div class="pub-journal">ResearchGate // Real-Time Embedded Vision on Conveyor Systems</div>
+              </div>
+              <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm" target="_blank" class="btn btn-outline btn-sm">
+                Read Paper
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Timeline -->
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Education & Fellowships</h3>
+          <div class="education-timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="glass-panel" style="padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">
+                  <span>ANTARIKCHYA PRATISTHAN NEPAL</span>
+                  <span>2024 – PRESENT</span>
+                </div>
+                <h4 style="color: #fff; margin: 0.3rem 0;">Satellite Research Fellow & ASIC Developer</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                  Lead hardware developer for Slippers2Sat (S2S) 1U CubeSat, EPDM Quad-Mag payload integration, and Tiny Tapeout open-source RISC-V ASIC design.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="glass-panel" style="padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald);">
+                  <span>KHWOPA ENGINEERING COLLEGE</span>
+                  <span>2018 – 2023</span>
+                </div>
+                <h4 style="color: #fff; margin: 0.3rem 0;">Bachelor in Electronics & Communication Engineering</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                  Focused on embedded systems, digital signal processing (DSP), radio communication protocols, and FPGA digital design. Bhaktapur, Nepal.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="glass-panel" style="padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-amber);">
+                  <span>GRAMMAR SCHOOL & COLLEGE</span>
+                  <span>2016 – 2018</span>
+                </div>
+                <h4 style="color: #fff; margin: 0.3rem 0;">High School (Physical Sciences & Mathematics)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+                  Foundational studies in electromagnetism, physics, calculus, and computer programming.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE COMMAND TERMINAL & CONTACT
+       ========================================================================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Flight Telemetry Console & Communications</div>
+        <h2 class="section-title">Interactive Terminal & Direct Connect</h2>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Flight Terminal Emulator -->
+        <div class="terminal-window">
+          <div class="terminal-titlebar">
+            <div class="terminal-dots">
+              <div class="terminal-dot dot-red"></div>
+              <div class="terminal-dot dot-yellow"></div>
+              <div class="terminal-dot dot-green"></div>
+            </div>
+            <div class="terminal-title">prem@cubesat-obc: ~ (bash 5.2)</div>
+            <span style="color: var(--accent-cyan); font-size: 0.7rem;">READY</span>
+          </div>
+
+          <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line" style="color: var(--text-muted);">
+              Slippers2Sat Onboard Computer (OBC) Telemetry Console v2.4 initialized.<br>
+              Type <span class="prompt-path">'help'</span> for a list of available commands.
+            </div>
+            <div class="terminal-line">
+              <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span> whoami
+            </div>
+            <div class="terminal-line" style="color: #cbd5e1;">
+              Prem Bahadur Rana // Satellite Research Fellow &amp; RISC-V ASIC Developer (APN)
+            </div>
+          </div>
+
+          <div class="terminal-input-row" style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-subtle); background: #010308;">
+            <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span>
+            <input type="text" class="terminal-input" id="terminal-input" placeholder="type 'help', 'missions', 'chip', 'stm32', 'rf'..." autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+
+        <!-- Direct Connect Links Card -->
+        <div class="glass-panel contact-card">
+          <h3>Let's Collaborate On Space & Silicon</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Whether you are interested in satellite sub-system development, custom RISC-V processor synthesis, dual-core embedded firmware, or academic collaboration, feel free to reach out directly.
+          </p>
+
+          <div class="contact-links-list">
+            <a href="mailto:prembdrana999@gmail.com" class="contact-link-item">
+              <span class="contact-link-icon">✉</span>
+              <div>
+                <strong style="color: #fff; display: block; font-size: 0.9rem;">Email Address</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">prembdrana999@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/PrmBRana" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">⌥</span>
+              <div>
+                <strong style="color: #fff; display: block; font-size: 0.9rem;">GitHub Profile</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">github.com/PrmBRana</span>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">in</span>
+              <div>
+                <strong style="color: #fff; display: block; font-size: 0.9rem;">LinkedIn Profile</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">linkedin.com/in/prem-bahadur-r-a9726a176</span>
+              </div>
+            </a>
+
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana/publications" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">RG</span>
+              <div>
+                <strong style="color: #fff; display: block; font-size: 0.9rem;">ResearchGate Publications</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">researchgate.net/profile/Prem-Bahadur-Rana</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        © 2026 Prem Bahadur Rana. All rights reserved. // 
+        <span style="color: var(--accent-cyan);">premrana.com.np</span>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <span class="badge badge-cyan">STM32 IPCC</span>
+        <span class="badge badge-emerald">RV32I ASIC</span>
+        <span class="badge badge-amber">AX.25 GMSK</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Photo Gallery -->
+  <div class="modal-backdrop" id="lightbox-modal">
+    <div class="modal-content-box">
+      <button class="modal-close-btn" id="lightbox-close" aria-label="Close modal">✕</button>
+      <div class="modal-img-wrapper">
+        <img id="lightbox-img" src="" alt="Modal Viewer">
+      </div>
+      <div class="modal-info-panel">
+        <h4 class="modal-title" id="lightbox-title">Asset Viewer</h4>
+        <p class="modal-description" id="lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background mode cycling helper -->
+  <script>
+    const modes = ['chip', 'fpga', 'pcb'];
+    let modeIdx = 0;
+    function cycleCircuitMode() {
+      modeIdx = (modeIdx + 1) % modes.length;
+      if (window.setCircuitMode) {
+        window.setCircuitMode(modes[modeIdx]);
+      }
+    }
+  </script>
+
+  <!-- Scripts -->
+  <script src="js/circuit-canvas.js"></script>
+  <script src="js/hardware-labs.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
