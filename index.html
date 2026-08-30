@@ -54,14 +54,15 @@
         <li><a href="#repositories" class="nav-link" onclick="playUiSound('click')">Hardware Code</a></li>
         <li><a href="#ai-research" class="nav-link" onclick="playUiSound('click')">Edge AI</a></li>
         <li><a href="#publications" class="nav-link" onclick="playUiSound('click')">Publications</a></li>
+        <li><a href="#gallery" class="nav-link" onclick="playUiSound('click')">Photo Archive</a></li>
         <li><a href="#contact" class="nav-link" onclick="playUiSound('click')">Terminal & Contact</a></li>
       </ul>
 
       <div class="nav-actions">
         <!-- Canvas Mode Switcher -->
-        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()" title="Switch Background Animation (Chip / FPGA / PCB / Orbit)">
+        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()" title="Switch Background Animation (Fab & RF / Litho / RF Waves / Orbit)">
           <span class="pulse-dot"></span>
-          <span id="circuit-mode-name">CHIP MODE</span>
+          <span id="circuit-mode-name">FAB &amp; RF WAFER</span>
         </div>
 
         <!-- UI Sound Effects Toggle -->
@@ -1220,6 +1221,701 @@ end</code></pre>
   </section>
 
   <!-- ==========================================================================
+       COMPREHENSIVE MISSION & LAB PHOTO GALLERY ARCHIVE (ALL PHOTOS)
+       ========================================================================== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Visual Flight Logs & Field Documentation</div>
+        <h2 class="section-title">Mission, Hardware & Lab Photo Archive</h2>
+        <p class="section-subtitle">
+          Complete photographic record of satellite assembly, space bootcamp workshops, magnetometer field calibrations, AI mechatronics, and community STEM mentorship.
+        </p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="gallery-filters">
+        <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
+        <button class="gallery-filter-btn" data-filter="s2s">Slippers2Sat CubeSat</button>
+        <button class="gallery-filter-btn" data-filter="epdm">EPDM &amp; Magnetometer</button>
+        <button class="gallery-filter-btn" data-filter="dharan">Dharan Space Bootcamp</button>
+        <button class="gallery-filter-btn" data-filter="yolo">YOLO Vision &amp; Robotics</button>
+        <button class="gallery-filter-btn" data-filter="research">Labs &amp; Field Research</button>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+
+        <!-- --- S2S CUBESAT PHOTOS --- -->
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat (S2S) Official Insignia', 'Nepal\'s First Middle School Nano-Satellite Mission Logo (Hunan Launch)')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s2s_logo.png" alt="Slippers2Sat Logo" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Slippers2Sat Mission Insignia</div>
+            <p class="gallery-card-desc">1U nano-satellite project emblem designed with Chepang students.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s14.png', 'Space System Laboratory (SSL)', 'Middle school students hands-on assembling and wiring the S2S satellite prototype at Navodaya School')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s14.png" alt="S2S SSL Lab" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Navodaya SSL Clean Lab</div>
+            <p class="gallery-card-desc">Hands-on student mentoring on flight hardware assembly.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s12.jpg', 'Subsystem Architecture Mentorship', 'Explaining onboard computing, EPS power regulation, and transceiver circuitry to young researchers')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s12.jpg" alt="Subsystem Mentorship" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Subsystem Architecture Session</div>
+            <p class="gallery-card-desc">Mentoring middle school fellows on EPS and OBC telemetry.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s11.jpg', 'Satellite Harnessing & Integration', 'Precision wire harness routing and connector soldering on the 1U structural chassis')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s11.jpg" alt="Satellite Harnessing" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Chassis Wire Harnessing</div>
+            <p class="gallery-card-desc">Precision routing of solar panel power lines and data busses.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s10.png', 'Cleanroom Inspection', 'Inspection of surface-mount PCB soldering and optical camera alignment')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s10.png" alt="Cleanroom Inspection" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Cleanroom Inspection</div>
+            <p class="gallery-card-desc">Quality control check of PCB traces and sensor interfaces.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s1.jpeg', 'S2S Subsystem Testing', 'Verifying sensor communication across SPI and I2C buses')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s1.jpeg" alt="S2S Subsystem Testing" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Subsystem Hardware Verification</div>
+            <p class="gallery-card-desc">Verifying digital sensor communication and power rails.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s2.jpeg', 'OBC Breadboard Prototyping', 'Initial breadboard bring-up and firmware debugging of the flight controller')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s2.jpeg" alt="OBC Breadboard" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">OBC Breadboard Bring-Up</div>
+            <p class="gallery-card-desc">Early hardware-in-the-loop firmware debugging.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s3.jpeg', 'Student Workshop Engagement', 'Young space enthusiasts learning basic electronics and satellite concepts')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s3.jpeg" alt="Student Workshop" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Chepang Student Workshop</div>
+            <p class="gallery-card-desc">Empowering marginalized youth through hands-on space science.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s4.jpeg', 'Solar Panel Array Fit Check', 'Structural fit test of exterior solar panels on the CubeSat aluminum structure')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s4.jpeg" alt="Solar Panel Fit Check" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Solar Array Fit Check</div>
+            <p class="gallery-card-desc">Mechanical validation of outer panels and deployable switches.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s5.jpeg', 'Satellite Stack Integration', 'Stacking PC104 standard printed circuit boards inside the 1U chassis')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s5.jpeg" alt="Satellite Stack Integration" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">PC104 Board Stacking</div>
+            <p class="gallery-card-desc">Stacking OBC, EPS, and payload boards into the flight frame.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s6.jpeg', 'On-Chip Digipeater RF Setup', 'RF communications and antenna matching test for the amateur digipeater payload')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s6.jpeg" alt="Digipeater RF Setup" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Digipeater RF Test Bench</div>
+            <p class="gallery-card-desc">VHF/UHF antenna tuning for disaster emergency messaging.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s7.jpeg', 'Lab Testing Session', 'Group photo and collaborative engineering session at APN Space System Lab')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s7.jpeg" alt="Lab Testing Session" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">APN Engineering Team Review</div>
+            <p class="gallery-card-desc">Collaborative design review of flight-ready subsystems.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s8.jpeg', 'Antenna Deployment Mechanism', 'Burn-wire thermal knife testing for antenna deployment in vacuum')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s8.jpeg" alt="Antenna Deployment" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Burn-Wire Release Test</div>
+            <p class="gallery-card-desc">Nichrome wire thermal cut verification for whip antennas.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/s9.jpeg', 'Hardware Demonstration', 'Demonstrating satellite beacon reception using RTL-SDR ground receiver')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/s9.jpeg" alt="Hardware Demo" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">SDR Ground Station Demo</div>
+            <p class="gallery-card-desc">Demodulating AX.25 packets and CW beacon signals.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/p1.webp', 'Satellite Flight Readiness Review', 'Comprehensive flight readiness inspection of the integrated 1U flight unit')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/p1.webp" alt="Flight Readiness Review" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Flight Readiness Review</div>
+            <p class="gallery-card-desc">Final mechanical tolerances and mass budget verification.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/p2.webp', 'Pre-Launch Vibration Assessment', 'Structural resonance and fastener torque check prior to launch container fit')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/p2.webp" alt="Pre-Launch Vibration Check" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Structural Validation</div>
+            <p class="gallery-card-desc">Ensuring fasteners and solder joints survive launch acoustics.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="s2s" onclick="openLightbox('images/p3.webp', 'Payload Integration Chamber', 'Final payload integration inside clean environment before shipment to Hunan, China')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/p3.webp" alt="Payload Integration" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">S2S CubeSat</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Clean Integration Chamber</div>
+            <p class="gallery-card-desc">Final payload sealing before transport to launch facility.</p>
+          </div>
+        </div>
+
+        <!-- --- EPDM & MAGNETOMETER PHOTOS --- -->
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/epdm1.png', 'EPDM Mission Payload Architecture', 'Non-Boom Quad-Mag sensor configuration for seismo-electromagnetic precursor detection')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/epdm1.png" alt="EPDM Payload Architecture" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">EPDM Payload Architecture</div>
+            <p class="gallery-card-desc">4x PNI RM3100 magnetometer array with UBSS noise removal.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/e1.jpeg', 'Quad-Mag Sensor Board Prototype', 'Fabricated Quad-Mag PCB equipped with 4 RM3100 sensors and MT25QL 1Gb Quad-SPI NOR Flash')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/e1.jpeg" alt="Quad-Mag Board" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Quad-Mag Flight Board</div>
+            <p class="gallery-card-desc">Flight hardware developed by Prem (featured on GitHub).</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/e2.jpeg', 'Field Magnetic Calibration', 'Outdoor low-EMI magnetic test bench measuring ambient Earth field vectors')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/e2.jpeg" alt="Magnetic Calibration Field" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Outdoor Magnetic Test Rig</div>
+            <p class="gallery-card-desc">Field measurements away from ferromagnetic interference.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/e3.jpeg', 'Budhanilkantha Magnetic Survey', 'Geomagnetic baseline survey validated against IGRF model (49,068.8 nT)')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/e3.jpeg" alt="Budhanilkantha Field Survey" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Budhanilkantha Survey (49.06 uT)</div>
+            <p class="gallery-card-desc">Field calibration matching scalar proton magnetometer data.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/e4.jpeg', 'Pulchowk Thin-Shell Testing', 'Ellipsoid-to-sphere transformation calibration at Pulchowk Campus (49,015.8 nT)')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/e4.jpeg" alt="Pulchowk Calibration" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Pulchowk Thin-Shell Validation</div>
+            <p class="gallery-card-desc">9-parameter ellipsoid calibration eliminating sensor offsets.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/e5.jpeg', 'Sensor Noise Floor Analysis', 'High-speed oscilloscope and spectrum analyzer evaluation of RM3100 count noise')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/e5.jpeg" alt="Noise Floor Analysis" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Sensor Noise Floor Analysis</div>
+            <p class="gallery-card-desc">Characterizing ULF (&lt;3Hz) and ELF resolution limits.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="epdm" onclick="openLightbox('images/boot.jpeg', 'Thin-Shell Calibration Algorithm', 'Mathematical rotation and scaling matrix aligning magnetic vectors with true geomagnetic coordinates')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/boot.jpeg" alt="Thin Shell Calibration" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">EPDM Payload</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Thin-Shell Calibration Matrix</div>
+            <p class="gallery-card-desc">Hard-iron and soft-iron distortion removal algorithm.</p>
+          </div>
+        </div>
+
+        <!-- --- DHARAN BOOTCAMP PHOTOS --- -->
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d1.jpg', 'Dharan Space Bootcamp Kickoff', '4-day intensive CubeSat hands-on bootcamp mentoring eastern Nepal high school students')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d1.jpg" alt="Dharan Bootcamp Kickoff" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Dharan Space Bootcamp Kickoff</div>
+            <p class="gallery-card-desc">Mentoring high school teams in CubeSat engineering principles.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d2.jpg', 'Student Sensor Integration', 'Students wiring up barometric (BMP180) and inertial measurement units')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d2.jpg" alt="Student Sensor Wiring" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Student Sensor Integration</div>
+            <p class="gallery-card-desc">Hands-on soldering and wiring of flight sensors.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d3.jpg', 'CanSat Frame Assembly', 'Constructing structural mockups from 3D printed ribs and aluminum rails')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d3.jpg" alt="CanSat Assembly" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">CanSat Structure Assembly</div>
+            <p class="gallery-card-desc">Building lightweight airframes with shock-absorbing standoffs.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d5.jpg', 'Parachute Deployment Rigging', 'Designing and folding recovery parachutes to control descent velocity')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d5.jpg" alt="Parachute Rigging" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Parachute Recovery Rigging</div>
+            <p class="gallery-card-desc">Calculating canopy surface area for safe touch-down speeds.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d6.jpg', 'Drop Test Launch Point', 'High-altitude drop test from towers evaluating parachute opening shock')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d6.jpg" alt="Drop Test Launch" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">High-Altitude Drop Test</div>
+            <p class="gallery-card-desc">Evaluating parachute inflation dynamics and shock loads.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d7.jpg', 'Ground Telemetry Monitoring', 'Tracking live barometric altitude and radio packet transmission in real time')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d7.jpg" alt="Telemetry Monitoring" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Live Telemetry Reception</div>
+            <p class="gallery-card-desc">Receiving live RF packets from descending payloads.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d8.jpg', 'Payload Recovery in Field', 'Recovering student flight payloads after successful touchdown')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d8.jpg" alt="Payload Recovery" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Field Payload Recovery</div>
+            <p class="gallery-card-desc">Retrieving flash log files for flight path reconstruction.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d9.jpg', 'Post-Flight Data Debrief', 'Plotting altitude vs time and pressure profiles recorded by onboard sensors')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d9.jpg" alt="Data Debrief" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Post-Flight Data Analysis</div>
+            <p class="gallery-card-desc">Analyzing barometric descent rates and acceleration logs.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d10.jpg', 'Team Collaboration Session', 'Mentoring student engineering teams on debugging intermittent I2C lines')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d10.jpg" alt="Team Mentorship" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Team Engineering Mentorship</div>
+            <p class="gallery-card-desc">Guiding students through firmware debugging workflows.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d11.jpg', 'Hardware Soldering Station', 'Teaching precision hand-soldering and flux cleaning techniques')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d11.jpg" alt="Soldering Station" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Precision Soldering Training</div>
+            <p class="gallery-card-desc">Hands-on SMD and through-hole soldering practice.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d12.jpg', 'Award & Certification Ceremony', 'Celebrating student achievements and mission completion in Dharan')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d12.jpg" alt="Certification Ceremony" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Bootcamp Graduation</div>
+            <p class="gallery-card-desc">Awarding certificates of completion to young innovators.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d13.jpg', 'Mentorship Group Photo', 'Prem Bahadur Rana with participating students and faculty')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d13.jpg" alt="Group Photo Dharan" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Bootcamp Cohort Photo</div>
+            <p class="gallery-card-desc">Inspiring Nepal's future aerospace workforce.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d14.jpg', 'Radio Frequency Tuning', 'Adjusting transmitter gain and antenna matching for optimal range')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d14.jpg" alt="RF Tuning" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">RF Transmitter Tuning</div>
+            <p class="gallery-card-desc">Verifying transmission power and harmonic suppression.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d15.jpg', 'Mission Debrief & Feedback', 'Reviewing flight anomalies and teaching lessons-learned documentation')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d15.jpg" alt="Mission Feedback" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Lessons Learned Debrief</div>
+            <p class="gallery-card-desc">Cultivating disciplined aerospace engineering habits.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/d16.jpg', 'Demonstration Flight Pack', 'Complete self-contained drop test CanSat ready for release')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/d16.jpg" alt="Flight Pack" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Assembled Drop CanSat</div>
+            <p class="gallery-card-desc">Fully integrated avionics stack with battery and sensors.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="dharan" onclick="openLightbox('images/dharan/IMG_2805.jpg', 'Parachute Deployment Capture', 'Capturing parachute inflation and steady descent over Dharan valley')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/dharan/IMG_2805.jpg" alt="Parachute Descent" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Dharan Bootcamp</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Parachute In-Flight Descent</div>
+            <p class="gallery-card-desc">Successful deployment and steady terminal velocity descent.</p>
+          </div>
+        </div>
+
+        <!-- --- YOLO VISION & ROBOTICS PHOTOS --- -->
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/fruits.png', 'YOLO Object Detection Output', 'Multi-class bounding box classification isolating fresh vs rotten apples and tomatoes')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/fruits.png" alt="YOLO Fruit Detection" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">YOLOv12S Detection Output</div>
+            <p class="gallery-card-desc">99.31% mAP classification on 11,675 fruit sample dataset.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y1.jpg', 'Conveyor Sorting Mechanism', 'Automated motorized conveyor belt equipped with Raspberry Pi 4 edge computing and dual cameras')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y1.jpg" alt="Conveyor Belt Sorting" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Automated Sorting Conveyor</div>
+            <p class="gallery-card-desc">Mechatronic diverter sorting rotten produce in real-time.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y3.jpeg', 'Edge Inference Camera Rig', 'Rigid aluminum camera mounting bracket providing shadow-free illumination')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y3.jpeg" alt="Camera Rig" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Dual Camera Vision Chamber</div>
+            <p class="gallery-card-desc">Controlled LED lighting ensuring robust feature extraction.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y4.jpeg', 'Servo Diverter Flap Actuator', 'High-torque servo motor diverting rejected fruits into containment bins')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y4.jpeg" alt="Servo Diverter" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">High-Torque Diverter Actuator</div>
+            <p class="gallery-card-desc">Millisecond-response servo triggering upon rotten classification.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y5.jpeg', 'Model Inference Latency Benchmarking', 'Benchmarking inference frame rates between YOLOv8, YOLOv12S, and DETR')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y5.jpeg" alt="Latency Benchmarking" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Edge Latency Benchmarking</div>
+            <p class="gallery-card-desc">Optimizing tensor operations for real-time edge hardware.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y6.jpeg', 'Defect Segmentation Sample', 'Detailed surface decay segmentation separating minor bruising from rot')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y6.jpeg" alt="Defect Segmentation" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Defect Segmentation Sample</div>
+            <p class="gallery-card-desc">Classifying pathogen spots and mechanical bruising.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/y8.jpeg', 'Raspberry Pi 4 Flight Case', 'Embedded edge computing enclosure with active heat sinking and GPIO breakouts')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/y8.jpeg" alt="Raspberry Pi Enclosure" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Industrial Edge Enclosure</div>
+            <p class="gallery-card-desc">Active thermal cooling for continuous plant floor sorting.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="yolo" onclick="openLightbox('images/c1.jpg', 'Agricultural Field Trials', 'Testing conveyor vision system in local agricultural packhouses')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/c1.jpg" alt="Agricultural Field Trials" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-purple">Edge AI Vision</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Packhouse Field Evaluation</div>
+            <p class="gallery-card-desc">Validating sorting accuracy under real agricultural conditions.</p>
+          </div>
+        </div>
+
+        <!-- --- LABS & FIELD RESEARCH PHOTOS --- -->
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/RISC.jpeg', 'RISC-V Pipelined Core Layout', '5-stage pipelined RV32I processor synthesized for Tiny Tapeout SkyWater 130nm ASIC')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/RISC.jpeg" alt="RISC-V Architecture" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">ASIC Silicon</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">RISC-V Silicon ASIC Layout</div>
+            <p class="gallery-card-desc">Synthesizable Verilog pipeline with hazard forwarding.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/prem.jpg', 'Prem Bahadur Rana at Space System Lab', 'EPDM Mission Lead and ASIC Hardware Developer at Antarikchya Pratisthan Nepal')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/prem.jpg" alt="Prem Bahadur Rana" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">Research Fellow</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Prem Bahadur Rana (Lead)</div>
+            <p class="gallery-card-desc">Satellite Research Fellow &amp; RISC-V Hardware Developer.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/college1.jpeg', 'Khwopa Engineering College', 'Department of Electronics and Communication Engineering research facilities')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/college1.jpeg" alt="Khwopa Engineering College" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">Academic Base</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Khwopa Engineering College</div>
+            <p class="gallery-card-desc">Bhaktapur campus where foundational electronics research began.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/college2.jpeg', 'Electronics Research Lab', 'Advanced digital signal processing and microstrip RF hardware benches')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/college2.jpeg" alt="Electronics Research Lab" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">Academic Base</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">DSP &amp; RF Hardware Lab</div>
+            <p class="gallery-card-desc">Laboratory facilities for high-speed digital and RF testing.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/r1.jpeg', 'National Space Conference Presentation', 'Presenting Slippers2Sat EPDM Quad-Mag findings to aerospace scientists and delegates')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/r1.jpeg" alt="Conference Presentation" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Conferences</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Space Conference Keynote</div>
+            <p class="gallery-card-desc">Delivering presentation on space-borne earthquake precursors.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/r2.jpeg', 'Technical Symposium Exhibition', 'Exhibiting flight model hardware and On-Chip Digipeater disaster telemetry')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/r2.jpeg" alt="Technical Exhibition" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">Conferences</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Flight Hardware Exhibition</div>
+            <p class="gallery-card-desc">Showcasing flight models to international space delegates.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/36491bb5-ac39-4242-929a-427adcfcd297.jpeg', 'Field Research Station', 'Deploying telemetry monitoring receivers in remote mountainous regions')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/36491bb5-ac39-4242-929a-427adcfcd297.jpeg" alt="Field Research Station" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">Field Work</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Himalayan Field Station</div>
+            <p class="gallery-card-desc">Testing emergency packet relay in rugged terrain.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/42b8ff05-8c3c-49b1-a37d-d2c24ee635fa.jpeg', 'Field Engineering Review', 'Field engineering review and ground link verification')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/42b8ff05-8c3c-49b1-a37d-d2c24ee635fa.jpeg" alt="Field Engineering Review" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">Field Work</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Ground Link Verification</div>
+            <p class="gallery-card-desc">Establishing line-of-sight UHF link with remote mountain nodes.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/56baabe3-444c-4798-a009-05e26eb48705.jpeg', 'Satellite Antenna Ground Check', 'Ground verification of antenna SWR and impedance match')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/56baabe3-444c-4798-a009-05e26eb48705.jpeg" alt="Antenna SWR Check" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">RF Testing</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Antenna SWR Impedance Check</div>
+            <p class="gallery-card-desc">Vector Network Analyzer (VNA) sweep for return loss tuning.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/78007bbe-537e-4701-ae98-84590835ffd4.jpeg', 'Space System Assembly Bench', 'Fine assembly bench with anti-static protection and precision tools')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/78007bbe-537e-4701-ae98-84590835ffd4.jpeg" alt="Assembly Bench" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-cyan">Cleanroom</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">ESD-Safe Assembly Station</div>
+            <p class="gallery-card-desc">Cleanroom workstation for flight model sensor integration.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/b76773e0-763c-4712-9a70-daea91057acf.jpeg', 'Field Outreach & Student Engagement', 'Interactive session introducing aerospace telemetry to high schoolers')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/b76773e0-763c-4712-9a70-daea91057acf.jpeg" alt="Student Outreach" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-amber">STEM Outreach</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">High School STEM Outreach</div>
+            <p class="gallery-card-desc">Demonstrating satellite communications to aspiring students.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="research" onclick="openLightbox('images/c4d52607-e087-4fac-8b7c-44833818e788.jpeg', 'Payload Environmental Testing', 'Thermal and vacuum test chamber setup for CubeSat qualification')">
+          <div class="gallery-thumb-wrap">
+            <img src="images/c4d52607-e087-4fac-8b7c-44833818e788.jpeg" alt="Environmental Testing" loading="lazy">
+            <div class="gallery-badge-overlay"><span class="badge badge-emerald">Qualification</span></div>
+          </div>
+          <div class="gallery-card-info">
+            <div class="gallery-card-title">Environmental Qualification</div>
+            <p class="gallery-card-desc">Verifying thermal tolerance and outgassing compliance.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        INTERACTIVE COMMAND TERMINAL & CONTACT
        ========================================================================== -->
   <section id="contact">
@@ -1337,7 +2033,7 @@ end</code></pre>
 
   <!-- Background mode cycling helper -->
   <script>
-    const modes = ['chip', 'fpga', 'pcb', 'orbit'];
+    const modes = ['fab_rf', 'litho', 'rf_waves', 'orbit'];
     let modeIdx = 0;
     function cycleCircuitMode() {
       if (window.playUiSound) window.playUiSound('click');

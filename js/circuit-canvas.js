@@ -1,10 +1,11 @@
 /**
- * Advanced Electronic, Silicon & Satellite Orbital Canvas Engine 2.0
- * Modes:
- * 1. CHIP: SkyWater 130nm ASIC Floorplan & Clock Tree Synthesis
- * 2. FPGA: Configurable Logic Block (CLB) Matrix & Bitstream Routing
- * 3. PCB: Multi-Layer Copper Signal Routing & Electron Drift
- * 4. ORBIT: Slippers2Sat LEO Orbit & Kathmandu Ground Station Telemetry Link
+ * Advanced Semiconductor Fabrication & RF Electromagnetic Wave Canvas Engine 3.0
+ * Features:
+ * 1. Silicon Wafer & Photolithography Laser Stepper (Chip Manufacturing)
+ * 2. Multi-layer VLSI Interconnects (M1-M5, vias, standard cells, clock distribution)
+ * 3. Electromagnetic RF Wavefronts (Concentric radiating waves, continuous phase carriers)
+ * 4. Microstrip RF Transmission Lines with traveling modulated signals
+ * 5. Interactive Magnetic/Electromagnetic Induction cursor deflection
  */
 
 (function () {
@@ -16,25 +17,25 @@
   const ctx = canvas.getContext('2d');
   let width, height;
   let animationFrameId;
-  let currentMode = 'chip'; // 'chip', 'fpga', 'pcb', 'orbit'
   let isPaused = false;
+  let currentMode = 'fab_rf'; // 'fab_rf', 'litho', 'rf_waves', 'orbit'
 
-  // Track cursor position for subtle magnetic field effect
+  // Cursor tracking
   const mouse = { x: -1000, y: -1000, active: false };
 
-  // Palette constants
   const COLORS = {
     cyan: '#00f0ff',
-    cyanAlpha: 'rgba(0, 240, 255, ',
+    cyanGlow: 'rgba(0, 240, 255, ',
     emerald: '#00ff9d',
-    emeraldAlpha: 'rgba(0, 255, 157, ',
+    emeraldGlow: 'rgba(0, 255, 157, ',
     amber: '#ffb703',
-    amberAlpha: 'rgba(255, 183, 3, ',
-    purple: '#a855f7',
-    purpleAlpha: 'rgba(168, 85, 247, '
+    amberGlow: 'rgba(255, 183, 3, ',
+    purple: '#c084fc',
+    purpleGlow: 'rgba(192, 132, 252, ',
+    laser: '#ff007f',
+    laserGlow: 'rgba(255, 0, 127, '
   };
 
-  // Resize handling
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -52,378 +53,318 @@
   });
 
   /* -------------------------------------------------------------
-     MODE 1: CHIP DESIGN / ASIC FLOORPLAN & CLOCK TREE SYNTHESIS
+     FABRICATION & RF SILICON DIE STATE
      ------------------------------------------------------------- */
-  let chipBlocks = [];
-  let chipTraces = [];
-  let chipElectrons = [];
+  let dies = [];
+  let rfMicrostrips = [];
+  let rfEmitters = [];
+  let lithoLaser = { x: 0, y: 0, targetX: 0, targetY: 0, angle: 0, speed: 1.5 };
+  let electronPulses = [];
+  let starfield = [];
 
-  function initChipScene() {
-    chipBlocks = [];
-    chipTraces = [];
-    chipElectrons = [];
+  function initScene() {
+    dies = [];
+    rfMicrostrips = [];
+    rfEmitters = [];
+    electronPulses = [];
+    starfield = [];
 
-    const cols = Math.max(3, Math.floor(width / 260));
-    const rows = Math.max(3, Math.floor(height / 200));
-    const cellW = width / cols;
-    const cellH = height / rows;
+    // Wafer Grid Reticles (Silicon Stepper Dies)
+    const dieW = Math.max(140, Math.floor(width / 7));
+    const dieH = Math.max(120, Math.floor(height / 6));
+    const cols = Math.ceil(width / dieW) + 1;
+    const rows = Math.ceil(height / dieH) + 1;
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        const padding = 28;
-        const bx = c * cellW + padding;
-        const by = r * cellH + padding;
-        const bw = cellW - padding * 2;
-        const bh = cellH - padding * 2;
+        const x = c * dieW;
+        const y = r * dieH;
+        const isRFFab = (r % 2 === 1 && c % 2 === 1);
+        const isCore = (r === 2 && c === 2);
 
-        const isMainCore = (r === 1 && c === 1);
-        const label = isMainCore ? 'RV32I_PIPELINE' :
-                      (r === 0 && c === 1) ? 'IPCC_MAILBOX_RAM' :
-                      (r === 1 && c === 0) ? 'QUAD_RM3100_IF' :
-                      (r === 2 && c === 1) ? 'AX25_GMSK_MODEM' :
-                      (r === 0 && c === 0) ? 'SKY130_PLL_480M' :
-                      (r === 2 && c === 0) ? 'MT25QL_QSPI_CTRL' : `STD_CELL_${r}_${c}`;
-
-        chipBlocks.push({
-          x: bx,
-          y: by,
-          w: bw,
-          h: bh,
-          label: label,
-          isCore: isMainCore
+        dies.push({
+          x: x,
+          y: y,
+          w: dieW,
+          h: dieH,
+          id: `DIE_${r}_${c}`,
+          label: isCore ? 'SKY130_RV32I_CORE' :
+                 isRFFab ? 'RF_TRANSCEIVER_MODEM' :
+                 (r === 1 && c === 2) ? 'IPCC_SRAM3_MAILBOX' :
+                 (r === 2 && c === 1) ? 'QUAD_PNI_RM3100_IF' :
+                 (r === 3 && c === 2) ? 'MT25QL_QSPI_FLASH' : `STD_CELL_BLK_${r}${c}`,
+          isCore: isCore,
+          isRFFab: isRFFab,
+          gateCount: Math.floor(1200 + Math.random() * 4000)
         });
       }
     }
 
-    // Interconnect metal traces (M1-M5 layers)
-    for (let i = 0; i < chipBlocks.length; i++) {
-      const b1 = chipBlocks[i];
-      if (i + 1 < chipBlocks.length && (i + 1) % cols !== 0) {
-        const b2 = chipBlocks[i + 1];
-        const traceY = b1.y + b1.h / 2;
-        chipTraces.push({
-          x1: b1.x + b1.w,
-          y1: traceY,
-          x2: b2.x,
-          y2: traceY,
-          color: COLORS.cyanAlpha
-        });
-      }
-      if (i + cols < chipBlocks.length) {
-        const b2 = chipBlocks[i + cols];
-        const traceX = b1.x + b1.w / 2;
-        chipTraces.push({
-          x1: traceX,
-          y1: b1.y + b1.h,
-          x2: traceX,
-          y2: b2.y,
-          color: COLORS.emeraldAlpha
-        });
-      }
+    // High-Frequency RF Microstrip Transmission Lines
+    for (let i = 0; i < 8; i++) {
+      const startX = (i % 2 === 0) ? 0 : width;
+      const startY = (height / 9) * (i + 1);
+      const endX = width * 0.5 + (Math.random() - 0.5) * 300;
+      const endY = startY + (Math.random() - 0.5) * 80;
+
+      rfMicrostrips.push({
+        x1: startX,
+        y1: startY,
+        x2: endX,
+        y2: endY,
+        freq: 0.04 + (i * 0.012),
+        phase: Math.random() * Math.PI * 2,
+        carrierMod: (i % 2 === 0) ? 'GMSK' : 'GFSK'
+      });
     }
+
+    // On-Chip RF Antenna Radiation Centers
+    rfEmitters.push({ x: width * 0.28, y: height * 0.38, label: 'TX_ANTENNA_437MHz', maxRadius: 280, freq: 0.08 });
+    rfEmitters.push({ x: width * 0.72, y: height * 0.62, label: 'RX_LNA_FRONTEND', maxRadius: 240, freq: 0.06 });
+
+    // Photolithography Scanner
+    lithoLaser.x = 0;
+    lithoLaser.y = 0;
 
     // Electron current pulses
-    for (let i = 0; i < 48; i++) {
-      const trace = chipTraces[Math.floor(Math.random() * chipTraces.length)];
-      if (trace) {
-        chipElectrons.push({
-          trace: trace,
-          progress: Math.random(),
-          speed: 0.005 + Math.random() * 0.009,
-          size: 2.2 + Math.random() * 2,
-          color: Math.random() > 0.5 ? COLORS.cyan : COLORS.emerald
-        });
-      }
+    for (let i = 0; i < 55; i++) {
+      const d = dies[Math.floor(Math.random() * dies.length)];
+      electronPulses.push({
+        x: d.x + Math.random() * d.w,
+        y: d.y + Math.random() * d.h,
+        targetX: d.x + Math.random() * d.w,
+        targetY: d.y + Math.random() * d.h,
+        progress: Math.random(),
+        speed: 0.008 + Math.random() * 0.014,
+        color: (Math.random() > 0.5) ? COLORS.cyan : COLORS.emerald
+      });
+    }
+
+    // Starfield for Orbit Mode
+    for (let i = 0; i < 110; i++) {
+      starfield.push({
+        x: Math.random() * width,
+        y: Math.random() * height * 0.75,
+        size: 0.8 + Math.random() * 1.6,
+        alpha: 0.2 + Math.random() * 0.75
+      });
     }
   }
 
-  function renderChipScene(time) {
-    ctx.clearRect(0, 0, width, height);
-
-    // Silicon Wafer Substrate Grid
-    ctx.strokeStyle = 'rgba(0, 240, 255, 0.035)';
+  /* -------------------------------------------------------------
+     RENDER: SEMICONDUCTOR FABRICATION & CHIP DESIGN
+     ------------------------------------------------------------- */
+  function drawSemiconductorFab(time) {
+    // 1. Silicon Wafer Substrate Grid & Stepper Scribe Lines
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.06)';
     ctx.lineWidth = 1;
-    const gridStep = 44;
-    for (let x = 0; x < width; x += gridStep) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < height; y += gridStep) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(width, y);
-      ctx.stroke();
-    }
 
-    // Macro Blocks
-    chipBlocks.forEach((block) => {
-      ctx.strokeStyle = block.isCore ? 'rgba(0, 240, 255, 0.5)' : 'rgba(148, 163, 184, 0.12)';
-      ctx.lineWidth = block.isCore ? 2 : 1;
-      ctx.fillStyle = block.isCore ? 'rgba(0, 240, 255, 0.05)' : 'rgba(8, 14, 30, 0.45)';
-      
-      ctx.strokeRect(block.x, block.y, block.w, block.h);
-      ctx.fillRect(block.x, block.y, block.w, block.h);
+    dies.forEach((die) => {
+      // Scribe street borders between dies
+      ctx.strokeRect(die.x + 2, die.y + 2, die.w - 4, die.h - 4);
 
-      // Internal standard cell rows
-      ctx.strokeStyle = 'rgba(0, 255, 157, 0.07)';
-      for (let ty = block.y + 12; ty < block.y + block.h - 10; ty += 12) {
+      // Silicon cell interior glow
+      if (die.isCore) {
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.04)';
+        ctx.fillRect(die.x + 4, die.y + 4, die.w - 8, die.h - 8);
+      } else if (die.isRFFab) {
+        ctx.fillStyle = 'rgba(0, 255, 157, 0.03)';
+        ctx.fillRect(die.x + 4, die.y + 4, die.w - 8, die.h - 8);
+      }
+
+      // Metal layer standard cell rows (M1/M2)
+      ctx.strokeStyle = die.isCore ? 'rgba(0, 240, 255, 0.12)' : 'rgba(148, 163, 184, 0.05)';
+      const rowSpacing = 10;
+      for (let ry = die.y + 16; ry < die.y + die.h - 10; ry += rowSpacing) {
         ctx.beginPath();
-        ctx.moveTo(block.x + 8, ty);
-        ctx.lineTo(block.x + block.w - 8, ty);
+        ctx.moveTo(die.x + 8, ry);
+        ctx.lineTo(die.x + die.w - 8, ry);
         ctx.stroke();
       }
 
-      ctx.font = '9px monospace';
-      ctx.fillStyle = block.isCore ? COLORS.cyan : 'rgba(148, 163, 184, 0.5)';
-      ctx.fillText(block.label, block.x + 8, block.y + 16);
+      // Die Label
+      ctx.font = '8.5px monospace';
+      ctx.fillStyle = die.isCore ? COLORS.cyan : die.isRFFab ? COLORS.emerald : 'rgba(148, 163, 184, 0.45)';
+      ctx.fillText(die.label, die.x + 8, die.y + 14);
     });
 
-    // Traces
-    chipTraces.forEach((trace) => {
-      ctx.strokeStyle = trace.color + '0.22)';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(trace.x1, trace.y1);
-      ctx.lineTo(trace.x2, trace.y2);
-      ctx.stroke();
-    });
-
-    // Clock Tree Synthesis Pulse
-    const pulseRad = (time * 0.08) % (Math.max(width, height) * 0.85);
+    // 2. Clock Tree Synthesis (CTS) Global Distribution Pulse
+    const ctsRadius = (time * 0.1) % (Math.max(width, height) * 0.9);
     const centerX = width / 2;
     const centerY = height / 2;
-    ctx.strokeStyle = 'rgba(0, 240, 255, ' + Math.max(0, 0.28 - pulseRad / 1200) + ')';
-    ctx.lineWidth = 1.5;
+
+    ctx.strokeStyle = `rgba(0, 240, 255, ${Math.max(0, 0.3 - ctsRadius / 1400)})`;
+    ctx.lineWidth = 1.6;
     ctx.beginPath();
-    ctx.arc(centerX, centerY, pulseRad, 0, Math.PI * 2);
+    ctx.arc(centerX, centerY, ctsRadius, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Electrons
-    chipElectrons.forEach((el) => {
-      el.progress += el.speed;
-      if (el.progress > 1) el.progress = 0;
+    // Secondary harmonic clock pulse
+    ctx.strokeStyle = `rgba(0, 255, 157, ${Math.max(0, 0.22 - ctsRadius / 1800)})`;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, ctsRadius * 0.65, 0, Math.PI * 2);
+    ctx.stroke();
 
-      const curX = el.trace.x1 + (el.trace.x2 - el.trace.x1) * el.progress;
-      const curY = el.trace.y1 + (el.trace.y2 - el.trace.y1) * el.progress;
+    // 3. Photolithography Laser Stepper Beam (EUV Semiconductor Manufacturing)
+    const scanPeriod = 8000; // 8 seconds per sweep
+    const scanPhase = (time % scanPeriod) / scanPeriod;
+    const laserX = scanPhase * (width + 200) - 100;
+    const laserY = (Math.sin(time * 0.001) * 0.5 + 0.5) * height;
 
-      ctx.fillStyle = el.color;
-      ctx.shadowColor = el.color;
-      ctx.shadowBlur = 8;
+    // Glowing Laser Line
+    const laserGrad = ctx.createLinearGradient(laserX, 0, laserX, height);
+    laserGrad.addColorStop(0, 'rgba(255, 0, 127, 0)');
+    laserGrad.addColorStop(0.5, 'rgba(255, 0, 127, 0.45)');
+    laserGrad.addColorStop(1, 'rgba(255, 0, 127, 0)');
+
+    ctx.strokeStyle = laserGrad;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(laserX, 0);
+    ctx.lineTo(laserX, height);
+    ctx.stroke();
+
+    // Laser focus reticle dot
+    ctx.fillStyle = COLORS.laser;
+    ctx.shadowColor = COLORS.laser;
+    ctx.shadowBlur = 15;
+    ctx.beginPath();
+    ctx.arc(laserX, laserY, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Laser exposure status text
+    ctx.font = '9px monospace';
+    ctx.fillStyle = 'rgba(255, 0, 127, 0.8)';
+    ctx.fillText(`EUV_LITHOGRAPHY_STEPPER // SCAN: ${(scanPhase * 100).toFixed(1)}%`, laserX + 10, laserY - 10);
+
+    // 4. Electron Current Drifts
+    electronPulses.forEach((p) => {
+      p.progress += p.speed;
+      if (p.progress > 1) {
+        p.progress = 0;
+        const d = dies[Math.floor(Math.random() * dies.length)];
+        p.x = d.x + Math.random() * d.w;
+        p.y = d.y + Math.random() * d.h;
+      }
+
+      const curX = p.x + (p.targetX - p.x) * p.progress;
+      const curY = p.y + (p.targetY - p.y) * p.progress;
+
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 6;
       ctx.beginPath();
-      ctx.arc(curX, curY, el.size, 0, Math.PI * 2);
+      ctx.arc(curX, curY, 2, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
     });
   }
 
   /* -------------------------------------------------------------
-     MODE 2: FPGA LOGIC MATRIX
+     RENDER: RF ELECTROMAGNETIC SIGNALS & TRAVELING WAVES
      ------------------------------------------------------------- */
-  let fpgaCLBs = [];
-  let fpgaSwitchMatrices = [];
-  let fpgaRoutingLines = [];
+  function drawRfSignals(time) {
+    // 1. Concentric Electromagnetic Waves from Antenna Centers
+    rfEmitters.forEach((emitter) => {
+      const waveCount = 5;
+      for (let i = 0; i < waveCount; i++) {
+        const waveProgress = ((time * 0.05 + (i * emitter.maxRadius / waveCount)) % emitter.maxRadius);
+        const alpha = Math.max(0, 0.35 * (1 - waveProgress / emitter.maxRadius));
 
-  function initFpgaScene() {
-    fpgaCLBs = [];
-    fpgaSwitchMatrices = [];
-    fpgaRoutingLines = [];
-
-    const spacing = 88;
-    const cols = Math.floor(width / spacing);
-    const rows = Math.floor(height / spacing);
-
-    for (let r = 1; r < rows; r++) {
-      for (let c = 1; c < cols; c++) {
-        const x = c * spacing;
-        const y = r * spacing;
-
-        if ((r + c) % 2 === 0) {
-          fpgaCLBs.push({
-            x: x,
-            y: y,
-            lut: 'LUT4_' + (r * cols + c),
-            state: Math.random() > 0.4
-          });
-        } else {
-          fpgaSwitchMatrices.push({
-            x: x,
-            y: y
-          });
-        }
-      }
-    }
-
-    for (let i = 0; i < fpgaCLBs.length; i++) {
-      const clb = fpgaCLBs[i];
-      const targetSM = fpgaSwitchMatrices[Math.floor(Math.random() * fpgaSwitchMatrices.length)];
-      if (targetSM && Math.hypot(clb.x - targetSM.x, clb.y - targetSM.y) < spacing * 2.3) {
-        fpgaRoutingLines.push({
-          x1: clb.x,
-          y1: clb.y,
-          x2: targetSM.x,
-          y2: targetSM.y,
-          active: Math.random() > 0.25
-        });
-      }
-    }
-  }
-
-  function renderFpgaScene(time) {
-    ctx.clearRect(0, 0, width, height);
-
-    fpgaRoutingLines.forEach((line) => {
-      ctx.strokeStyle = line.active ? 'rgba(0, 255, 157, 0.28)' : 'rgba(148, 163, 184, 0.06)';
-      ctx.lineWidth = line.active ? 1.5 : 1;
-      ctx.beginPath();
-      const midX = (line.x1 + line.x2) / 2;
-      ctx.moveTo(line.x1, line.y1);
-      ctx.lineTo(midX, line.y1);
-      ctx.lineTo(midX, line.y2);
-      ctx.lineTo(line.x2, line.y2);
-      ctx.stroke();
-    });
-
-    fpgaSwitchMatrices.forEach((sm) => {
-      ctx.fillStyle = 'rgba(255, 183, 3, 0.18)';
-      ctx.strokeStyle = 'rgba(255, 183, 3, 0.45)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(sm.x, sm.y, 7.5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-    });
-
-    fpgaCLBs.forEach((clb) => {
-      const active = (Math.sin(time * 0.003 + clb.x * 0.01 + clb.y * 0.01) > 0);
-      ctx.fillStyle = active ? 'rgba(0, 240, 255, 0.14)' : 'rgba(8, 14, 30, 0.85)';
-      ctx.strokeStyle = active ? COLORS.cyan : 'rgba(0, 240, 255, 0.25)';
-      ctx.lineWidth = 1;
-
-      ctx.fillRect(clb.x - 14, clb.y - 14, 28, 28);
-      ctx.strokeRect(clb.x - 14, clb.y - 14, 28, 28);
-
-      ctx.fillStyle = active ? COLORS.emerald : 'rgba(148, 163, 184, 0.4)';
-      ctx.fillRect(clb.x - 4, clb.y - 4, 8, 8);
-    });
-
-    const sweepY = (time * 0.055) % height;
-    ctx.strokeStyle = 'rgba(0, 255, 157, 0.45)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(0, sweepY);
-    ctx.lineTo(width, sweepY);
-    ctx.stroke();
-  }
-
-  /* -------------------------------------------------------------
-     MODE 3: PCB SIGNAL ROUTING & ELECTRON DRIFT
-     ------------------------------------------------------------- */
-  let pcbNodes = [];
-
-  function initPcbScene() {
-    pcbNodes = [];
-    const count = Math.floor((width * height) / 28000);
-    for (let i = 0; i < count; i++) {
-      pcbNodes.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: 2.2 + Math.random() * 2.5,
-        padType: Math.random() > 0.7 ? 'via' : 'pad'
-      });
-    }
-  }
-
-  function renderPcbScene(time) {
-    ctx.clearRect(0, 0, width, height);
-
-    pcbNodes.forEach((node) => {
-      node.x += node.vx;
-      node.y += node.vy;
-
-      if (node.x < 0 || node.x > width) node.vx *= -1;
-      if (node.y < 0 || node.y > height) node.vy *= -1;
-
-      if (mouse.active) {
-        const dx = mouse.x - node.x;
-        const dy = mouse.y - node.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 190 && dist > 10) {
-          node.x += (dx / dist) * 0.9;
-          node.y += (dy / dist) * 0.9;
-        }
-      }
-    });
-
-    for (let i = 0; i < pcbNodes.length; i++) {
-      for (let j = i + 1; j < pcbNodes.length; j++) {
-        const p1 = pcbNodes[i];
-        const p2 = pcbNodes[j];
-        const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-
-        if (dist < 150) {
-          const alpha = 1 - dist / 150;
-          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 0.25})`;
-          ctx.lineWidth = 1.3;
-
-          ctx.beginPath();
-          const midX = p1.x + (p2.x - p1.x) * 0.5;
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(midX, p1.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    pcbNodes.forEach((node) => {
-      ctx.fillStyle = node.padType === 'via' ? COLORS.amber : COLORS.cyan;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
-      ctx.lineWidth = 1;
-
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-
-      if (node.padType === 'via') {
-        ctx.fillStyle = '#040711';
+        ctx.strokeStyle = `rgba(0, 255, 157, ${alpha})`;
+        ctx.lineWidth = 1.8;
+        ctx.setLineDash([4, 6]);
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius * 0.45, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.arc(emitter.x, emitter.y, waveProgress, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
       }
-    });
-  }
 
-  /* -------------------------------------------------------------
-     MODE 4: SLIPPERS2SAT LEO ORBIT & KATHMANDU GROUND STATION
-     ------------------------------------------------------------- */
-  let stars = [];
-  function initOrbitScene() {
-    stars = [];
-    for (let i = 0; i < 90; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height * 0.7,
-        size: 0.8 + Math.random() * 1.5,
-        alpha: 0.2 + Math.random() * 0.7
-      });
+      // Antenna pad symbol
+      ctx.fillStyle = COLORS.amber;
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(emitter.x, emitter.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = '9px monospace';
+      ctx.fillStyle = COLORS.emerald;
+      ctx.fillText(emitter.label, emitter.x - 45, emitter.y - 12);
+    });
+
+    // 2. Modulated RF Carrier Waves on Microstrip Transmission Lines
+    rfMicrostrips.forEach((strip, sIdx) => {
+      ctx.strokeStyle = (sIdx % 2 === 0) ? 'rgba(0, 240, 255, 0.45)' : 'rgba(0, 255, 157, 0.45)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+
+      const dx = strip.x2 - strip.x1;
+      const dy = strip.y2 - strip.y1;
+      const dist = Math.hypot(dx, dy);
+      const steps = Math.floor(dist / 4);
+
+      for (let s = 0; s <= steps; s++) {
+        const t = s / steps;
+        const baseX = strip.x1 + dx * t;
+        const baseY = strip.y1 + dy * t;
+
+        // Modulated RF sinusoidal wave perpendicular to trace
+        const normalX = -dy / dist;
+        const normalY = dx / dist;
+
+        // Gaussian continuous phase frequency modulation
+        const waveFreq = strip.freq + Math.sin(t * 10 + time * 0.002) * 0.015;
+        const waveOffset = Math.sin(s * waveFreq - time * 0.005 + strip.phase) * 9;
+
+        const posX = baseX + normalX * waveOffset;
+        const posY = baseY + normalY * waveOffset;
+
+        if (s === 0) ctx.moveTo(posX, posY);
+        else ctx.lineTo(posX, posY);
+      }
+      ctx.stroke();
+
+      // RF Wave packet packet header label
+      ctx.font = '8px monospace';
+      ctx.fillStyle = (sIdx % 2 === 0) ? COLORS.cyan : COLORS.emerald;
+      ctx.fillText(`RF_${strip.carrierMod}_437M`, strip.x1 + dx * 0.3, strip.y1 + dy * 0.3 - 10);
+    });
+
+    // 3. Interactive Mouse Electromagnetic Induction
+    if (mouse.active) {
+      const pulseTime = time * 0.004;
+      const indRadius = 55 + Math.sin(pulseTime) * 12;
+
+      // Magnetic field flux rings
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, indRadius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(0, 255, 157, 0.25)';
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, indRadius * 1.5, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.font = '9px monospace';
+      ctx.fillStyle = COLORS.cyan;
+      ctx.fillText('EM_INDUCTION_PROBE', mouse.x + 14, mouse.y - 12);
     }
   }
 
-  function renderOrbitScene(time) {
-    ctx.clearRect(0, 0, width, height);
-
-    // Starfield
-    stars.forEach((s) => {
+  /* -------------------------------------------------------------
+     RENDER: ORBIT MODE (SATELLITE TELEMETRY)
+     ------------------------------------------------------------- */
+  function drawOrbit(time) {
+    starfield.forEach((s) => {
       ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha * (0.8 + Math.sin(time * 0.002 + s.x) * 0.2)})`;
       ctx.fillRect(s.x, s.y, s.size, s.size);
     });
 
-    // Earth Limb Curve at bottom
     const earthCenterX = width / 2;
     const earthCenterY = height + 420;
     const earthRadius = height * 0.85 + 400;
@@ -439,7 +380,6 @@
     ctx.arc(earthCenterX, earthCenterY, earthRadius, 0, Math.PI * 2);
     ctx.fill();
 
-    // Atmospheric Glow
     ctx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
     ctx.lineWidth = 3;
     ctx.shadowColor = '#00f0ff';
@@ -449,7 +389,6 @@
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    // Kathmandu Ground Station Antenna
     const ktmX = width * 0.45;
     const ktmY = height - 70;
     ctx.fillStyle = COLORS.amber;
@@ -460,33 +399,28 @@
     ctx.fillStyle = COLORS.amber;
     ctx.fillText('APN_KATHMANDU_GS (27.7°N)', ktmX - 60, ktmY + 22);
 
-    // Slippers2Sat CubeSat in Low Earth Orbit
     const orbitT = (time * 0.0004) % 1;
     const satX = width * 0.15 + orbitT * (width * 0.7);
     const satY = height * 0.28 + Math.sin(orbitT * Math.PI) * 40;
 
-    // Draw CubeSat 1U Body (10x10cm)
     ctx.save();
     ctx.translate(satX, satY);
     ctx.rotate(Math.sin(time * 0.001) * 0.15);
 
-    // Solar panels
     ctx.fillStyle = '#0284c7';
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
     ctx.lineWidth = 1;
-    ctx.fillRect(-28, -7, 18, 14); // Left wing
-    ctx.fillRect(10, -7, 18, 14);  // Right wing
+    ctx.fillRect(-28, -7, 18, 14);
+    ctx.fillRect(10, -7, 18, 14);
     ctx.strokeRect(-28, -7, 18, 14);
     ctx.strokeRect(10, -7, 18, 14);
 
-    // 1U Chassis
     ctx.fillStyle = '#1e293b';
     ctx.strokeStyle = COLORS.cyan;
     ctx.lineWidth = 1.5;
     ctx.fillRect(-10, -10, 20, 20);
     ctx.strokeRect(-10, -10, 20, 20);
 
-    // Antenna whip
     ctx.strokeStyle = COLORS.emerald;
     ctx.lineWidth = 1.5;
     ctx.beginPath();
@@ -496,12 +430,10 @@
 
     ctx.restore();
 
-    // Satellite label & Telemetry RF Downlink Beam to Kathmandu
     ctx.font = '10px monospace';
     ctx.fillStyle = COLORS.cyan;
     ctx.fillText('SLIPPERS2SAT (1U CubeSat // 520km LEO)', satX - 90, satY - 20);
 
-    // RF Telemetry Downlink Beam
     const beamPulse = (time * 0.08) % 100;
     ctx.strokeStyle = 'rgba(0, 240, 255, 0.25)';
     ctx.lineWidth = 1.2;
@@ -517,19 +449,21 @@
   /* -------------------------------------------------------------
      MAIN ENGINE LOOP & CONTROLS
      ------------------------------------------------------------- */
-  function initScene() {
-    if (currentMode === 'chip') initChipScene();
-    else if (currentMode === 'fpga') initFpgaScene();
-    else if (currentMode === 'pcb') initPcbScene();
-    else if (currentMode === 'orbit') initOrbitScene();
-  }
-
   function loop(time) {
     if (!isPaused) {
-      if (currentMode === 'chip') renderChipScene(time);
-      else if (currentMode === 'fpga') renderFpgaScene(time);
-      else if (currentMode === 'pcb') renderPcbScene(time);
-      else if (currentMode === 'orbit') renderOrbitScene(time);
+      ctx.clearRect(0, 0, width, height);
+
+      if (currentMode === 'fab_rf') {
+        // Combined Semiconductor Manufacturing + RF Wave Propagation
+        drawSemiconductorFab(time);
+        drawRfSignals(time);
+      } else if (currentMode === 'litho') {
+        drawSemiconductorFab(time);
+      } else if (currentMode === 'rf_waves') {
+        drawRfSignals(time);
+      } else if (currentMode === 'orbit') {
+        drawOrbit(time);
+      }
     }
     animationFrameId = requestAnimationFrame(loop);
   }
@@ -538,12 +472,13 @@
   animationFrameId = requestAnimationFrame(loop);
 
   window.setCircuitMode = function (mode) {
-    if (['chip', 'fpga', 'pcb', 'orbit'].includes(mode)) {
+    if (['fab_rf', 'litho', 'rf_waves', 'orbit'].includes(mode)) {
       currentMode = mode;
-      initScene();
       const labelEl = document.getElementById('circuit-mode-name');
       if (labelEl) {
-        labelEl.textContent = mode.toUpperCase() + ' MODE';
+        labelEl.textContent = (mode === 'fab_rf') ? 'FAB & RF WAFER' :
+                             (mode === 'litho') ? 'LITHO SCAN' :
+                             (mode === 'rf_waves') ? 'RF PROPAGATION' : 'ORBIT LEO';
       }
     }
   };

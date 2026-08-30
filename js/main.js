@@ -206,4 +206,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* -------------------------------------------------------------
+     4. PHOTO GALLERY FILTERING
+     ------------------------------------------------------------- */
+  const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryCards = document.querySelectorAll('.gallery-card');
+
+  galleryFilterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (window.playUiSound) window.playUiSound('click');
+      galleryFilterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      galleryCards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
 });
+
