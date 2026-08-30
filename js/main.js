@@ -14,58 +14,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('stream-prev-btn');
   const nextBtn = document.getElementById('stream-next-btn');
 
-  if (track && viewport) {
+  let currentOffset = 0;
+  let isHovered = false;
+  let autoSlideTimer = null;
+  const cardWidth = 310;
+  const cardGap = 19.2; // 1.2rem
+  const step = cardWidth + cardGap;
+
+  function getMaxOffset() {
+    if (!viewport || !track) return 0;
     const cards = track.querySelectorAll('.stream-card');
-    const cardWidth = 310;
-    const cardGap = 19.2; // 1.2rem
-    const step = cardWidth + cardGap;
-    let currentOffset = 0;
-    let isHovered = false;
-    let autoSlideTimer = null;
+    const visibleW = viewport.clientWidth;
+    const totalW = cards.length * step - cardGap;
+    return Math.max(0, totalW - visibleW);
+  }
 
-    function getMaxOffset() {
-      const visibleW = viewport.clientWidth;
-      const totalW = cards.length * step - cardGap;
-      return Math.max(0, totalW - visibleW);
-    }
-
-    function updateTrack() {
+  function updateTrack() {
+    if (track) {
       track.style.transform = `translateX(-${currentOffset}px)`;
     }
+  }
 
-    function slideNext() {
-      const maxOffset = getMaxOffset();
-      currentOffset += step;
-      if (currentOffset > maxOffset + 15) {
-        currentOffset = 0; // Loop back smoothly
-      }
-      updateTrack();
+  function slideNext() {
+    const maxOffset = getMaxOffset();
+    currentOffset += step;
+    if (currentOffset > maxOffset + 15) {
+      currentOffset = 0; // Loop back smoothly
     }
+    updateTrack();
+  }
 
-    function slidePrev() {
-      const maxOffset = getMaxOffset();
-      currentOffset -= step;
-      if (currentOffset < 0) {
-        currentOffset = maxOffset;
-      }
-      updateTrack();
+  function slidePrev() {
+    const maxOffset = getMaxOffset();
+    currentOffset -= step;
+    if (currentOffset < 0) {
+      currentOffset = maxOffset;
     }
+    updateTrack();
+  }
 
+  function initStreamSlider() {
+    currentOffset = 0;
+    updateTrack();
+
+    if (autoSlideTimer) clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => {
+      if (!isHovered) slideNext();
+    }, 3200);
+  }
+
+  window.initStreamSlider = initStreamSlider;
+
+  if (track && viewport) {
     if (nextBtn) nextBtn.addEventListener('click', slideNext);
     if (prevBtn) prevBtn.addEventListener('click', slidePrev);
-
-    // Auto-advance one by one every 3.2 seconds
-    function startTimer() {
-      if (autoSlideTimer) clearInterval(autoSlideTimer);
-      autoSlideTimer = setInterval(() => {
-        if (!isHovered) slideNext();
-      }, 3200);
-    }
 
     viewport.addEventListener('mouseenter', () => { isHovered = true; });
     viewport.addEventListener('mouseleave', () => { isHovered = false; });
 
-    // Touch swipe support
+    // Touch swipe support for mobile
     let startX = 0;
     viewport.addEventListener('touchstart', (e) => {
       startX = e.changedTouches[0].screenX;
@@ -79,17 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (endX - startX > 40) slidePrev();
     }, { passive: true });
 
-    startTimer();
+    initStreamSlider();
+
     window.addEventListener('resize', () => {
-      if (currentOffset > getMaxOffset()) {
-        currentOffset = getMaxOffset();
+      const maxOffset = getMaxOffset();
+      if (currentOffset > maxOffset) {
+        currentOffset = maxOffset;
         updateTrack();
       }
     });
   }
 
   /* -------------------------------------------------------------
-     2. LIGHTBOX MODAL
+     2. PHOTO LIGHTBOX MODAL
      ------------------------------------------------------------- */
   const modalBackdrop = document.getElementById('lightbox-modal');
   const modalImg = document.getElementById('lightbox-img');

@@ -42,6 +42,7 @@
         <li><a href="#biography" class="nav-link">Biography</a></li>
         <li><a href="#research" class="nav-link">Research</a></li>
         <li><a href="#competencies" class="nav-link">Competencies</a></li>
+        <li><a href="#videos" class="nav-link">Videos</a></li>
         <li><a href="#missions" class="nav-link">Flight Missions</a></li>
         <li><a href="#field-stream" class="nav-link">Lab Archive</a></li>
         <li><a href="#publications" class="nav-link">Publications</a></li>
@@ -329,6 +330,24 @@
   </section>
 
   <!-- ==========================================================================
+       VIDEO DEMONSTRATIONS & LABORATORY RECORDINGS
+       ========================================================================== -->
+  <section id="videos" style="background: rgba(17, 24, 39, 0.3); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Laboratory Recordings</span>
+        <h2 class="section-title">Video Demonstrations &amp; Telemetry Tests</h2>
+        <p class="section-subtitle">
+          Demonstrations of CW Morse &amp; GMSK radio telemetry generation, embedded system telemetry simulation, and engineering research facilities.
+        </p>
+      </div>
+
+      <!-- Populated dynamically from js/media-data.js (VIDEO_DATA) -->
+      <div class="projects-academic-grid" id="videos-container"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        CONTINUOUS FIELD & LAB PHOTO STREAM ("FIXED SIZE ONE BY ONE")
        ========================================================================== -->
   <section class="photo-stream-section" id="field-stream">
@@ -342,6 +361,20 @@
           <button class="stream-btn" id="stream-prev-btn" aria-label="Previous Photo">❮</button>
           <button class="stream-btn" id="stream-next-btn" aria-label="Next Photo">❯</button>
         </div>
+      </div>
+
+      <!-- Category Filter Bar for Easy Navigation of All Photos -->
+      <div class="photo-filters-bar">
+        <button class="photo-filter-btn active" data-filter="all">ALL ARCHIVE (50+)</button>
+        <button class="photo-filter-btn" data-filter="Cleanroom &amp; Infrastructure">CLEANROOM &amp; FFU</button>
+        <button class="photo-filter-btn" data-filter="Helmholtz Coil &amp; Geomagnetics">HELMHOLTZ COIL</button>
+        <button class="photo-filter-btn" data-filter="EPDM Magnetometer">EPDM QUAD-MAG</button>
+        <button class="photo-filter-btn" data-filter="Slippers2Sat CubeSat">SLIPPERS2SAT (S2S)</button>
+        <button class="photo-filter-btn" data-filter="Soldering &amp; Student Training">SMD SOLDERING &amp; LAB</button>
+        <button class="photo-filter-btn" data-filter="RF Telemetry &amp; Comms">RF &amp; GROUND STATION</button>
+        <button class="photo-filter-btn" data-filter="YOLO Vision &amp; Robotics">YOLO VISION &amp; AI</button>
+        <button class="photo-filter-btn" data-filter="Dharan Bootcamp">DHARAN BOOTCAMP</button>
+        <button class="photo-filter-btn" data-filter="Labs &amp; Field Research">LABS &amp; FIELD</button>
       </div>
 
       <div class="stream-viewport" id="stream-viewport">
@@ -876,6 +909,7 @@
   </div>
 
   <!-- Lightweight Scripts -->
+  <script src="js/media-data.js"></script>
   <script src="js/articles.js"></script>
   <script src="js/main.js"></script>
 </body>

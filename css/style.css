@@ -409,6 +409,54 @@ a:hover {
   border-color: var(--accent-blue);
 }
 
+/* Category Filter Bar for Photos */
+.photo-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+}
+.photo-filter-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.photo-filter-btn:hover {
+  color: #fff;
+  border-color: var(--border-hover);
+}
+.photo-filter-btn.active {
+  background: rgba(96, 165, 250, 0.14);
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+/* Video Player Card */
+.video-card {
+  overflow: hidden;
+}
+.video-player-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.video-player-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .stream-viewport {
   position: relative;
   width: 100%;
