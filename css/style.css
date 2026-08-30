@@ -623,6 +623,94 @@ a:hover {
   font-size: 1rem;
 }
 
+/* ==========================================================================
+   TECHNICAL SKILLS MATRIX
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.4rem;
+}
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition);
+}
+.skill-card:hover {
+  border-color: var(--border-hover);
+}
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+.skill-card-icon {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  background: rgba(96, 165, 250, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.skill-card-title {
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 0;
+}
+.skill-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.skill-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Cleanroom & Aerospace Infrastructure Card */
+.cleanroom-highlight-box {
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+}
+.cleanroom-highlight-box h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Personal Profile & Languages */
+.personal-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+}
+.personal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+}
+.personal-card h4 {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.personal-card-text {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Lightbox Modal */
 .modal-backdrop {
   position: fixed;
