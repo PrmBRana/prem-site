@@ -208,27 +208,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -------------------------------------------------------------
-     4. PHOTO GALLERY FILTERING
+     4. PROJECT PHOTO CAROUSELS ("PROGRAM SLIDING")
      ------------------------------------------------------------- */
-  const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const galleryCards = document.querySelectorAll('.gallery-card');
+  document.querySelectorAll('.project-carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    if (!track || slides.length === 0) return;
 
-  galleryFilterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (window.playUiSound) window.playUiSound('click');
-      galleryFilterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
+    let currentIndex = 0;
 
-      const filter = btn.getAttribute('data-filter');
-      galleryCards.forEach((card) => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          goToSlide(idx);
+        });
+        dotsContainer.appendChild(dot);
       });
-    });
+    }
+
+    function updateSlides() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentIndex);
+        });
+      }
+    }
+
+    function goToSlide(idx) {
+      if (window.playUiSound) window.playUiSound('click');
+      currentIndex = (idx + slides.length) % slides.length;
+      updateSlides();
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+      });
+    }
   });
 });
+
 
