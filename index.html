@@ -3,78 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prem Bahadur Rana | Satellite Research Fellow & ASIC Hardware Developer</title>
-  <meta name="description" content="Portfolio of Prem Bahadur Rana - EPDM Mission Lead, Satellite Research Fellow, and RISC-V Hardware Developer at Antarikchya Pratisthan Nepal (APN). Specialized in CubeSats, STM32 dual-core IPCC, RF Modems, and Edge AI.">
-  <meta name="keywords" content="Prem Bahadur Rana, RISC-V, CubeSat, Slippers2Sat, EPDM, Quad-Mag, STM32 IPCC, Ring Buffer, GMSK, GFSK, AX.25, LittleFS, Tiny Tapeout, ASIC, Antarikchya Pratisthan Nepal">
+  <title>Prem Bahadur Rana | Satellite Research Fellow &amp; ASIC Developer</title>
+  <meta name="description" content="Personal portfolio of Prem Bahadur Rana - EPDM Mission Lead, Satellite Research Fellow at Antarikchya Pratisthan Nepal (APN), and RISC-V Hardware Developer.">
   <meta name="author" content="Prem Bahadur Rana">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://premrana.com.np/">
-  <meta property="og:title" content="Prem Bahadur Rana | Satellite Research Fellow & ASIC Developer">
-  <meta property="og:description" content="EPDM Mission Lead & RISC-V ASIC Developer. Explore flight projects and interactive hardware engineering labs.">
-  <meta property="og:image" content="https://premrana.com.np/images/prem.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon1.png">
 
-  <!-- Typography -->
+  <!-- Clean Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Subtle Ambient Aerospace & Silicon Canvas -->
+  <!-- Minimalist Background Canvas -->
   <canvas id="circuit-bg-canvas"></canvas>
-  <div class="grid-overlay"></div>
 
   <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar">
     <div class="container nav-container">
-      <a href="#hero" class="nav-brand" onclick="playUiSound('click')">
-        <div class="brand-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-            <rect x="9" y="9" width="6" height="6"></rect>
-            <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"></path>
-          </svg>
-        </div>
-        <div class="brand-text">PREM BAHADUR <span>RANA</span></div>
+      <a href="#hero" class="nav-brand">
+        PREM BAHADUR <span>RANA</span>
       </a>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#hero" class="nav-link active" onclick="playUiSound('click')">About</a></li>
-        <li><a href="#labs" class="nav-link" onclick="playUiSound('click')">Engineering Labs</a></li>
-        <li><a href="#projects" class="nav-link" onclick="playUiSound('click')">Projects</a></li>
-        <li><a href="#publications" class="nav-link" onclick="playUiSound('click')">Publications</a></li>
-        <li><a href="#contact" class="nav-link" onclick="playUiSound('click')">Contact</a></li>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link">About</a></li>
+        <li><a href="#gallery-slider" class="nav-link">Photo Gallery</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#expertise" class="nav-link">Hardware Focus</a></li>
+        <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-
-      <div class="nav-actions">
-        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="toggleCircuitPause()" title="Click to Pause/Resume Background Simulation">
-          <span class="pulse-dot"></span>
-          <span id="circuit-mode-name">ORBIT &amp; SILICON LIVE</span>
-        </div>
-
-        <button class="audio-toggle-btn active" id="sound-toggle-btn" onclick="toggleSoundMute()" title="UI Audio Feedback: Active">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-        </button>
-
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="playUiSound('click')">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
     </div>
   </nav>
 
@@ -83,341 +46,322 @@
        ========================================================================== -->
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-telemetry-bar">
-          <span class="pulse-dot"></span>
-          <span>EPDM MISSION LEAD // SLIPPERS2SAT 1U LEO // RISC-V ASIC DEVELOPER</span>
-        </div>
-
-        <h1 class="hero-title">
-          Architecting Silicon, CubeSats &amp; <span>Space Avionics.</span>
-        </h1>
-
-        <div class="hero-subtitle">
-          Electronics &amp; Communication Engineer — Antarikchya Pratisthan Nepal (APN)
-        </div>
-
+      <div>
+        <span class="hero-tag">● SATELLITE RESEARCH FELLOW // ANTARIKCHYA PRATISTHAN NEPAL</span>
+        <h1 class="hero-title">Designing Space Avionics &amp; Silicon Architectures.</h1>
+        <div class="hero-subtitle">EPDM Mission Lead | RISC-V Hardware Developer</div>
         <p class="hero-bio">
-          I am a satellite research fellow and hardware engineer focusing on custom RISC-V processor architectures, space-borne magnetometry, and high-reliability embedded systems. I served as the <strong>EPDM Mission Lead</strong> for Nepal’s <strong>Slippers2Sat 1U CubeSat</strong> (successfully launched from Hunan, China), mentoring indigenous Chepang and Tamang middle-school students at the Navodaya Space System Laboratory (SSL).
+          I am an Electronics &amp; Communication Engineer specializing in satellite payload development, open-source RISC-V processor design (SkyWater 130nm ASIC), and high-reliability embedded firmware. I served as the <strong>EPDM Mission Lead</strong> for Nepal's <strong>Slippers2Sat 1U CubeSat</strong> (successfully launched from Hunan, China), mentoring middle school students at the Navodaya Space System Laboratory (SSL).
         </p>
 
-        <div class="hero-cta-group">
-          <a href="#projects" class="btn btn-primary" onclick="playUiSound('click')">
-            View Featured Projects
-          </a>
-          <a href="#labs" class="btn btn-outline" onclick="playUiSound('click')">
-            Interactive Engineering Labs
-          </a>
-          <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-emerald" onclick="playUiSound('click')">
-            GitHub (@PrmBRana)
-          </a>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#gallery-slider" class="btn btn-outline">Photo Slider</a>
+          <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-outline">GitHub (@PrmBRana)</a>
         </div>
 
-        <div class="hero-telemetry-metrics">
-          <div class="metric-card">
-            <span class="metric-value">51<span>+</span></span>
-            <span class="metric-label">Repositories on GitHub</span>
+        <div class="hero-metrics">
+          <div>
+            <span class="metric-number">51+</span>
+            <span class="metric-label">GitHub Repositories</span>
           </div>
-          <div class="metric-card">
-            <span class="metric-value">1U<span> LEO</span></span>
+          <div>
+            <span class="metric-number">1U LEO</span>
             <span class="metric-label">Slippers2Sat In Orbit</span>
           </div>
-          <div class="metric-card">
-            <span class="metric-value">99.3<span>%</span></span>
-            <span class="metric-label">YOLOv12S Vision Accuracy</span>
+          <div>
+            <span class="metric-number">99.3%</span>
+            <span class="metric-label">YOLOv12S AI Precision</span>
           </div>
         </div>
       </div>
 
-      <!-- Hero Portrait Card -->
-      <div class="hero-visual-wrapper">
-        <div class="profile-card">
-          <div class="profile-image-box">
-            <img src="images/prem.jpg" alt="Prem Bahadur Rana">
+      <div class="hero-photo-box">
+        <img src="images/prem.jpg" alt="Prem Bahadur Rana">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTINUOUS FIXED-SIZE PHOTO SLIDER ("CONTINUOUS SLIDING IN FIXED SIZE")
+       ========================================================================== -->
+  <section class="continuous-slider-section" id="gallery-slider">
+    <div class="container">
+      <div class="slider-header-row">
+        <div>
+          <div class="section-tag">Visual Documentation</div>
+          <h2 style="font-size: 1.6rem; color: #fff; margin: 0;">Flight Mission &amp; Lab Photo Stream</h2>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="slider-prev-btn" aria-label="Previous Photo">❮</button>
+          <button class="slider-btn" id="slider-next-btn" aria-label="Next Photo">❯</button>
+        </div>
+      </div>
+
+      <div class="slider-wrapper" id="photo-slider-wrapper">
+        <div class="slider-track" id="photo-slider-track">
+
+          <!-- Slide 1 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat 1U CubeSat Insignia', 'Official mission emblem for Nepal\'s educational nano-satellite launched from Hunan, China.')">
+            <img src="images/s2s_logo.png" alt="Slippers2Sat Insignia" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Slippers2Sat (S2S)</div>
+              <p class="slide-title">Mission Insignia &amp; Logo</p>
+            </div>
           </div>
-          <div class="profile-card-footer">
-            <span>PREM BAHADUR RANA</span>
-            <span style="color: var(--accent-emerald);">● FLIGHT HARDWARE ACTIVE</span>
+
+          <!-- Slide 2 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/s14.png', 'Navodaya SSL Cleanroom Assembly', 'Middle school students assembling satellite prototype boards at Space System Lab.')">
+            <img src="images/s14.png" alt="Navodaya SSL Cleanroom" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Satellite Lab</div>
+              <p class="slide-title">Navodaya SSL Cleanroom Assembly</p>
+            </div>
           </div>
+
+          <!-- Slide 3 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/epdm1.png', 'EPDM Quad-Mag Payload Architecture', 'Non-Boom Quad-Mag sensor architecture detecting seismo-magnetic waves with UBSS noise reduction.')">
+            <img src="images/epdm1.png" alt="EPDM Architecture" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">EPDM Payload</div>
+              <p class="slide-title">Quad-Mag System Architecture</p>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/e1.jpeg', 'Quad-Mag Sensor Board Prototype', 'Flight board populated with 4x PNI RM3100 magnetometers and Micron MT25QL 1Gb NOR Flash on STM32.')">
+            <img src="images/e1.jpeg" alt="Quad-Mag Board" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Flight Hardware</div>
+              <p class="slide-title">Quad-Mag Flight Board Prototype</p>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/RISC.jpeg', 'RISC-V 5-Stage Core Layout', 'Synthesizable 32-bit RV32I pipelined core designed for SkyWater 130nm ASIC via Tiny Tapeout.')">
+            <img src="images/RISC.jpeg" alt="RISC-V Core Layout" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Silicon ASIC</div>
+              <p class="slide-title">RISC-V 5-Stage Core Layout</p>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/fruits.png', 'YOLO Object Detection Output', 'Multi-class bounding box classification isolating fresh vs rotten apples and tomatoes.')">
+            <img src="images/fruits.png" alt="YOLO Fruit Detection" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Computer Vision</div>
+              <p class="slide-title">YOLOv12S Agricultural Sorting (99.3%)</p>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/y1.jpg', 'Conveyor Sorting Mechanism', 'Motorized sorting conveyor driven by Raspberry Pi 4 edge computing and dual cameras.')">
+            <img src="images/y1.jpg" alt="Conveyor Belt Sorting" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Edge Mechatronics</div>
+              <p class="slide-title">Automated Sorting Conveyor Rig</p>
+            </div>
+          </div>
+
+          <!-- Slide 8 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/dharan/d1.jpg', 'Dharan Space Bootcamp Kickoff', '4-day intensive CubeSat hands-on bootcamp mentoring eastern Nepal high school students.')">
+            <img src="images/dharan/d1.jpg" alt="Dharan Bootcamp Kickoff" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">STEM Education</div>
+              <p class="slide-title">Dharan Space Bootcamp Kickoff</p>
+            </div>
+          </div>
+
+          <!-- Slide 9 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/dharan/d6.jpg', 'CanSat Drop Tower Test', 'Drop testing CanSat payload with deployment parachute over Dharan.')">
+            <img src="images/dharan/d6.jpg" alt="CanSat Drop Test" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Field Testing</div>
+              <p class="slide-title">CanSat Drop Tower Launch</p>
+            </div>
+          </div>
+
+          <!-- Slide 10 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/dharan/IMG_2805.jpg', 'Parachute Descent Capture', 'Capturing parachute inflation and steady descent during field tests.')">
+            <img src="images/dharan/IMG_2805.jpg" alt="Parachute Descent" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Recovery Systems</div>
+              <p class="slide-title">Parachute Terminal Descent</p>
+            </div>
+          </div>
+
+          <!-- Slide 11 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/s12.jpg', 'Subsystem Mentorship Session', 'Mentoring student fellows on electrical power systems (EPS) and flight computers.')">
+            <img src="images/s12.jpg" alt="Subsystem Mentorship" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Mentorship</div>
+              <p class="slide-title">Subsystem Architecture Session</p>
+            </div>
+          </div>
+
+          <!-- Slide 12 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/s6.jpeg', 'On-Chip Digipeater RF Bench', 'RF communications test bench for amateur satellite emergency packet repeater (IAC Paper).')">
+            <img src="images/s6.jpeg" alt="Digipeater RF Bench" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">RF Avionics</div>
+              <p class="slide-title">On-Chip Digipeater RF Bench</p>
+            </div>
+          </div>
+
+          <!-- Slide 13 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/e2.jpeg', 'Outdoor Magnetic Test Field', 'Field geomagnetic measurements away from ferromagnetic noise.')">
+            <img src="images/e2.jpeg" alt="Outdoor Field Calibration" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Geomagnetics</div>
+              <p class="slide-title">Outdoor Magnetic Test Field</p>
+            </div>
+          </div>
+
+          <!-- Slide 14 -->
+          <div class="fixed-slide-card" onclick="openLightbox('images/p1.webp', 'Flight Readiness Inspection', 'Mechanical tolerances and mass budget validation before shipment.')">
+            <img src="images/p1.webp" alt="Flight Readiness" loading="lazy">
+            <div class="slide-caption-overlay">
+              <div class="slide-category">Quality Assurance</div>
+              <p class="slide-title">Flight Readiness Inspection</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       FEATURED PROJECTS (SIDE-BY-SIDE WITH PHOTO CAROUSEL SLIDER)
+       FEATURED PROJECTS
        ========================================================================== -->
   <section id="projects">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Engineering Portfolio</div>
-        <h2 class="section-title">Featured Projects &amp; Flight Missions</h2>
-        <p class="section-subtitle">
-          Real flight hardware, open-source silicon processors, and embedded systems engineered by Prem Bahadur Rana.
-        </p>
+        <div class="section-tag">Engineering Work</div>
+        <h2 class="section-title">Featured Projects</h2>
       </div>
 
-      <div class="projects-container">
+      <div class="projects-grid">
 
-        <!-- PROJECT 1: Slippers2Sat (S2S) 1U CubeSat -->
-        <div class="project-item-card">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-s2s">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat (S2S) Mission Insignia', 'Nepal\'s first middle-school educational nano-satellite project supported by ARDC and successfully launched from Hunan, China.')">
-                  <img src="images/s2s_logo.png" alt="Slippers2Sat Insignia">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/s14.png', 'Navodaya SSL Cleanroom Assembly', 'Middle school fellows hands-on testing satellite flight modules at Navodaya Space System Laboratory.')">
-                  <img src="images/s14.png" alt="Navodaya SSL Cleanroom">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/s12.jpg', 'Subsystem Architecture Mentorship', 'Mentoring student researchers on onboard computing, battery protection, and power distribution.')">
-                  <img src="images/s12.jpg" alt="Subsystem Mentorship">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/s11.jpg', 'Chassis Wire Harnessing', 'Precision wiring and connector harnessing within the 1U structural aluminum frame.')">
-                  <img src="images/s11.jpg" alt="Chassis Harnessing">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/s1.jpeg', 'Subsystem Verification', 'Verifying sensor communications across SPI and I2C buses.')">
-                  <img src="images/s1.jpeg" alt="Subsystem Verification">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/p1.webp', 'Flight Readiness Inspection', 'Final mechanical tolerances and mass budget verification prior to launch.')">
-                  <img src="images/p1.webp" alt="Flight Readiness">
-                </div>
-              </div>
-              <button class="carousel-prev" aria-label="Previous Slide">❮</button>
-              <button class="carousel-next" aria-label="Next Slide">❯</button>
-              <div class="carousel-dots"></div>
-            </div>
+        <!-- Project 1 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-cyan">1U CubeSat Mission</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">Hunan Launch</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">Satellite Engineering // LEO Flight Mission</div>
-            <h3 class="project-title">Slippers2Sat (S2S) 1U CubeSat Mission</h3>
-            <p class="project-desc">
-              Nepal’s first middle-school educational nano-satellite project, successfully launched into Low Earth Orbit from Hunan, China. Supported by Amateur Radio Digital Communications (ARDC), the mission trained indigenous and marginalized middle-school students (grades 7–8) from Chepang, Tamang, and Dalit communities at the Navodaya Space System Laboratory (SSL).
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-cyan">1U CubeSat</span>
-              <span class="badge badge-emerald">Hunan Launch</span>
-              <span class="badge badge-amber">ARDC Funded</span>
-              <span class="badge badge-purple">Chepang STEM</span>
-            </div>
-            <div class="project-links">
-              <a href="https://antarikchya.org.np" target="_blank" class="btn btn-outline btn-sm">
-                Antarikchya Pratisthan Nepal
-              </a>
-            </div>
+          <h3 class="project-card-title">Slippers2Sat (S2S) 1U CubeSat</h3>
+          <p class="project-card-desc">
+            Nepal's first middle-school nano-satellite mission funded by ARDC and successfully launched into Low Earth Orbit from Hunan, China. Mentored indigenous students from Chepang, Tamang, and Dalit communities through structural assembly, harnessing, and flight readiness reviews at the Navodaya Space System Laboratory (SSL).
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">1U Structure</span>
+            <span class="badge">ARDC Grant</span>
+            <span class="badge">Navodaya SSL</span>
+            <span class="badge">Amateur Satellite</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://antarikchya.org.np" target="_blank" class="btn btn-outline btn-sm">APN Foundation</a>
           </div>
         </div>
 
-        <!-- PROJECT 2: Earthquake Precursor Detection Mission (EPDM) -->
-        <div class="project-item-card reverse">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-epdm">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/epdm1.png', 'EPDM System Architecture', 'Non-Boom Quad-Mag sensor configuration isolating ULF/ELF seismo-magnetic waves from spacecraft noise.')">
-                  <img src="images/epdm1.png" alt="EPDM System Architecture">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/e1.jpeg', 'Quad-Mag Flight Board Prototype', 'Fabricated flight PCB featuring four PNI RM3100 magnetometers and Micron MT25QL 1Gb NOR Flash.')">
-                  <img src="images/e1.jpeg" alt="Quad-Mag Board">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/e2.jpeg', 'Outdoor Magnetic Calibration', 'Field magnetic testing rig measuring ambient Earth field vectors away from iron interference.')">
-                  <img src="images/e2.jpeg" alt="Field Magnetic Calibration">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/e3.jpeg', 'Budhanilkantha Magnetic Survey', 'Baseline field survey validated against the International Geomagnetic Reference Field (49,068.8 nT).')">
-                  <img src="images/e3.jpeg" alt="Budhanilkantha Survey">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/e4.jpeg', 'Pulchowk Thin-Shell Testing', '9-parameter ellipsoid calibration eliminating hard-iron and soft-iron distortions.')">
-                  <img src="images/e4.jpeg" alt="Pulchowk Calibration">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/boot.jpeg', 'Thin-Shell Calibration Matrix', 'Mathematical rotation and scaling matrix aligning magnetic vectors with true coordinates.')">
-                  <img src="images/boot.jpeg" alt="Thin Shell Matrix">
-                </div>
-              </div>
-              <button class="carousel-prev" aria-label="Previous Slide">❮</button>
-              <button class="carousel-next" aria-label="Next Slide">❯</button>
-              <div class="carousel-dots"></div>
-            </div>
+        <!-- Project 2 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-emerald">Seismo-Magnetometry</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">EPDM Lead</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">EPDM Lead // Space Geomagnetism</div>
-            <h3 class="project-title">Earthquake Precursor Detection Mission (EPDM)</h3>
-            <p class="project-desc">
-              Served as EPDM Mission Lead developing a non-boom CubeSat payload to monitor Ultra-Low Frequency (&lt;3Hz) and Extremely Low Frequency (3Hz–3kHz) seismo-electromagnetic anomalies in Earth's magnetic field prior to seismic events. Engineered a Quad-Mag sensor array (4x PNI RM3100) integrated with a Micron MT25QL 1Gb Quad-SPI NOR Flash on STM32, utilizing the Undetermined Blind Source Separation (UBSS) algorithm to eliminate internal spacecraft magnetic noise.
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-emerald">4x PNI RM3100</span>
-              <span class="badge badge-cyan">Micron MT25QL 1Gb</span>
-              <span class="badge badge-amber">UBSS Algorithm</span>
-              <span class="badge badge-purple">IGRF Model</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/PrmBRana/Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash" target="_blank" class="btn btn-primary btn-sm">
-                Flight Code (GitHub)
-              </a>
-              <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
-                ResearchGate Paper
-              </a>
-            </div>
+          <h3 class="project-card-title">Earthquake Precursor Detection (EPDM)</h3>
+          <p class="project-card-desc">
+            Non-boom CubeSat payload engineered to detect Ultra-Low Frequency (&lt;3Hz) and Extremely Low Frequency (3Hz–3kHz) seismo-electromagnetic precursors in Earth's magnetic field. Developed an array of four PNI RM3100 magnetometers with a Micron MT25QL 1Gb NOR Flash on STM32, utilizing the UBSS algorithm to isolate true ambient field signals.
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">4x PNI RM3100</span>
+            <span class="badge">Micron MT25QL 1Gb</span>
+            <span class="badge">UBSS Algorithm</span>
+            <span class="badge">IGRF Model</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/PrmBRana/Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash" target="_blank" class="btn btn-primary btn-sm">Flight Code (GitHub)</a>
           </div>
         </div>
 
-        <!-- PROJECT 3: RISC-V Processor Design -->
-        <div class="project-item-card">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-riscv">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/RISC.jpeg', 'RISC-V Processor Core Architecture', '5-stage pipelined RV32I processor synthesized for Tiny Tapeout SkyWater 130nm ASIC.')">
-                  <img src="images/RISC.jpeg" alt="RISC-V Architecture">
-                </div>
-              </div>
-            </div>
+        <!-- Project 3 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-cyan">VLSI Design</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">SkyWater 130nm</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">VLSI Design // Open-Source Silicon</div>
-            <h3 class="project-title">RISC-V 5-Stage Pipelined Processor Core</h3>
-            <p class="project-desc">
-              Designed and simulated a custom 32-bit RISC-V CPU architecture adhering to the RV32I user-level ISA using synthesizable Verilog HDL. Built both single-cycle and 5-stage pipelined processor models with hazard forwarding units, branch prediction, and stall logic. Integrated UART, SPI, and GPIO peripherals. Verified with ModelSim, Verilator, and Python-based cocotb testbenches, targeted for the SkyWater 130nm ASIC flow via Tiny Tapeout.
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-cyan">RV32I ISA</span>
-              <span class="badge badge-emerald">Verilog HDL</span>
-              <span class="badge badge-amber">OpenLane / Sky130</span>
-              <span class="badge badge-purple">Cocotb Verification</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-primary btn-sm">
-                GitHub Repositories
-              </a>
-            </div>
+          <h3 class="project-card-title">RISC-V 5-Stage Pipelined Processor</h3>
+          <p class="project-card-desc">
+            Synthesizable 32-bit RV32I processor core authored in Verilog HDL. Built both single-cycle and 5-stage pipelined models featuring hazard forwarding units, branch prediction, and stall logic. Integrated UART, SPI, and GPIO interfaces, verified with ModelSim, Verilator, and cocotb testbenches for Tiny Tapeout on SkyWater 130nm.
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">Verilog HDL</span>
+            <span class="badge">RV32I ISA</span>
+            <span class="badge">OpenLane</span>
+            <span class="badge">Cocotb</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-primary btn-sm">GitHub Repos</a>
           </div>
         </div>
 
-        <!-- PROJECT 4: YOLO Fruit Detection & Sorting -->
-        <div class="project-item-card reverse">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-yolo">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/fruits.png', 'YOLO Object Detection Output', 'Multi-class bounding box classification isolating fresh vs rotten apples and tomatoes.')">
-                  <img src="images/fruits.png" alt="YOLO Fruit Detection">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/y1.jpg', 'Automated Conveyor Sorting System', 'Motorized conveyor belt equipped with Raspberry Pi 4 edge computing and dual cameras.')">
-                  <img src="images/y1.jpg" alt="Conveyor Belt Sorting">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/y3.jpeg', 'Dual Camera Vision Chamber', 'Aluminum camera bracket providing uniform, shadow-free lighting for surface defect inspection.')">
-                  <img src="images/y3.jpeg" alt="Dual Camera Vision">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/y4.jpeg', 'Servo Diverter Flap Actuator', 'High-torque servo flap dynamically rejecting rotten produce in real time.')">
-                  <img src="images/y4.jpeg" alt="Servo Diverter Actuator">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/c1.jpg', 'Agricultural Packhouse Trials', 'Testing conveyor system under practical packhouse conditions.')">
-                  <img src="images/c1.jpg" alt="Agricultural Trials">
-                </div>
-              </div>
-              <button class="carousel-prev" aria-label="Previous Slide">❮</button>
-              <button class="carousel-next" aria-label="Next Slide">❯</button>
-              <div class="carousel-dots"></div>
-            </div>
+        <!-- Project 4 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-amber">Edge AI Vision</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">99.31% mAP</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">Computer Vision // Embedded AI Mechatronics</div>
-            <h3 class="project-title">Fresh &amp; Rotten Fruit Detection &amp; Sorting</h3>
-            <p class="project-desc">
-              Developed an automated agricultural sorting system deploying computer vision on embedded edge hardware. Authored research benchmarking <strong>YOLOv12S, YOLOv8, DETR, and Faster R-CNN</strong> across 11,675 annotated images of apples and tomatoes, achieving 99.31% mAP with real-time edge latency. Integrated with a stepper-driven conveyor belt, dual camera angles, Raspberry Pi 4 edge computing, and servo diverter actuators.
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-purple">YOLOv12S (99.3% mAP)</span>
-              <span class="badge badge-cyan">Raspberry Pi 4</span>
-              <span class="badge badge-emerald">OpenCV / PyTorch</span>
-              <span class="badge badge-amber">Servo Diverters</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation" target="_blank" class="btn btn-primary btn-sm">
-                GitHub Repository
-              </a>
-              <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
-                ResearchGate Paper (2025)
-              </a>
-            </div>
+          <h3 class="project-card-title">AI Fresh &amp; Rotten Fruit Sorting System</h3>
+          <p class="project-card-desc">
+            Automated quality control conveyor system evaluating 11,675 images across YOLOv12S, YOLOv8, DETR, and Faster R-CNN. Deployed on a Raspberry Pi 4 edge computer with dual web cameras and high-torque servo diverter flaps to mechanically separate rotten apples and tomatoes in real time.
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">YOLOv12S</span>
+            <span class="badge">Raspberry Pi 4</span>
+            <span class="badge">OpenCV / PyTorch</span>
+            <span class="badge">Mechatronics</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation" target="_blank" class="btn btn-primary btn-sm">GitHub Repo</a>
           </div>
         </div>
 
-        <!-- PROJECT 5: Dharan Space Bootcamp -->
-        <div class="project-item-card">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-dharan">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/d1.jpg', 'Dharan Space Bootcamp Kickoff', '4-day intensive CubeSat hands-on bootcamp mentoring eastern Nepal high school students.')">
-                  <img src="images/dharan/d1.jpg" alt="Dharan Bootcamp Kickoff">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/d3.jpg', 'CanSat Structure Assembly', 'Constructing lightweight airframes with shock-absorbing standoffs and sensor mounts.')">
-                  <img src="images/dharan/d3.jpg" alt="CanSat Structure Assembly">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/d5.jpg', 'Parachute Recovery Rigging', 'Calculating canopy surface area and folding deployment lines for controlled descent.')">
-                  <img src="images/dharan/d5.jpg" alt="Parachute Recovery">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/d7.jpg', 'Ground Telemetry Monitoring', 'Tracking live barometric altitude and radio packet transmission in real time.')">
-                  <img src="images/dharan/d7.jpg" alt="Ground Telemetry">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/d12.jpg', 'Bootcamp Certification Ceremony', 'Celebrating student achievements and mission completion in Dharan.')">
-                  <img src="images/dharan/d12.jpg" alt="Certification Ceremony">
-                </div>
-                <div class="carousel-slide" onclick="openLightbox('images/dharan/IMG_2805.jpg', 'Parachute Descent Capture', 'Capturing parachute inflation and steady terminal descent over Dharan.')">
-                  <img src="images/dharan/IMG_2805.jpg" alt="Parachute Descent">
-                </div>
-              </div>
-              <button class="carousel-prev" aria-label="Previous Slide">❮</button>
-              <button class="carousel-next" aria-label="Next Slide">❯</button>
-              <div class="carousel-dots"></div>
-            </div>
+        <!-- Project 5 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-cyan">Disaster Telemetry</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">IAC Paper</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">STEM Outreach // Aerospace Education</div>
-            <h3 class="project-title">Dharan Space &amp; CanSat STEM Bootcamp</h3>
-            <p class="project-desc">
-              Led a 4-day intensive hands-on CubeSat and CanSat workshop in Dharan, eastern Nepal. Mentored participating high-school students through structural design, soldering, sensor wiring (barometric BMP180, IMUs), radio telemetry transmission, and recovery parachute rigging, concluding with tower drop releases and live ground station decoding.
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-amber">Hands-on CanSat</span>
-              <span class="badge badge-cyan">Drop Tests</span>
-              <span class="badge badge-emerald">Telemetry Decoding</span>
-              <span class="badge badge-purple">High School STEM</span>
-            </div>
+          <h3 class="project-card-title">On-Chip Digipeater for Disaster Comms</h3>
+          <p class="project-card-desc">
+            Autonomous space-borne packet radio repeater operating on amateur satellite frequencies on Slippers2Sat. Enables store-and-forward emergency messaging during terrestrial network blackouts in mountainous Himalayan disaster zones. Presented at the International Astronautical Congress (IAC).
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">IAC Proceedings</span>
+            <span class="badge">AX.25 Packet Radio</span>
+            <span class="badge">Emergency Comms</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">ResearchGate</a>
           </div>
         </div>
 
-        <!-- PROJECT 6: On-Chip Digipeater for Disaster Communication -->
-        <div class="project-item-card reverse">
-          <div class="project-media-side">
-            <div class="project-carousel" id="carousel-digipeater">
-              <div class="carousel-track">
-                <div class="carousel-slide" onclick="openLightbox('images/s6.jpeg', 'On-Chip Digipeater RF Setup', 'RF communications and antenna matching test bench for the amateur satellite digipeater payload.')">
-                  <img src="images/s6.jpeg" alt="On-Chip Digipeater RF Setup">
-                </div>
-              </div>
-            </div>
+        <!-- Project 6 -->
+        <div class="clean-project-card">
+          <div class="project-card-header">
+            <span class="badge badge-amber">STEM Outreach</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">Eastern Nepal</span>
           </div>
-
-          <div class="project-text-side">
-            <div class="project-tag">Disaster Telemetry // IAC Paper</div>
-            <h3 class="project-title">On-Chip Digipeater for Disaster Communication</h3>
-            <p class="project-desc">
-              Co-authored research on the <em>Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication on Slippers2Sat</em>, presented at the International Astronautical Congress (IAC). The payload operates as an autonomous, space-borne packet radio repeater operating on amateur satellite frequencies to relay emergency messages in mountainous regions when terrestrial communications fail.
-            </p>
-            <div class="project-badges-row">
-              <span class="badge badge-amber">IAC Proceedings</span>
-              <span class="badge badge-cyan">AX.25 Packet Radio</span>
-              <span class="badge badge-emerald">Disaster Response</span>
-              <span class="badge badge-purple">Amateur Sat Frequency</span>
-            </div>
-            <div class="project-links">
-              <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
-                ResearchGate Profile
-              </a>
-            </div>
+          <h3 class="project-card-title">Dharan Space &amp; CanSat Bootcamp</h3>
+          <p class="project-card-desc">
+            Led a 4-day intensive hands-on CubeSat and CanSat workshop in Dharan. Mentored students through chassis assembly, precision soldering, sensor wiring (BMP180, IMU), radio telemetry transmission, and recovery parachute rigging, concluding with tower drop releases and live ground station decoding.
+          </p>
+          <div class="project-card-badges">
+            <span class="badge">Hands-on CanSat</span>
+            <span class="badge">Parachute Rigging</span>
+            <span class="badge">Telemetry Link</span>
           </div>
         </div>
 
@@ -426,537 +370,146 @@
   </section>
 
   <!-- ==========================================================================
-       INTERACTIVE HARDWARE ENGINEERING LABS
+       CORE HARDWARE EXPERTISE
        ========================================================================== -->
-  <section id="labs">
+  <section id="expertise" style="background: rgba(15, 23, 42, 0.25); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Interactive Architecture Demonstrators</div>
-        <h2 class="section-title">Hardware Engineering &amp; Silicon Labs</h2>
-        <p class="section-subtitle">
-          Live functional demonstrators illustrating low-level firmware synchronization, lock-free queues, radio telemetry modems, and fail-safe storage.
-        </p>
+        <div class="section-tag">Core Technical Focus</div>
+        <h2 class="section-title">Hardware Architecture &amp; Firmware</h2>
       </div>
 
-      <!-- Lab Switcher Navigation -->
-      <div class="lab-tabs">
-        <button class="lab-tab-btn active" data-lab="ipcc">
-          <span>STM32 Dual-Core IPCC</span>
-        </button>
-        <button class="lab-tab-btn" data-lab="ring">
-          <span>Lock-Free Ring Buffer</span>
-        </button>
-        <button class="lab-tab-btn" data-lab="rf">
-          <span>RF Oscilloscope (GMSK/AX.25)</span>
-        </button>
-        <button class="lab-tab-btn" data-lab="riscv">
-          <span>RISC-V 5-Stage Core</span>
-        </button>
-        <button class="lab-tab-btn" data-lab="littlefs">
-          <span>LittleFS Storage</span>
-        </button>
-      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+        <div class="clean-project-card" style="padding: 1.4rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem;">STM32 Dual-Core IPCC</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+            Asymmetric multiprocessing on Cortex-M7 (480MHz DSP/ADCS) and Cortex-M4 (240MHz Comms/LittleFS) using zero-copy SRAM3 mailboxes, hardware semaphores (HSEM), and L1 cache cleaning/invalidation.
+          </p>
+          <span class="badge badge-cyan">STM32H7 / WB55</span>
+        </div>
 
-      <!-- LAB 1: STM32 DUAL-CORE IPCC -->
-      <div class="lab-panel active" id="lab-panel-ipcc">
-        <div class="lab-grid">
-          <div class="lab-interactive-view">
-            <div class="lab-header-bar">
-              <span>STM32H7 / STM32WB ASYMMETRIC MULTIPROCESSING</span>
-              <span class="badge badge-cyan">SRAM3 D3 DOMAIN</span>
-            </div>
+        <div class="clean-project-card" style="padding: 1.4rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem;">Lock-Free Ring Buffer</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+            Single-producer single-consumer circular FIFO utilizing power-of-two masking and ARM CMSIS <code>__DMB()</code> data memory barriers for non-blocking UART/DMA telemetry piping without disabling interrupts.
+          </p>
+          <span class="badge badge-emerald">Lock-Free FIFO</span>
+        </div>
 
-            <div class="ipcc-cores-row">
-              <div class="core-block" id="core1-block">
-                <div class="core-title">CORE 1 (Cortex-M7)</div>
-                <div class="core-meta">480 MHz // DSP &amp; ADCS</div>
-                <div class="core-role">Real-time Telemetry Acquisition</div>
-                <div class="core-state" id="c1-status">IDLE (MONITORING OBC)</div>
-              </div>
+        <div class="clean-project-card" style="padding: 1.4rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem;">Satellite RF Modems</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+            GMSK ($BT=0.5$), GFSK, and CW Morse beacon modulators. Assembled Layer-2 AX.25 UI frames with HDLC bit-stuffing and applied G3RUH ($1+x^{12}+x^{17}$) scrambler whitening for amateur satellite downlinks.
+          </p>
+          <span class="badge badge-amber">AX.25 &amp; G3RUH</span>
+        </div>
 
-              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.35rem;">
-                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan);">IPCC CH1</span>
-                <div class="bus-indicator" id="ipcc-bus"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">MAILBOX IRQ</span>
-              </div>
-
-              <div class="core-block" id="core2-block">
-                <div class="core-title">CORE 2 (Cortex-M4)</div>
-                <div class="core-meta">240 MHz // COMMS &amp; FS</div>
-                <div class="core-role">LittleFS &amp; Downlink Task</div>
-                <div class="core-state" id="c2-status">READY (LISTENING CH1)</div>
-              </div>
-            </div>
-
-            <div class="ipcc-hardware-mailbox">
-              <div class="mailbox-header">
-                <span>HARDWARE IPCC REGISTERS &amp; SEMAPHORES</span>
-                <span>ADDR: 0x58000C00</span>
-              </div>
-              <div class="mailbox-registers">
-                <div class="reg-box">
-                  <span class="reg-name">IPCC_C1MR</span>
-                  <span class="reg-val" id="reg-c1mr">0x0000</span>
-                </div>
-                <div class="reg-box">
-                  <span class="reg-name">IPCC_C1SCR</span>
-                  <span class="reg-val" id="reg-c1scr">0x0000</span>
-                </div>
-                <div class="reg-box">
-                  <span class="reg-name">IPCC_C2TOC1</span>
-                  <span class="reg-val" id="reg-c2toc1">0x0000</span>
-                </div>
-                <div class="reg-box">
-                  <span class="reg-name">HSEM_R[0]</span>
-                  <span class="reg-val">LOCKED_M7</span>
-                </div>
-              </div>
-
-              <div class="shared-sram-box">
-                <div class="sram-header">
-                  <span>SHARED SRAM BUFFER (NON-CACHEABLE COHERENT REGION)</span>
-                  <span>0x38000400</span>
-                </div>
-                <div class="sram-payload-view" id="sram-payload">
-                  CMD_TELEMETRY_LOG -> [OBC] BATT=4.18V | CURR=420mA | TEMP=16.8C | LEO=520km
-                </div>
-              </div>
-            </div>
-
-            <div style="margin-top: 1.1rem;">
-              <button class="btn btn-primary btn-sm" onclick="dispatchIpccPacket()">
-                Dispatch Inter-Core Telemetry Packet
-              </button>
-            </div>
-          </div>
-
-          <div class="glass-panel lab-spec-card">
-            <h3>STM32 Dual-Core IPCC Architecture</h3>
-            <div class="lab-tech-pills">
-              <span class="badge badge-cyan">Zero-Copy Mailbox</span>
-              <span class="badge badge-emerald">Cache Coherency</span>
-              <span class="badge badge-amber">Hardware Semaphores</span>
-            </div>
-            <p class="lab-description">
-              Asymmetric multiprocessing (AMP) separating critical real-time attitude estimation (Cortex-M7) from communication protocol stacks and file systems (Cortex-M4).
-            </p>
-            <ul class="lab-key-features">
-              <li><strong>Zero-Copy Pointer Exchange:</strong> Exchanging 32-bit descriptors via IPCC hardware registers pointing to shared SRAM3 without memory copying penalties.</li>
-              <li><strong>Hardware Cache Coherency:</strong> Precise cache maintenance using <code>SCB_CleanDCache_by_Addr()</code> prior to transmission and <code>SCB_InvalidateDCache_by_Addr()</code> upon reception.</li>
-              <li><strong>Atomic Resource Protection:</strong> Hardware Semaphores (HSEM) prevent concurrent access to shared SPI buses and flash.</li>
-            </ul>
-
-            <div class="code-preview-box">
-              <div class="code-header">
-                <span>ipcc_mailbox_tx.c</span>
-                <span>ARM Cortex-M Embedded C</span>
-              </div>
-              <pre class="code-body"><code>/* Clean D-Cache to flush Core 1 write to physical SRAM */
-SCB_CleanDCache_by_Addr((uint32_t*)pMsgBuffer, sizeof(TelemetryPacket_t));
-
-/* Trigger IPCC Channel 1 interrupt to notify Core 2 */
-LL_IPCC_MakeTxChannelBusy(IPCC, LL_IPCC_CHANNEL_1);</code></pre>
-            </div>
-          </div>
+        <div class="clean-project-card" style="padding: 1.4rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem;">LittleFS Storage</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+            Fail-safe filesystem integration on SPI NOR Flash (W25Q64/W25Q128) using copy-on-write metadata pairs and wear-leveling to protect flight telemetry during unexpected solar eclipse power loss.
+          </p>
+          <span class="badge badge-cyan">Power-Loss Resilient</span>
         </div>
       </div>
-
-      <!-- LAB 2: LOCK-FREE RING BUFFER -->
-      <div class="lab-panel" id="lab-panel-ring">
-        <div class="lab-grid">
-          <div class="lab-interactive-view">
-            <div class="lab-header-bar">
-              <span>HIGH-THROUGHPUT ISR-SAFE RING BUFFER (SIZE = 16)</span>
-              <span class="badge badge-emerald">LOCK-FREE FIFO</span>
-            </div>
-
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.4rem;">
-              <div style="width: 100%; height: 260px; display: flex; justify-content: center; align-items: center;">
-                <canvas id="ring-buffer-canvas"></canvas>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; width: 100%;">
-                <div style="background: rgba(14, 21, 38, 0.85); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 4px; text-align: center; font-family: var(--font-mono);">
-                  <span style="font-size: 0.68rem; color: var(--text-muted); display: block;">HEAD</span>
-                  <span style="font-size: 1rem; font-weight: 700; color: var(--accent-cyan);" id="ring-head-val">0x00</span>
-                </div>
-                <div style="background: rgba(14, 21, 38, 0.85); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 4px; text-align: center; font-family: var(--font-mono);">
-                  <span style="font-size: 0.68rem; color: var(--text-muted); display: block;">TAIL</span>
-                  <span style="font-size: 1rem; font-weight: 700; color: var(--accent-amber);" id="ring-tail-val">0x00</span>
-                </div>
-                <div style="background: rgba(14, 21, 38, 0.85); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 4px; text-align: center; font-family: var(--font-mono);">
-                  <span style="font-size: 0.68rem; color: var(--text-muted); display: block;">COUNT</span>
-                  <span style="font-size: 1rem; font-weight: 700; color: var(--accent-emerald);" id="ring-count-val">0</span>
-                </div>
-                <div style="background: rgba(14, 21, 38, 0.85); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 4px; text-align: center; font-family: var(--font-mono);">
-                  <span style="font-size: 0.68rem; color: var(--text-muted); display: block;">OVERRUN</span>
-                  <span style="font-size: 1rem; font-weight: 700; color: var(--accent-crimson);" id="ring-overrun-val">0</span>
-                </div>
-              </div>
-
-              <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; width: 100%;">
-                <button class="btn btn-primary btn-sm" onclick="ringPushByte()">+ Push Byte (ISR)</button>
-                <button class="btn btn-outline btn-sm" onclick="ringPopByte()">- Pop Byte (Task)</button>
-                <button class="btn btn-emerald btn-sm" onclick="ringBurstPush()">Burst Write 4 Bytes</button>
-                <button class="btn btn-outline btn-sm" onclick="ringReset()">Reset</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel lab-spec-card">
-            <h3>Lock-Free Circular FIFO</h3>
-            <div class="lab-tech-pills">
-              <span class="badge badge-emerald">SPSC Non-Blocking</span>
-              <span class="badge badge-cyan">Power-of-2 Masking</span>
-              <span class="badge badge-amber">ARM __DMB() Barrier</span>
-            </div>
-            <p class="lab-description">
-              High-frequency ring buffer piping UART/SPI telemetry and DMA ADC samples between interrupt handlers and FreeRTOS tasks without disabling interrupts.
-            </p>
-            <ul class="lab-key-features">
-              <li><strong>Zero Modulo Division:</strong> Power-of-two capacity (<code>SIZE = 16</code>) wraps indices with bitwise AND (<code>head & 0x0F</code>), saving cycles on microcontrollers without hardware division.</li>
-              <li><strong>Memory Barriers:</strong> ARM CMSIS <code>__DMB()</code> memory barrier guarantees bytes are committed to RAM before advancing indices.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAB 3: SATELLITE RF OSCILLOSCOPE -->
-      <div class="lab-panel" id="lab-panel-rf">
-        <div class="lab-grid">
-          <div class="lab-interactive-view">
-            <div class="lab-header-bar">
-              <span>DIGITAL OSCILLOSCOPE // SATELLITE TRANSCEIVER LAB</span>
-              <span class="badge badge-amber">437.375 MHz</span>
-            </div>
-
-            <div class="oscilloscope-screen-container">
-              <canvas id="rf-oscilloscope-canvas"></canvas>
-              <div class="scope-hud-readout">
-                <span id="scope-readout-mod">MOD: GMSK (BT=0.5)</span>
-                <span id="scope-readout-freq">FREQ: 437.375 MHz</span>
-                <span id="scope-readout-baud">RATE: 9600 BAUD</span>
-              </div>
-            </div>
-
-            <div class="rf-modulation-selector">
-              <button class="rf-mod-btn active" data-mod="gmsk" onclick="setRfModulation('gmsk')">GMSK (BT=0.5)</button>
-              <button class="rf-mod-btn" data-mod="gfsk" onclick="setRfModulation('gfsk')">GFSK (h=0.5)</button>
-              <button class="rf-mod-btn" data-mod="cw" onclick="setRfModulation('cw')">CW Morse Beacon</button>
-              <button class="rf-mod-btn" data-mod="ax25" onclick="setRfModulation('ax25')">AX.25 Packet (HDLC)</button>
-              <button class="rf-mod-btn" data-mod="g3ruh" onclick="setRfModulation('g3ruh')">G3RUH Scrambler</button>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-              <button class="btn btn-outline btn-sm" id="cw-audio-btn" onclick="toggleCwAudio()">
-                Test CW Morse Audio (Web Audio)
-              </button>
-              <span style="color: var(--text-muted); font-size: 0.76rem; font-family: var(--font-mono);">
-                AMATEUR SATELLITE UHF BAND
-              </span>
-            </div>
-          </div>
-
-          <div class="glass-panel lab-spec-card">
-            <h3>Space Telemetry &amp; RF Modems</h3>
-            <div class="lab-tech-pills">
-              <span class="badge badge-amber">GMSK BT=0.5</span>
-              <span class="badge badge-cyan">AX.25 UI Frame</span>
-              <span class="badge badge-emerald">G3RUH 9600</span>
-              <span class="badge badge-purple">CW Morse Beacon</span>
-            </div>
-            <p class="lab-description">
-              Digital RF modem processing chains for CubeSat transceivers conforming to international amateur satellite standards.
-            </p>
-            <ul class="lab-key-features">
-              <li><strong>GMSK Pulse Shaping:</strong> Gaussian pre-modulation filter ($BT = 0.5$) eliminates sideband splatter while maintaining a constant RF envelope.</li>
-              <li><strong>AX.25 UI Frame:</strong> Layer-2 HDLC packet framing with <code>0x7E</code> flags, bit stuffing, and 16-bit CRC-CCITT polynomials.</li>
-              <li><strong>G3RUH Scrambler:</strong> Applied polynomial $1 + x^{12} + x^{17}$ LFSR whitening to guarantee clock recovery at ground stations (SatNOGS).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAB 4: RISC-V 5-STAGE PIPELINE -->
-      <div class="lab-panel" id="lab-panel-riscv">
-        <div class="lab-grid">
-          <div class="lab-interactive-view">
-            <div class="lab-header-bar">
-              <span>TINY TAPEOUT SKYWATER 130nm // RV32I 5-STAGE PIPELINE</span>
-              <span class="badge badge-cyan">SYNTHESIZABLE RTL</span>
-            </div>
-
-            <div class="pipeline-stages-grid">
-              <div class="pipeline-stage-box active-stage">
-                <span class="stage-code">IF</span>
-                <span class="stage-desc">Fetch</span>
-                <div class="stage-inst">LW x4, 0(x0)</div>
-              </div>
-              <div class="pipeline-stage-box">
-                <span class="stage-code">ID</span>
-                <span class="stage-desc">Decode</span>
-                <div class="stage-inst">SW x3, 0(x0)</div>
-              </div>
-              <div class="pipeline-stage-box">
-                <span class="stage-code">EX</span>
-                <span class="stage-desc">Execute</span>
-                <div class="stage-inst">ADD x3, x1, x2</div>
-              </div>
-              <div class="pipeline-stage-box">
-                <span class="stage-code">MEM</span>
-                <span class="stage-desc">Memory</span>
-                <div class="stage-inst">ADDI x2, x0, 10</div>
-              </div>
-              <div class="pipeline-stage-box">
-                <span class="stage-code">WB</span>
-                <span class="stage-desc">Writeback</span>
-                <div class="stage-inst">ADDI x1, x0, 5</div>
-              </div>
-            </div>
-
-            <div class="riscv-regs-grid">
-              <div class="reg-cell"><span>x0 (zero):</span><span>0x00</span></div>
-              <div class="reg-cell"><span>x1 (ra):</span><span id="reg-x1">0x05</span></div>
-              <div class="reg-cell"><span>x2 (sp):</span><span id="reg-x2">0x0A</span></div>
-              <div class="reg-cell"><span>x3 (gp):</span><span id="reg-x3">0x0F</span></div>
-              <div class="reg-cell"><span>x4 (tp):</span><span id="reg-x4">0x00</span></div>
-              <div class="reg-cell"><span>x5 (t0):</span><span id="reg-x5">0x00</span></div>
-              <div class="reg-cell"><span>x6 (t1):</span><span id="reg-x6">0x00</span></div>
-              <div class="reg-cell"><span>x7 (t2):</span><span id="reg-x7">0x00</span></div>
-            </div>
-
-            <div style="display: flex; gap: 0.85rem; align-items: center;">
-              <button class="btn btn-primary btn-sm" onclick="stepRiscvPipeline()">
-                Step Clock Cycle
-              </button>
-              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">
-                PC: <strong id="riscv-pc-val" style="color: var(--accent-cyan);">0x1000</strong> | ALU: <strong id="riscv-alu-val" style="color: var(--accent-emerald);">0x0015</strong>
-              </span>
-            </div>
-          </div>
-
-          <div class="glass-panel lab-spec-card">
-            <h3>Tiny Tapeout RISC-V Silicon</h3>
-            <div class="lab-tech-pills">
-              <span class="badge badge-cyan">Verilog HDL</span>
-              <span class="badge badge-emerald">SkyWater 130nm</span>
-              <span class="badge badge-amber">OpenLane Flow</span>
-              <span class="badge badge-purple">Cocotb Verified</span>
-            </div>
-            <p class="lab-description">
-              Custom open-source silicon RV32I core verified with cocotb testbenches and synthesized using OpenLane for Tiny Tapeout.
-            </p>
-            <ul class="lab-key-features">
-              <li><strong>Hazard Forwarding:</strong> Full forwarding unit bypassing values between EX/MEM and MEM/WB stages to avoid stalls.</li>
-              <li><strong>Physical Design:</strong> Clean DRC/LVS verification on SkyWater 130nm standard cell libraries.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAB 5: LITTLEFS FLASH RESILIENCE -->
-      <div class="lab-panel" id="lab-panel-littlefs">
-        <div class="lab-grid">
-          <div class="lab-interactive-view">
-            <div class="lab-header-bar">
-              <span>SPI NOR FLASH METADATA PAIRS (W25Q64 // LITTLEFS)</span>
-              <span class="badge badge-emerald">POWER-FAIL SAFE</span>
-            </div>
-
-            <div class="flash-blocks-grid" id="flash-blocks-grid"></div>
-
-            <div id="littlefs-status-msg" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald); min-height: 22px; margin-bottom: 0.85rem;">
-              Filesystem Mounted: Atomic metadata pairs intact.
-            </div>
-
-            <div style="display: flex; gap: 0.65rem;">
-              <button class="btn btn-primary btn-sm" onclick="littlefsWriteChunk()">Write Log Chunk</button>
-              <button class="btn btn-outline btn-sm" style="color: var(--accent-crimson); border-color: var(--accent-crimson);" onclick="littlefsSimulatePowerLoss()">Simulate Power Cut</button>
-              <button class="btn btn-emerald btn-sm" onclick="littlefsMountRecover()">Mount &amp; Recover</button>
-            </div>
-          </div>
-
-          <div class="glass-panel lab-spec-card">
-            <h3>Fail-Safe LittleFS for CubeSats</h3>
-            <div class="lab-tech-pills">
-              <span class="badge badge-emerald">Power-Loss Resilient</span>
-              <span class="badge badge-cyan">Dynamic Wear Leveling</span>
-              <span class="badge badge-amber">Bounded RAM</span>
-            </div>
-            <p class="lab-description">
-              Integrated LittleFS on external NOR Flash for mission flight logging, attitude calibration tables, and telemetry chunk storage.
-            </p>
-            <ul class="lab-key-features">
-              <li><strong>Copy-on-Write Pairs:</strong> Prevents corruption during sudden power drops or battery low-voltage cuts.</li>
-              <li><strong>Wear Leveling:</strong> Distributes erase cycles across blocks to extend flash endurance in space radiation environments.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- ==========================================================================
-       PUBLICATIONS & RESEARCH PAPERS
+       PUBLICATIONS & PAPERS
        ========================================================================== -->
   <section id="publications">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Scholarly Contributions</div>
-        <h2 class="section-title">Peer-Reviewed Papers &amp; IAC Presentations</h2>
-        <p class="section-subtitle">
-          Published works across CubeSat communications, seismo-electromagnetics, and deep learning for agriculture.
-        </p>
+        <div class="section-tag">Research &amp; Proceedings</div>
+        <h2 class="section-title">Publications &amp; Conference Papers</h2>
       </div>
 
-      <div class="pub-list">
-        <div class="glass-panel pub-card">
+      <div class="publications-list">
+        <div class="clean-pub-item">
           <div>
-            <span class="pub-venue-badge">International Astronautical Congress (IAC)</span>
-            <h4 class="pub-title">Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication</h4>
-            <div class="pub-authors">Prem Bahadur Rana, et al. — Proceedings of the International Astronautical Congress</div>
-            <p class="pub-abstract">
-              Presents the design, orbital testing, and software architecture of an on-chip amateur satellite digipeater payload on Slippers2Sat, enabling emergency digital communication relays during terrestrial network blackouts in disaster regions.
-            </p>
+            <div class="pub-venue">INTERNATIONAL ASTRONAUTICAL CONGRESS (IAC)</div>
+            <h4 class="pub-name">Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication</h4>
+            <div class="pub-meta">Prem Bahadur Rana, et al. — Proceedings of the International Astronautical Congress</div>
           </div>
-          <div>
-            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
-              ResearchGate
-            </a>
-          </div>
+          <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">ResearchGate</a>
         </div>
 
-        <div class="glass-panel pub-card">
+        <div class="clean-pub-item">
           <div>
-            <span class="pub-venue-badge">IAC &amp; IAA Small Satellite Symposium</span>
-            <h4 class="pub-title">Seismo-Electromagnetic Wave Detection using Non-Boom Quad-Mag on 1U CubeSat Slippers2Sat</h4>
-            <div class="pub-authors">Prem Bahadur Rana, et al. — APN Space Research Series</div>
-            <p class="pub-abstract">
-              Demonstrates the feasibility of detecting geomagnetic earthquake precursor anomalies in the Ultra-Low Frequency (&lt;3Hz) spectrum using an array of four PNI RM3100 magnetometers combined with the Undetermined Blind Source Separation algorithm inside a 1U chassis.
-            </p>
+            <div class="pub-venue">IAC &amp; IAA SMALL SATELLITE SYMPOSIUM</div>
+            <h4 class="pub-name">Seismo-Electromagnetic Wave Detection using Non-Boom Quad-Mag on 1U CubeSat Slippers2Sat</h4>
+            <div class="pub-meta">Prem Bahadur Rana, et al. — APN Space Research Series</div>
           </div>
-          <div>
-            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
-              ResearchGate
-            </a>
-          </div>
+          <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">ResearchGate</a>
         </div>
 
-        <div class="glass-panel pub-card">
+        <div class="clean-pub-item">
           <div>
-            <span class="pub-venue-badge">ResearchGate Publication (2025)</span>
-            <h4 class="pub-title">Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S</h4>
-            <div class="pub-authors">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.14818.03521</div>
-            <p class="pub-abstract">
-              Benchmarking state-of-the-art vision models on 11,675 agricultural images, demonstrating YOLOv12S achieves 99.31% mAP and 98.28% F1-score for real-time edge sorting.
-            </p>
+            <div class="pub-venue">RESEARCHGATE PUBLICATION (2025)</div>
+            <h4 class="pub-name">Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S</h4>
+            <div class="pub-meta">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.14818.03521</div>
           </div>
-          <div>
-            <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
-              Read Full Paper
-            </a>
-          </div>
+          <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">Read Paper</a>
         </div>
 
-        <div class="glass-panel pub-card">
+        <div class="clean-pub-item">
           <div>
-            <span class="pub-venue-badge">ResearchGate Publication (2023)</span>
-            <h4 class="pub-title">Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</h4>
-            <div class="pub-authors">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.30219.09762</div>
-            <p class="pub-abstract">
-              End-to-end computer vision and mechatronics conveyor system for automated sorting of agricultural products using deep learning on embedded edge platforms.
-            </p>
+            <div class="pub-venue">RESEARCHGATE PUBLICATION (2023)</div>
+            <h4 class="pub-name">Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</h4>
+            <div class="pub-meta">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.30219.09762</div>
           </div>
-          <div>
-            <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm" target="_blank" class="btn btn-outline btn-sm">
-              Read Full Paper
-            </a>
-          </div>
+          <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm" target="_blank" class="btn btn-outline btn-sm">Read Paper</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       TERMINAL & DIRECT CONTACT
+       CONTACT
        ========================================================================== -->
   <section id="contact">
     <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Direct Communications</div>
-        <h2 class="section-title">Terminal &amp; Contact</h2>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Interactive Terminal -->
-        <div class="terminal-window">
-          <div class="terminal-titlebar">
-            <div class="terminal-dots">
-              <div class="terminal-dot dot-red"></div>
-              <div class="terminal-dot dot-yellow"></div>
-              <div class="terminal-dot dot-green"></div>
-            </div>
-            <div class="terminal-title">prem@cubesat-obc: ~ (bash 5.2)</div>
-            <span style="color: var(--accent-cyan); font-size: 0.72rem;">READY</span>
-          </div>
-
-          <div class="terminal-body" id="terminal-body">
-            <div class="terminal-line" style="color: var(--text-muted);">
-              Slippers2Sat Onboard Computer (OBC) Telemetry Console v2.4 initialized.<br>
-              Type <span class="prompt-path">'help'</span> for a list of available commands.
-            </div>
-            <div class="terminal-line">
-              <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span> whoami
-            </div>
-            <div class="terminal-line" style="color: #cbd5e1;">
-              Prem Bahadur Rana // EPDM Mission Lead &amp; RISC-V Hardware Developer (APN)
-            </div>
-          </div>
-
-          <div class="terminal-input-row">
-            <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span>
-            <input type="text" class="terminal-input" id="terminal-input" placeholder="type 'help', 'missions', 'quadmag', 'chip', 'github'..." autocomplete="off" spellcheck="false">
-          </div>
+      <div class="contact-container">
+        <div>
+          <div class="section-tag">Direct Connect</div>
+          <h2 style="font-size: 2rem; color: #fff; margin-bottom: 0.8rem;">Let's Collaborate</h2>
+          <p style="line-height: 1.7;">
+            Whether you want to discuss satellite mission development, custom RISC-V processor synthesis, dual-core embedded firmware, or academic research, feel free to reach out.
+          </p>
         </div>
 
-        <!-- Contact Links -->
-        <div class="glass-panel contact-card">
-          <h3>Let's Collaborate</h3>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">
-            Whether you are interested in satellite payload engineering, custom RISC-V processor synthesis, dual-core embedded firmware, or academic collaboration, feel free to reach out.
-          </p>
-
-          <div class="contact-links-list">
-            <a href="mailto:prembdrana999@gmail.com" class="contact-link-item" onclick="playUiSound('click')">
-              <span class="contact-link-icon">✉</span>
+        <div class="contact-info-card">
+          <div class="contact-links-grid">
+            <a href="mailto:prembdrana999@gmail.com" class="contact-item-row">
+              <span style="color: var(--accent-cyan); font-weight: bold;">✉</span>
               <div>
-                <strong style="color: #fff; display: block; font-size: 0.9rem;">Email Address</strong>
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">prembdrana999@gmail.com</span>
+                <strong style="color: #fff; font-size: 0.9rem; display: block;">Email</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">prembdrana999@gmail.com</span>
               </div>
             </a>
 
-            <a href="https://github.com/PrmBRana" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
-              <span class="contact-link-icon">⌥</span>
+            <a href="https://github.com/PrmBRana" target="_blank" class="contact-item-row">
+              <span style="color: var(--accent-cyan); font-weight: bold;">⌥</span>
               <div>
-                <strong style="color: #fff; display: block; font-size: 0.9rem;">GitHub Profile</strong>
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">github.com/PrmBRana</span>
+                <strong style="color: #fff; font-size: 0.9rem; display: block;">GitHub (51 Repositories)</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">github.com/PrmBRana</span>
               </div>
             </a>
 
-            <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
-              <span class="contact-link-icon">in</span>
+            <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank" class="contact-item-row">
+              <span style="color: var(--accent-cyan); font-weight: bold;">in</span>
               <div>
-                <strong style="color: #fff; display: block; font-size: 0.9rem;">LinkedIn Profile</strong>
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">linkedin.com/in/prem-bahadur-r-a9726a176</span>
+                <strong style="color: #fff; font-size: 0.9rem; display: block;">LinkedIn</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">linkedin.com/in/prem-bahadur-r-a9726a176</span>
               </div>
             </a>
 
-            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
-              <span class="contact-link-icon">RG</span>
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="contact-item-row">
+              <span style="color: var(--accent-cyan); font-weight: bold;">RG</span>
               <div>
-                <strong style="color: #fff; display: block; font-size: 0.9rem;">ResearchGate Publications</strong>
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">researchgate.net/profile/Prem-Bahadur-Rana</span>
+                <strong style="color: #fff; font-size: 0.9rem; display: block;">ResearchGate Profile</strong>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">profile/Prem-Bahadur-Rana</span>
               </div>
             </a>
           </div>
@@ -967,23 +520,16 @@ LL_IPCC_MakeTxChannelBusy(IPCC, LL_IPCC_CHANNEL_1);</code></pre>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-content">
-      <div>
-        © 2026 Prem Bahadur Rana // 
-        <span style="color: var(--accent-cyan);">premrana.com.np</span>
-      </div>
-      <div style="display: flex; gap: 0.75rem;">
-        <span class="badge badge-cyan">STM32 IPCC</span>
-        <span class="badge badge-emerald">RV32I ASIC</span>
-        <span class="badge badge-amber">AX.25 GMSK</span>
-      </div>
+    <div class="container footer-inner">
+      <div>© 2026 Prem Bahadur Rana // premrana.com.np</div>
+      <div style="font-family: var(--font-mono); color: var(--accent-cyan);">Kathmandu, Nepal</div>
     </div>
   </footer>
 
-  <!-- Lightbox Modal for Photo Carousel Slides -->
+  <!-- Lightbox Modal -->
   <div class="modal-backdrop" id="lightbox-modal">
     <div class="modal-content-box">
-      <button class="modal-close-btn" id="lightbox-close" aria-label="Close modal" onclick="playUiSound('click')">✕</button>
+      <button class="modal-close-btn" id="lightbox-close" aria-label="Close modal">✕</button>
       <div class="modal-img-wrapper">
         <img id="lightbox-img" src="" alt="Modal Viewer">
       </div>
@@ -994,23 +540,8 @@ LL_IPCC_MakeTxChannelBusy(IPCC, LL_IPCC_CHANNEL_1);</code></pre>
     </div>
   </div>
 
-  <!-- Background Canvas Pause Helper -->
-  <script>
-    function toggleCircuitPause() {
-      if (window.playUiSound) window.playUiSound('click');
-      if (window.toggleCircuitPause) {
-        const isPaused = window.toggleCircuitPause();
-        const labelEl = document.getElementById('circuit-mode-name');
-        if (labelEl) {
-          labelEl.textContent = isPaused ? 'SIMULATION PAUSED' : 'ORBIT & SILICON LIVE';
-        }
-      }
-    }
-  </script>
-
   <!-- Scripts -->
   <script src="js/circuit-canvas.js"></script>
-  <script src="js/hardware-labs.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
