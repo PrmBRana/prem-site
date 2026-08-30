@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prem Bahadur Rana | Electronics & Aerospace Engineer | RISC-V & CubeSat</title>
-  <meta name="description" content="Portfolio of Prem Bahadur Rana - Satellite Research Fellow, RISC-V & ASIC Hardware Developer, and Embedded Systems Engineer specializing in STM32 dual-core IPCC, RF Modems (GMSK, GFSK, AX.25, G3RUH), CubeSats, and Edge AI.">
-  <meta name="keywords" content="Prem Bahadur Rana, RISC-V, CubeSat, STM32 Dual Core, IPCC, Ring Buffer, GMSK, GFSK, AX.25, G3RUH, LittleFS, Tiny Tapeout, ASIC, Antarikchya Pratisthan Nepal, Slippers2Sat, EPDM">
+  <title>Prem Bahadur Rana | Satellite Research Fellow & ASIC Hardware Developer</title>
+  <meta name="description" content="Portfolio of Prem Bahadur Rana - EPDM Lead, Satellite Research Fellow, RISC-V & ASIC Developer, and Embedded Systems Engineer specializing in STM32 dual-core IPCC, RF Modems (GMSK, GFSK, AX.25, G3RUH), CubeSats, and Edge AI.">
+  <meta name="keywords" content="Prem Bahadur Rana, RISC-V, CubeSat, Slippers2Sat, EPDM, Quad-Mag, STM32 IPCC, Ring Buffer, GMSK, GFSK, AX.25, G3RUH, LittleFS, Tiny Tapeout, ASIC, Antarikchya Pratisthan Nepal, ResearchGate, GitHub">
   <meta name="author" content="Prem Bahadur Rana">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://premrana.com.np/">
-  <meta property="og:title" content="Prem Bahadur Rana | Electronics & Aerospace Engineer">
-  <meta property="og:description" content="Satellite Research Fellow & RISC-V ASIC Developer. Explore interactive hardware simulators: STM32 IPCC, Lock-Free Ring Buffer, RF Oscilloscope, and Tiny Tapeout RISC-V.">
+  <meta property="og:title" content="Prem Bahadur Rana | Satellite Research Fellow & ASIC Developer">
+  <meta property="og:description" content="EPDM Mission Lead & RISC-V ASIC Developer. Explore interactive hardware simulators: STM32 IPCC, Lock-Free Ring Buffer, RF Oscilloscope, and Tiny Tapeout RISC-V.">
   <meta property="og:image" content="https://premrana.com.np/images/prem.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon1.png">
 
-  <!-- Modern Typography (Inter, Outfit, Space Grotesk, JetBrains Mono) -->
+  <!-- Elite Typography: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Dynamic Electronics Background Canvas -->
+  <!-- Dynamic Electronics, Silicon & Satellite Canvas Engine -->
   <canvas id="circuit-bg-canvas"></canvas>
   <div class="grid-overlay"></div>
 
   <!-- Avionics HUD Navigation Bar -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#hero" class="nav-brand">
+      <a href="#hero" class="nav-brand" onclick="playUiSound('click')">
         <div class="brand-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -47,22 +47,32 @@
       </a>
 
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#hero" class="nav-link active">Home</a></li>
-        <li><a href="#labs" class="nav-link">Hardware Labs</a></li>
-        <li><a href="#missions" class="nav-link">Space Missions</a></li>
-        <li><a href="#silicon" class="nav-link">Silicon & ASIC</a></li>
-        <li><a href="#ai-research" class="nav-link">AI & Vision</a></li>
-        <li><a href="#publications" class="nav-link">Publications</a></li>
-        <li><a href="#contact" class="nav-link">Terminal & Contact</a></li>
+        <li><a href="#hero" class="nav-link active" onclick="playUiSound('click')">Home</a></li>
+        <li><a href="#labs" class="nav-link" onclick="playUiSound('click')">Hardware Labs</a></li>
+        <li><a href="#missions" class="nav-link" onclick="playUiSound('click')">Space Missions</a></li>
+        <li><a href="#silicon" class="nav-link" onclick="playUiSound('click')">Silicon & ASIC</a></li>
+        <li><a href="#repositories" class="nav-link" onclick="playUiSound('click')">Hardware Code</a></li>
+        <li><a href="#ai-research" class="nav-link" onclick="playUiSound('click')">Edge AI</a></li>
+        <li><a href="#publications" class="nav-link" onclick="playUiSound('click')">Publications</a></li>
+        <li><a href="#contact" class="nav-link" onclick="playUiSound('click')">Terminal & Contact</a></li>
       </ul>
 
       <div class="nav-actions">
-        <!-- Background Animation Switcher -->
-        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()">
+        <!-- Canvas Mode Switcher -->
+        <div class="circuit-mode-toggle" id="circuit-mode-btn" onclick="cycleCircuitMode()" title="Switch Background Animation (Chip / FPGA / PCB / Orbit)">
           <span class="pulse-dot"></span>
           <span id="circuit-mode-name">CHIP MODE</span>
         </div>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+
+        <!-- UI Sound Effects Toggle -->
+        <button class="audio-toggle-btn active" id="sound-toggle-btn" onclick="toggleSoundMute()" title="Sound Effects: Active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu" onclick="playUiSound('click')">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -73,26 +83,28 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="hero-telemetry-bar">
           <span class="pulse-dot"></span>
-          <span>AVIONICS ACTIVE // LEO ORBIT // DUAL-CORE M7+M4 // RV32I ASIC</span>
+          <span>MISSION ACTIVE // SLIPPERS2SAT 1U LEO // EPDM QUAD-MAG // RV32I ASIC</span>
         </div>
 
         <h1 class="hero-title">
-          Engineering The Future Of
-          <span class="gradient-text">Silicon & Spacecraft.</span>
+          Architecting Silicon, CubeSats &
+          <span class="gradient-text">Aerospace Avionics.</span>
         </h1>
 
         <div class="hero-subtitle">
-          Prem Bahadur Rana — Satellite Research Fellow & ASIC Hardware Developer
+          Prem Bahadur Rana — EPDM Mission Lead | Satellite Research Fellow | RISC-V Hardware Developer
         </div>
 
         <p class="hero-bio">
-          Electronics & Communication Engineer at <strong>Antarikchya Pratisthan Nepal (APN)</strong>. Mission architect for <strong>Slippers2Sat (1U CubeSat)</strong> and <strong>Earthquake Precursor Detection Mission (EPDM)</strong>. Specialized in custom <strong>RISC-V core design</strong> on open-source silicon shuttles (Tiny Tapeout), high-reliability <strong>STM32 dual-core IPCC firmware</strong>, fail-safe <strong>LittleFS</strong> storage, and aerospace RF digital modems (<strong>GMSK, GFSK, AX.25, G3RUH</strong>).
+          Electronics & Communication Engineer at <strong>Antarikchya Pratisthan Nepal (APN)</strong>. Mission Lead for the <strong>Earthquake Precursor Detection Mission (EPDM)</strong> on the <strong>Slippers2Sat 1U CubeSat</strong> (successfully launched from Hunan, China). Co-author of the <em>On-Chip Digipeater for Disaster Communication</em> presented at the <strong>International Astronautical Congress (IAC)</strong>. Specialized in custom <strong>5-stage pipelined RISC-V core design</strong> on open-source silicon shuttles (Tiny Tapeout), high-reliability <strong>STM32 dual-core IPCC firmware</strong>, fail-safe <strong>LittleFS</strong> storage, and aerospace RF digital modems (<strong>GMSK, GFSK, AX.25, G3RUH</strong>).
         </p>
 
         <div class="hero-badges-row">
@@ -100,18 +112,19 @@
           <span class="badge badge-emerald">STM32 IPCC Dual-Core</span>
           <span class="badge badge-amber">GMSK / GFSK / AX.25</span>
           <span class="badge badge-purple">CubeSat Avionics</span>
-          <span class="badge badge-cyan">LittleFS</span>
+          <span class="badge badge-cyan">Non-Boom Quad-Mag</span>
           <span class="badge badge-emerald">Lock-Free FIFO</span>
+          <span class="badge badge-amber">51+ GitHub Repos</span>
         </div>
 
         <div class="hero-cta-group">
-          <a href="#labs" class="btn btn-primary">
+          <a href="#labs" class="btn btn-primary" onclick="playUiSound('click')">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
             Interactive Hardware Labs
           </a>
-          <a href="#missions" class="btn btn-outline">
+          <a href="#missions" class="btn btn-outline" onclick="playUiSound('click')">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
@@ -119,23 +132,22 @@
             </svg>
             Space Missions
           </a>
-          <a href="mailto:prembdrana999@gmail.com" class="btn btn-emerald">
+          <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-emerald" onclick="playUiSound('click')">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg>
-            Get In Touch
+            GitHub (@PrmBRana)
           </a>
         </div>
 
         <div class="hero-telemetry-metrics">
           <div class="metric-card">
-            <span class="metric-value">4<span>+</span></span>
-            <span class="metric-label">Satellite Missions & Bootcamps</span>
+            <span class="metric-value">51<span>+</span></span>
+            <span class="metric-label">Repositories on GitHub</span>
           </div>
           <div class="metric-card">
-            <span class="metric-value">130<span>nm</span></span>
-            <span class="metric-label">SkyWater Tiny Tapeout Silicon</span>
+            <span class="metric-value">1U<span> LEO</span></span>
+            <span class="metric-label">Slippers2Sat Orbit Mission</span>
           </div>
           <div class="metric-card">
             <span class="metric-value">99.31<span>%</span></span>
@@ -309,7 +321,7 @@
                     <span>ADDR: 0x38000400</span>
                   </div>
                   <div class="sram-payload-view" id="sram-payload">
-                    CMD_TELEMETRY_LOG -> [OBC] BATT=4.12V | CURR=380mA | TEMP=18.4C
+                    CMD_TELEMETRY_LOG -> [OBC] BATT=4.18V | CURR=420mA | TEMP=16.8C | LEO=520km
                   </div>
                 </div>
               </div>
@@ -704,17 +716,17 @@ end</code></pre>
       <div class="missions-grid">
         <!-- MISSION 1: Slippers2Sat (S2S) -->
         <div class="glass-panel mission-card">
-          <div class="mission-image-wrapper">
-            <img src="images/s2s_logo.png" alt="Slippers2Sat 1U CubeSat" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat (S2S)', 'Nepal\'s First Middle School Nano-Satellite Project funded by ARDC')">
+          <div class="mission-image-wrapper" onclick="openLightbox('images/s2s_logo.png', 'Slippers2Sat (S2S) 1U CubeSat', 'Nepal\'s First Middle School Nano-Satellite Project funded by ARDC and successfully launched from Hunan, China')">
+            <img src="images/s2s_logo.png" alt="Slippers2Sat 1U CubeSat">
             <div class="mission-badge-overlay">
-              <span class="badge badge-cyan">LAUNCH Q2 2025</span>
+              <span class="badge badge-cyan">LAUNCHED // 1U CUBESAT</span>
             </div>
           </div>
           <div class="mission-content">
             <h3 class="mission-title">Slippers2Sat (S2S) 1U CubeSat</h3>
             <div class="mission-org">Antarikchya Pratisthan Nepal (APN) / ARDC</div>
             <p class="mission-excerpt">
-              Nepal’s pioneering educational nano-satellite mission developed by six APN engineers. S2S trains indigenous middle-school students (grades 7–8) from Chepang, Tamang, and Dalit communities at the Space System Laboratory (SSL) in Navodaya School to build, assemble, and test satellite subsystems.
+              Nepal’s pioneering educational nano-satellite mission successfully launched from Hunan, China. S2S trained indigenous middle-school students (grades 7–8) from Chepang, Tamang, and Dalit communities at the Space System Laboratory (SSL) in Navodaya School to build, assemble, and test real satellite hardware.
             </p>
 
             <div class="mission-specs-list">
@@ -723,12 +735,12 @@ end</code></pre>
                 <span class="mission-spec-val">1U CubeSat (10x10x10 cm)</span>
               </div>
               <div class="mission-spec-item">
-                <span class="mission-spec-label">PAYLOADS</span>
-                <span class="mission-spec-val">DPM, CAM, ADCS, EPDM</span>
+                <span class="mission-spec-label">LAUNCH SITE</span>
+                <span class="mission-spec-val">Hunan, China</span>
               </div>
               <div class="mission-spec-item">
-                <span class="mission-spec-label">TELEMETRY</span>
-                <span class="mission-spec-val">GMSK 9600 / CW Beacon</span>
+                <span class="mission-spec-label">PAYLOADS</span>
+                <span class="mission-spec-val">EPDM, DPM Digipeater, CAM</span>
               </div>
               <div class="mission-spec-item">
                 <span class="mission-spec-label">FUNDING</span>
@@ -749,23 +761,27 @@ end</code></pre>
 
         <!-- MISSION 2: EPDM -->
         <div class="glass-panel mission-card">
-          <div class="mission-image-wrapper">
-            <img src="images/epdm1.png" alt="Earthquake Precursor Detection Mission" onclick="openLightbox('images/epdm1.png', 'Earthquake Precursor Detection Mission (EPDM)', 'Quad-Mag technology with UBSS algorithm')">
+          <div class="mission-image-wrapper" onclick="openLightbox('images/epdm1.png', 'Earthquake Precursor Detection Mission (EPDM)', 'Non-Boom Quad-Mag technology with UBSS algorithm')">
+            <img src="images/epdm1.png" alt="Earthquake Precursor Detection Mission">
             <div class="mission-badge-overlay">
-              <span class="badge badge-emerald">GEOMAGNETIC RESEARCH</span>
+              <span class="badge badge-emerald">SEISMO-MAGNETIC PAYLOAD</span>
             </div>
           </div>
           <div class="mission-content">
             <h3 class="mission-title">Earthquake Precursor Mission (EPDM)</h3>
-            <div class="mission-org">Antarikchya Pratisthan Nepal (APN)</div>
+            <div class="mission-org">Prem Bahadur Rana (EPDM Lead) // APN</div>
             <p class="mission-excerpt">
-              Boomless 1U CubeSat payload utilizing Quad-Mag technology (four PNI RM3100 magnetometers) and the Undetermined Blind Source Separation (UBSS) algorithm (tested at the University of Michigan lab) to isolate Ultra-Low Frequency (&lt;3Hz) and Extremely Low Frequency (3Hz–3kHz) geomagnetic earthquake precursors.
+              Boomless 1U CubeSat payload utilizing Quad-Mag technology (four PNI RM3100 magnetometers) and the Undetermined Blind Source Separation (UBSS) algorithm (tested at the University of Michigan lab) to isolate Ultra-Low Frequency (&lt;3Hz) and Extremely Low Frequency (3Hz–3kHz) geomagnetic earthquake precursors without mechanical booms.
             </p>
 
             <div class="mission-specs-list">
               <div class="mission-spec-item">
-                <span class="mission-spec-label">SENSOR PAYLOAD</span>
-                <span class="mission-spec-val">4x PNI RM3100 Magnetometers</span>
+                <span class="mission-spec-label">ROLE</span>
+                <span class="mission-spec-val">EPDM Mission Lead</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">SENSORS</span>
+                <span class="mission-spec-val">4x PNI RM3100 + MT25QL 1Gb</span>
               </div>
               <div class="mission-spec-item">
                 <span class="mission-spec-label">ALGORITHM</span>
@@ -775,31 +791,72 @@ end</code></pre>
                 <span class="mission-spec-label">BANDWIDTH</span>
                 <span class="mission-spec-val">ULF (&lt;3Hz) &amp; ELF (3Hz-3kHz)</span>
               </div>
-              <div class="mission-spec-item">
-                <span class="mission-spec-label">INNOVATION</span>
-                <span class="mission-spec-val">Boomless Sensing in 1U</span>
-              </div>
             </div>
 
             <div class="mission-actions">
               <button class="btn btn-outline btn-sm" onclick="openLightbox('images/e1.jpeg', 'EPDM Quad-Mag Board', 'Quad-Mag sensor board layout and test setup')">
                 Sensor Board View
               </button>
+              <a href="https://github.com/PrmBRana/Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash" target="_blank" class="btn btn-primary btn-sm">
+                Flight Code (GitHub)
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- MISSION 3: Thin-Shell Calibration -->
+        <!-- MISSION 3: On-Chip Digipeater for Disaster Communication -->
         <div class="glass-panel mission-card">
-          <div class="mission-image-wrapper">
-            <img src="images/boot.jpeg" alt="Magnetometer Calibration" onclick="openLightbox('images/boot.jpeg', 'Thin-Shell Magnetometer Calibration', 'Ellipsoid-to-sphere transformation and IGRF model verification')">
+          <div class="mission-image-wrapper" onclick="openLightbox('images/s6.jpeg', 'On-Chip Digipeater (DPM)', 'Software-based digipeater for disaster management in remote areas')">
+            <img src="images/s6.jpeg" alt="On-Chip Digipeater Mission">
             <div class="mission-badge-overlay">
-              <span class="badge badge-amber">SENSOR CHARACTERIZATION</span>
+              <span class="badge badge-amber">IAC RESEARCH PAPER</span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <h3 class="mission-title">On-Chip Digipeater (DPM Mission)</h3>
+            <div class="mission-org">Disaster Communications // Amateur Satellite Radio</div>
+            <p class="mission-excerpt">
+              Authored research on the <em>Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication on Slippers2Sat</em> presented at the International Astronautical Congress. Operating on amateur frequencies, it provides store-and-forward packet radio relay for emergency teams in remote disaster zones.
+            </p>
+
+            <div class="mission-specs-list">
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">PROTOCOL</span>
+                <span class="mission-spec-val">AX.25 Packet Radio / APRS</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">CONFERENCE</span>
+                <span class="mission-spec-val">IAC / IAA Symposium</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">PURPOSE</span>
+                <span class="mission-spec-val">Disaster Emergency Relay</span>
+              </div>
+              <div class="mission-spec-item">
+                <span class="mission-spec-label">SPECTRUM</span>
+                <span class="mission-spec-val">VHF / UHF Amateur Sat</span>
+              </div>
+            </div>
+
+            <div class="mission-actions">
+              <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
+                View IAC Paper
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION 4: Thin-Shell Calibration -->
+        <div class="glass-panel mission-card">
+          <div class="mission-image-wrapper" onclick="openLightbox('images/boot.jpeg', 'Thin-Shell Magnetometer Calibration', 'Ellipsoid-to-sphere transformation and IGRF model verification')">
+            <img src="images/boot.jpeg" alt="Magnetometer Calibration">
+            <div class="mission-badge-overlay">
+              <span class="badge badge-purple">SENSOR CHARACTERIZATION</span>
             </div>
           </div>
           <div class="mission-content">
             <h3 class="mission-title">Thin-Shell Magnetometer Calibration</h3>
-            <div class="mission-org">Payload Validation Program</div>
+            <div class="mission-org">EPDM Payload Validation</div>
             <p class="mission-excerpt">
               Rigorous 9-parameter calibration (3 scaling factors, 3 offsets, 3 angular misalignments) transforming raw ellipsoidal magnetic readings into ideal spherical geometries. Validated against scalar magnetometers and the International Geomagnetic Reference Field (IGRF) model at Budhanilkantha and Pulchowk.
             </p>
@@ -830,50 +887,94 @@ end</code></pre>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- MISSION 4: Dharan Satellite Bootcamp -->
-        <div class="glass-panel mission-card">
-          <div class="mission-image-wrapper">
-            <img src="images/dharan/d3.jpg" alt="Dharan Satellite Bootcamp" onclick="openLightbox('images/dharan/d3.jpg', 'Dharan Satellite Bootcamp', '4-day hands-on STEM CubeSat training')">
-            <div class="mission-badge-overlay">
-              <span class="badge badge-purple">STEM OUTREACH</span>
-            </div>
+  <!-- ==========================================================================
+       REAL OPEN-SOURCE HARDWARE REPOSITORIES (FROM GITHUB)
+       ========================================================================== -->
+  <section id="repositories">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Featured Code & Embedded Firmware</div>
+        <h2 class="section-title">Open-Source Flight Code & Drivers</h2>
+        <p class="section-subtitle">
+          Selected flight-ready C, C++, and Verilog implementations from Prem's 51+ open-source GitHub repositories.
+        </p>
+      </div>
+
+      <div class="missions-grid">
+        <!-- REPO 1 -->
+        <div class="glass-panel" style="padding: 1.8rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="badge badge-cyan">STM32 + SPI NOR FLASH</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-emerald);">★ 1 STAR</span>
           </div>
-          <div class="mission-content">
-            <h3 class="mission-title">Dharan CubeSat Bootcamp</h3>
-            <div class="mission-org">Public High School, Dharan, Nepal</div>
-            <p class="mission-excerpt">
-              Conducted an intensive 4-day hands-on satellite training bootcamp for 7th–10th grade students covering electronics fundamentals, soldering, CubeSat structure, OBC and power systems, sensor programming, and simulated parachute drop deployment with wireless telemetry.
-            </p>
-
-            <div class="mission-specs-list">
-              <div class="mission-spec-item">
-                <span class="mission-spec-label">DURATION</span>
-                <span class="mission-spec-val">4-Day Intensive Workshop</span>
-              </div>
-              <div class="mission-spec-item">
-                <span class="mission-spec-label">STUDENTS</span>
-                <span class="mission-spec-val">Grades 7 to 10</span>
-              </div>
-              <div class="mission-spec-item">
-                <span class="mission-spec-label">HANDS-ON</span>
-                <span class="mission-spec-val">Soldering, OBC, Telemetry</span>
-              </div>
-              <div class="mission-spec-item">
-                <span class="mission-spec-label">FINAL TEST</span>
-                <span class="mission-spec-val">Parachute Drop Deployment</span>
-              </div>
-            </div>
-
-            <div class="mission-actions">
-              <button class="btn btn-outline btn-sm" onclick="openLightbox('images/dharan/d15.jpg', 'Parachute Simulated Drop', 'Simulated satellite deployment using parachute and wireless data transmission')">
-                Drop Test View
-              </button>
-              <button class="btn btn-primary btn-sm" onclick="openLightbox('images/dharan/d5.jpg', 'Student Soldering', 'Students learning component assembly and circuit design')">
-                Classroom Photos
-              </button>
-            </div>
+          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.6rem;">
+            <a href="https://github.com/PrmBRana/Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash" target="_blank">
+              Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash
+            </a>
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+            High-speed SPI sensor acquisition driver interfacing four PNI RM3100 geomagnetic magnetometers with a Micron MT25QL 1Gb (128MB) Quad-SPI NOR Flash memory for high-rate seismic data logging.
+          </p>
+          <div class="hero-badges-row" style="margin-bottom: 1.2rem;">
+            <span class="badge badge-emerald">Embedded C</span>
+            <span class="badge badge-cyan">STM32 SPI</span>
+            <span class="badge badge-amber">Micron MT25QL</span>
           </div>
+          <a href="https://github.com/PrmBRana/Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash" target="_blank" class="btn btn-outline btn-sm">
+            Inspect Repository
+          </a>
+        </div>
+
+        <!-- REPO 2 -->
+        <div class="glass-panel" style="padding: 1.8rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="badge badge-emerald">ASIC & PROCESSOR DESIGN</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan);">VERILOG HDL</span>
+          </div>
+          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.6rem;">
+            <a href="https://github.com/PrmBRana" target="_blank">
+              5-Stage Pipelined RISC-V Processor Core
+            </a>
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+            Complete synthesizable RV32I processor with data hazard detection, instruction forwarding, branch prediction, UART transceiver, and cocotb verification testbenches for Tiny Tapeout shuttle.
+          </p>
+          <div class="hero-badges-row" style="margin-bottom: 1.2rem;">
+            <span class="badge badge-cyan">Verilog</span>
+            <span class="badge badge-purple">OpenLane</span>
+            <span class="badge badge-emerald">Cocotb</span>
+          </div>
+          <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-outline btn-sm">
+            Inspect Repository
+          </a>
+        </div>
+
+        <!-- REPO 3 -->
+        <div class="glass-panel" style="padding: 1.8rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="badge badge-amber">DEEP LEARNING / VISION</span>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-emerald);">RESEARCHGATE CITED</span>
+          </div>
+          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.6rem;">
+            <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation" target="_blank">
+              Rotten_And_Fresh_Fruits_Detection_And_Separation
+            </a>
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+            Automated quality control conveyor system comparing YOLOv12S, YOLOv8, DETR, and Faster R-CNN with dual cameras, Raspberry Pi 4 edge computing, and servo-actuated separation.
+          </p>
+          <div class="hero-badges-row" style="margin-bottom: 1.2rem;">
+            <span class="badge badge-amber">Python</span>
+            <span class="badge badge-cyan">PyTorch</span>
+            <span class="badge badge-emerald">Raspberry Pi</span>
+          </div>
+          <a href="https://github.com/PrmBRana/Rotten_And_Fresh_Fruits_Detection_And_Separation" target="_blank" class="btn btn-outline btn-sm">
+            Inspect Repository
+          </a>
         </div>
       </div>
     </div>
@@ -893,12 +994,12 @@ end</code></pre>
       </div>
 
       <div class="lab-grid">
-        <div class="glass-panel" style="padding: 2rem;">
+        <div class="glass-panel" style="padding: 2.2rem;">
           <div style="margin-bottom: 1.5rem; text-align: center;">
             <img src="images/RISC.jpeg" alt="RISC-V Core Layout" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-active); cursor: pointer;" onclick="openLightbox('images/RISC.jpeg', 'RISC-V Core Architecture', 'Custom RV32I processor pipeline and peripheral bus')">
           </div>
-          <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem;">Custom RV32I Processor Architecture</h3>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          <h3 style="font-size: 1.45rem; color: #fff; margin-bottom: 0.75rem;">Custom RV32I Processor Architecture</h3>
+          <p style="font-size: 0.96rem; color: var(--text-secondary); margin-bottom: 1rem;">
             Designed and simulated a modular 32-bit RISC-V CPU adhering to the RV32I user-level ISA. Built in synthesizable Verilog HDL with memory-mapped UART, SPI, and GPIO peripherals.
           </p>
           <div class="hero-badges-row">
@@ -908,43 +1009,43 @@ end</code></pre>
             <span class="badge badge-purple">Cocotb</span>
             <span class="badge badge-cyan">OpenLane</span>
           </div>
-          <div style="margin-top: 1.5rem;">
+          <div style="margin-top: 1.6rem;">
             <a href="https://github.com/PrmBRana" target="_blank" class="btn btn-outline btn-sm">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
-              View GitHub Repository
+              View GitHub Profile (51 Repositories)
             </a>
           </div>
         </div>
 
-        <div class="glass-panel" style="padding: 2rem;">
-          <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">ASIC Implementation Workflow</h3>
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <div style="border-left: 2px solid var(--accent-cyan); padding-left: 1rem;">
-              <h4 style="font-size: 1rem; color: #fff;">1. RTL Specification & Simulation</h4>
-              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+        <div class="glass-panel" style="padding: 2.2rem;">
+          <h3 style="font-size: 1.45rem; color: #fff; margin-bottom: 1.1rem;">ASIC Implementation Workflow</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.1rem;">
+            <div style="border-left: 2px solid var(--accent-cyan); padding-left: 1.1rem;">
+              <h4 style="font-size: 1.05rem; color: #fff;">1. RTL Specification & Simulation</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
                 Authored synthesizable Verilog for the decode, ALU, control logic, register files, and data hazard forwarding units. Verified cycle accuracy with Verilator and Python-based Cocotb testbenches.
               </p>
             </div>
 
-            <div style="border-left: 2px solid var(--accent-emerald); padding-left: 1rem;">
-              <h4 style="font-size: 1rem; color: #fff;">2. Logic Synthesis & Static Timing Analysis</h4>
-              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+            <div style="border-left: 2px solid var(--accent-emerald); padding-left: 1.1rem;">
+              <h4 style="font-size: 1.05rem; color: #fff;">2. Logic Synthesis & Static Timing Analysis</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
                 Synthesized RTL into SkyWater 130nm standard cell gate-level netlists using Yosys. Conducted Static Timing Analysis (STA) via OpenSTA to ensure zero setup and hold timing violations.
               </p>
             </div>
 
-            <div style="border-left: 2px solid var(--accent-amber); padding-left: 1rem;">
-              <h4 style="font-size: 1rem; color: #fff;">3. Floorplanning, Placement & CTS</h4>
-              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+            <div style="border-left: 2px solid var(--accent-amber); padding-left: 1.1rem;">
+              <h4 style="font-size: 1.05rem; color: #fff;">3. Floorplanning, Placement & CTS</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
                 Configured die boundaries, IO pad assignments, and power distribution grids (VDD/VSS rings). Executed Clock Tree Synthesis (CTS) for low-skew clock distribution.
               </p>
             </div>
 
-            <div style="border-left: 2px solid var(--accent-purple); padding-left: 1rem;">
-              <h4 style="font-size: 1rem; color: #fff;">4. Routing, DRC/LVS & GDSII Tapeout</h4>
-              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+            <div style="border-left: 2px solid var(--accent-purple); padding-left: 1.1rem;">
+              <h4 style="font-size: 1.05rem; color: #fff;">4. Routing, DRC/LVS & GDSII Tapeout</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
                 Detailed metal layer routing (M1–M5), antenna diode insertion, and rigorous Design Rule Checking (DRC) and Layout Versus Schematic (LVS) verification via Magic and Klayout.
               </p>
             </div>
@@ -970,11 +1071,11 @@ end</code></pre>
       <div class="glass-panel ai-research-card">
         <div class="ai-research-grid">
           <div>
-            <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 1rem;">Real-Time Industrial Sorting Mechanism</h3>
-            <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.7;">
+            <h3 style="font-size: 1.65rem; color: #fff; margin-bottom: 1rem;">Real-Time Industrial Sorting Mechanism</h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.75;">
               Engineered an automated conveyor system integrating dual web cameras for 360-degree fruit inspection, a Raspberry Pi 4 for edge deep-learning inference, and servo-actuated diverter flaps to mechanically separate rotten produce from pristine batches.
             </p>
-            <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.7;">
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.75;">
               Conducted a benchmark comparative evaluation across <strong>YOLOv12S, YOLOv8, DETR Transformer, and Faster R-CNN</strong> on a custom annotated dataset containing 11,675 images of apples and tomatoes across varying light conditions and orientations.
             </p>
 
@@ -1034,89 +1135,84 @@ end</code></pre>
   </section>
 
   <!-- ==========================================================================
-       ACADEMIC PUBLICATIONS & CREDENTIALS
+       ACADEMIC & CONFERENCE PUBLICATIONS (IAC & RESEARCHGATE)
        ========================================================================== -->
   <section id="publications">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Scholarly Contributions & Education</div>
-        <h2 class="section-title">Publications & Academic Background</h2>
+        <div class="section-tag">Scholarly Contributions & Conference Proceedings</div>
+        <h2 class="section-title">Peer-Reviewed Papers & IAC Presentations</h2>
+        <p class="section-subtitle">
+          Published works spanning CubeSat communication, earthquake precursor detection, and agricultural computer vision.
+        </p>
       </div>
 
-      <div class="lab-grid">
-        <!-- Publications List -->
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Peer-Reviewed Research</h3>
-          <div class="publications-list">
-            <div class="glass-panel pub-card">
-              <div class="pub-info">
-                <h4>Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S</h4>
-                <div class="pub-authors">Prem Bahadur Rana, et al. — 2025</div>
-                <div class="pub-journal">ResearchGate // Agrotechnology & Computer Vision Research</div>
-              </div>
-              <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
-                Read Paper
-              </a>
-            </div>
-
-            <div class="glass-panel pub-card">
-              <div class="pub-info">
-                <h4>Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</h4>
-                <div class="pub-authors">Prem Bahadur Rana, et al. — 2023</div>
-                <div class="pub-journal">ResearchGate // Real-Time Embedded Vision on Conveyor Systems</div>
-              </div>
-              <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm" target="_blank" class="btn btn-outline btn-sm">
-                Read Paper
-              </a>
-            </div>
+      <div class="pub-cards-container">
+        <!-- PAPER 1: IAC Digipeater -->
+        <div class="glass-panel conference-pub-card">
+          <div>
+            <span class="pub-venue-tag">International Astronautical Congress (IAC)</span>
+            <h4>Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication</h4>
+            <div class="pub-authors">Prem Bahadur Rana, et al. — Proceedings of the International Astronautical Congress</div>
+            <p class="pub-abstract">
+              Presents the design, orbital testing, and software architecture of an on-chip amateur satellite digipeater payload on Slippers2Sat, enabling emergency digital communication relays during terrestrial network blackouts in disaster regions.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
+              Read on ResearchGate
+            </a>
           </div>
         </div>
 
-        <!-- Education Timeline -->
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Education & Fellowships</h3>
-          <div class="education-timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="glass-panel" style="padding: 1.25rem;">
-                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">
-                  <span>ANTARIKCHYA PRATISTHAN NEPAL</span>
-                  <span>2024 – PRESENT</span>
-                </div>
-                <h4 style="color: #fff; margin: 0.3rem 0;">Satellite Research Fellow & ASIC Developer</h4>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
-                  Lead hardware developer for Slippers2Sat (S2S) 1U CubeSat, EPDM Quad-Mag payload integration, and Tiny Tapeout open-source RISC-V ASIC design.
-                </p>
-              </div>
-            </div>
+        <!-- PAPER 2: Seismo-electromagnetic EPDM -->
+        <div class="glass-panel conference-pub-card">
+          <div>
+            <span class="pub-venue-tag">IAC &amp; IAA Small Satellite Symposium</span>
+            <h4>Seismo-Electromagnetic Wave Detection using Non-Boom Quad-Mag on 1U CubeSat Slippers2Sat</h4>
+            <div class="pub-authors">Prem Bahadur Rana, et al. — APN Space Research Series</div>
+            <p class="pub-abstract">
+              Demonstrates the feasibility of detecting geomagnetic earthquake precursor anomalies in the Ultra-Low Frequency (&lt;3Hz) spectrum using an array of four PNI RM3100 magnetometers combined with the Undetermined Blind Source Separation algorithm inside a 1U chassis.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="btn btn-outline btn-sm">
+              Read on ResearchGate
+            </a>
+          </div>
+        </div>
 
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="glass-panel" style="padding: 1.25rem;">
-                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald);">
-                  <span>KHWOPA ENGINEERING COLLEGE</span>
-                  <span>2018 – 2023</span>
-                </div>
-                <h4 style="color: #fff; margin: 0.3rem 0;">Bachelor in Electronics & Communication Engineering</h4>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
-                  Focused on embedded systems, digital signal processing (DSP), radio communication protocols, and FPGA digital design. Bhaktapur, Nepal.
-                </p>
-              </div>
-            </div>
+        <!-- PAPER 3: YOLO Fruit Comparison -->
+        <div class="glass-panel conference-pub-card">
+          <div>
+            <span class="pub-venue-tag">ResearchGate Peer-Reviewed (2025)</span>
+            <h4>Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S</h4>
+            <div class="pub-authors">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.14818.03521</div>
+            <p class="pub-abstract">
+              A comprehensive study benchmarking state-of-the-art architectures on 11,675 agricultural images, showing YOLOv12S achieves 99.31% mAP and 98.28% F1-score for real-time edge sorting.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.researchgate.net/publication/392031828_Comparative_Study_of_Object_Detection_Models_for_Fresh_and_Rotten_Apples_and_Tomatoes_Faster_R-CNN_DETR_YOLOv8_and_YOLOv12S" target="_blank" class="btn btn-outline btn-sm">
+              Read Full Paper
+            </a>
+          </div>
+        </div>
 
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="glass-panel" style="padding: 1.25rem;">
-                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-amber);">
-                  <span>GRAMMAR SCHOOL & COLLEGE</span>
-                  <span>2016 – 2018</span>
-                </div>
-                <h4 style="color: #fff; margin: 0.3rem 0;">High School (Physical Sciences & Mathematics)</h4>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
-                  Foundational studies in electromagnetism, physics, calculus, and computer programming.
-                </p>
-              </div>
-            </div>
+        <!-- PAPER 4: YOLO 2023 -->
+        <div class="glass-panel conference-pub-card">
+          <div>
+            <span class="pub-venue-tag">ResearchGate Publication (2023)</span>
+            <h4>Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm</h4>
+            <div class="pub-authors">Prem Bahadur Rana, et al. — DOI: 10.13140/RG.2.2.30219.09762</div>
+            <p class="pub-abstract">
+              Presents an end-to-end computer vision and mechatronics conveyor system for automated sorting of agricultural products using deep learning on embedded edge platforms.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.researchgate.net/publication/379986263_Recognition_and_separation_of_fresh_and_rotten_fruits_using_YOLO_algorithm" target="_blank" class="btn btn-outline btn-sm">
+              Read Full Paper
+            </a>
           </div>
         </div>
       </div>
@@ -1155,13 +1251,13 @@ end</code></pre>
               <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span> whoami
             </div>
             <div class="terminal-line" style="color: #cbd5e1;">
-              Prem Bahadur Rana // Satellite Research Fellow &amp; RISC-V ASIC Developer (APN)
+              Prem Bahadur Rana // EPDM Mission Lead &amp; RISC-V ASIC Developer (APN)
             </div>
           </div>
 
           <div class="terminal-input-row" style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-subtle); background: #010308;">
             <span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span>
-            <input type="text" class="terminal-input" id="terminal-input" placeholder="type 'help', 'missions', 'chip', 'stm32', 'rf'..." autocomplete="off" spellcheck="false">
+            <input type="text" class="terminal-input" id="terminal-input" placeholder="type 'help', 'missions', 'chip', 'stm32', 'rf', 'github'..." autocomplete="off" spellcheck="false">
           </div>
         </div>
 
@@ -1169,11 +1265,11 @@ end</code></pre>
         <div class="glass-panel contact-card">
           <h3>Let's Collaborate On Space & Silicon</h3>
           <p style="color: var(--text-secondary); font-size: 0.95rem;">
-            Whether you are interested in satellite sub-system development, custom RISC-V processor synthesis, dual-core embedded firmware, or academic collaboration, feel free to reach out directly.
+            Whether you are interested in satellite subsystem development, custom RISC-V processor synthesis, dual-core embedded firmware, or academic collaboration, feel free to reach out directly.
           </p>
 
           <div class="contact-links-list">
-            <a href="mailto:prembdrana999@gmail.com" class="contact-link-item">
+            <a href="mailto:prembdrana999@gmail.com" class="contact-link-item" onclick="playUiSound('click')">
               <span class="contact-link-icon">✉</span>
               <div>
                 <strong style="color: #fff; display: block; font-size: 0.9rem;">Email Address</strong>
@@ -1181,15 +1277,15 @@ end</code></pre>
               </div>
             </a>
 
-            <a href="https://github.com/PrmBRana" target="_blank" class="contact-link-item">
+            <a href="https://github.com/PrmBRana" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
               <span class="contact-link-icon">⌥</span>
               <div>
-                <strong style="color: #fff; display: block; font-size: 0.9rem;">GitHub Profile</strong>
+                <strong style="color: #fff; display: block; font-size: 0.9rem;">GitHub Profile (51 Repositories)</strong>
                 <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">github.com/PrmBRana</span>
               </div>
             </a>
 
-            <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank" class="contact-link-item">
+            <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
               <span class="contact-link-icon">in</span>
               <div>
                 <strong style="color: #fff; display: block; font-size: 0.9rem;">LinkedIn Profile</strong>
@@ -1197,7 +1293,7 @@ end</code></pre>
               </div>
             </a>
 
-            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana/publications" target="_blank" class="contact-link-item">
+            <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank" class="contact-link-item" onclick="playUiSound('click')">
               <span class="contact-link-icon">RG</span>
               <div>
                 <strong style="color: #fff; display: block; font-size: 0.9rem;">ResearchGate Publications</strong>
@@ -1228,7 +1324,7 @@ end</code></pre>
   <!-- Lightbox Modal for Photo Gallery -->
   <div class="modal-backdrop" id="lightbox-modal">
     <div class="modal-content-box">
-      <button class="modal-close-btn" id="lightbox-close" aria-label="Close modal">✕</button>
+      <button class="modal-close-btn" id="lightbox-close" aria-label="Close modal" onclick="playUiSound('click')">✕</button>
       <div class="modal-img-wrapper">
         <img id="lightbox-img" src="" alt="Modal Viewer">
       </div>
@@ -1241,9 +1337,10 @@ end</code></pre>
 
   <!-- Background mode cycling helper -->
   <script>
-    const modes = ['chip', 'fpga', 'pcb'];
+    const modes = ['chip', 'fpga', 'pcb', 'orbit'];
     let modeIdx = 0;
     function cycleCircuitMode() {
+      if (window.playUiSound) window.playUiSound('click');
       modeIdx = (modeIdx + 1) % modes.length;
       if (window.setCircuitMode) {
         window.setCircuitMode(modes[modeIdx]);

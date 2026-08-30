@@ -1,6 +1,6 @@
 /**
- * Main Application Controller
- * Manages navigation, interactive terminal, photo lightbox, and interactive triggers.
+ * Main Application Controller 2.0
+ * Manages navigation, interactive terminal with sound feedback, photo lightbox, and micro-interactions.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,10 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('scrolled');
     }
 
-    // Scroll spy
     let current = '';
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 130;
       const sectionHeight = section.clientHeight;
       if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute('id');
@@ -40,10 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile drawer toggle
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
+      if (window.playUiSound) window.playUiSound('click');
     });
 
     navLinks.forEach((link) => {
@@ -63,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.getElementById('lightbox-close');
 
   window.openLightbox = function (src, title, description) {
+    if (window.playUiSound) window.playUiSound('click');
     if (!modalBackdrop || !modalImg) return;
     modalImg.src = src;
     if (modalTitle) modalTitle.textContent = title || 'Project Asset';
@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeLightbox() {
     if (!modalBackdrop) return;
+    if (window.playUiSound) window.playUiSound('click');
     modalBackdrop.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -------------------------------------------------------------
-     3. INTERACTIVE CLI TERMINAL
+     3. INTERACTIVE CLI TERMINAL 2.0
      ------------------------------------------------------------- */
   const terminalInput = document.getElementById('terminal-input');
   const terminalBody = document.getElementById('terminal-body');
@@ -97,32 +98,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const COMMANDS = {
     help: `Available commands:
   <span class="prompt-path">whoami</span>      - Overview of Prem Bahadur Rana
-  <span class="prompt-path">missions</span>    - Satellite projects (Slippers2Sat, EPDM, Dharan)
+  <span class="prompt-path">missions</span>    - Slippers2Sat (Hunan Launch), EPDM, Dharan
+  <span class="prompt-path">quadmag</span>     - Quad PNI RM3100 + MT25QL 1Gb Flash driver
+  <span class="prompt-path">digipeater</span>  - IAC paper on On-Chip Disaster Digipeater
   <span class="prompt-path">chip</span>        - Tiny Tapeout RISC-V RV32I ASIC specifications
   <span class="prompt-path">stm32</span>       - Dual-core Cortex-M7/M4 IPCC architecture
   <span class="prompt-path">rf</span>          - GMSK, GFSK, CW beacon, AX.25, G3RUH scrambler
-  <span class="prompt-path">papers</span>      - ResearchGate published papers
-  <span class="prompt-path">contact</span>     - Direct email and social networks
+  <span class="prompt-path">github</span>      - GitHub profile (@PrmBRana, 51+ repositories)
+  <span class="prompt-path">papers</span>      - ResearchGate & IAC published papers
+  <span class="prompt-path">contact</span>     - Direct email and social links
   <span class="prompt-path">clear</span>       - Clear the terminal console`,
 
     whoami: `Prem Bahadur Rana:
-  - Electronics & Communication Engineer | Satellite Research Fellow
+  - Role: EPDM Mission Lead | Satellite Research Fellow | RISC-V Hardware Developer
   - Affiliation: Antarikchya Pratisthan Nepal (APN), Space System Lab (SSL)
-  - Specialization: RISC-V Hardware Design, CubeSat Avionics, RF Modems, Embedded Systems`,
+  - Education: Bachelor in Electronics & Communication (Khwopa Engineering College)
+  - Repositories: 51+ open-source hardware and software projects on GitHub`,
 
     missions: `Space & Satellite Initiatives:
-  1. <span class="prompt-user">Slippers2Sat (S2S)</span>: 1U CubeSat for Chepang/Tamang/Dalit middle school training (Launch Q2 2025).
-  2. <span class="prompt-user">Earthquake Precursor Mission (EPDM)</span>: 1U boomless Quad-Mag + UBSS noise removal for ULF/ELF sensing.
+  1. <span class="prompt-user">Slippers2Sat (S2S)</span>: 1U CubeSat launched from Hunan, China. Mentoring Chepang, Tamang & Dalit middle school students.
+  2. <span class="prompt-user">Earthquake Precursor Mission (EPDM)</span>: Non-Boom Quad-Mag (4x PNI RM3100) + UBSS algorithm detecting seismo-magnetic waves.
   3. <span class="prompt-user">Thin-Shell Calibration</span>: 9-parameter magnetometer calibration verified with IGRF model.
-  4. <span class="prompt-user">Dharan Bootcamp</span>: 4-day hands-on STEM CubeSat training.`,
+  4. <span class="prompt-user">Dharan Bootcamp</span>: 4-day hands-on STEM CubeSat training and parachute drop testing.`,
+
+    quadmag: `Non-Boom Quad-Mag Hardware Subsystem:
+  - Sensors: 4x PNI RM3100 high-resolution geomagnetic sensors
+  - Flash Memory: Micron MT25QL01GBBB (1Gb / 128MB Quad-SPI NOR Flash)
+  - Controller: STM32F103 / STM32H7 via high-speed SPI bus
+  - Algorithm: UBSS (Undetermined Blind Source Separation) to isolate true ambient Earth field without mechanical boom`,
+
+    digipeater: `On-Chip Digipeater for Disaster Communication (IAC):
+  - Authors: Prem Bahadur Rana, et al.
+  - Platform: Slippers2Sat 1U CubeSat
+  - Operation: Space-borne amateur radio packet repeater operating in remote Himalayan disaster scenarios without cellular infrastructure`,
 
     chip: `Tiny Tapeout RISC-V Silicon ASIC:
-  - Architecture: RV32I / RV32E custom core in Verilog HDL
-  - Shuttle: SkyWater SKY130 / IHP 130nm open-source silicon shuttle
-  - Toolchain: OpenLane RTL-to-GDSII, Yosys synthesis, OpenROAD P&R, Magic DRC/LVS, Cocotb testbenches`,
+  - Architecture: RV32I / RV32E custom 5-stage pipelined core in Verilog HDL
+  - Shuttle: SkyWater SKY130 open-source silicon shuttle
+  - Toolchain: OpenLane / OpenROAD / Yosys RTL-to-GDSII, Magic DRC/LVS, Cocotb testbenches`,
 
     stm32: `STM32 Dual-Core IPCC & Ring Buffer:
-  - Cores: Cortex-M7 (Real-time DSP) + Cortex-M4 (Telemetry & LittleFS)
+  - Cores: Cortex-M7 (480MHz, DSP/ADCS) + Cortex-M4 (240MHz, Comms/LittleFS)
   - Interconnect: IPCC Mailbox channels, Hardware Semaphores (HSEM), Shared SRAM (D2/D3 domain)
   - Memory Coherency: SCB_CleanDCache_by_Addr & SCB_InvalidateDCache_by_Addr`,
 
@@ -131,15 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
   - Packet Radio: AX.25 UI Frame (HDLC 0x7E flag, bit stuffing, CRC16-CCITT)
   - Telemetry Scrambler: G3RUH polynomial 1 + x^12 + x^17 for spectral whitening`,
 
-    papers: `Academic Research Publications:
-  1. Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes: Faster R-CNN, DETR, YOLOv8, and YOLOv12S (2025)
-  2. Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm on Conveyor System (2023)`,
+    github: `GitHub Repositories (@PrmBRana - 51 repositories):
+  - Quad_PNI_RM3100_STM32F103C8_MT25QL01GBBB_Flash: Flight SPI driver
+  - RISC-V 5-Stage Core: Synthesizable Verilog pipeline
+  - Rotten_And_Fresh_Fruits_Detection_And_Separation: Edge YOLO system
+  - BMP180, ESP8266-NodeMCU_WiFi, Magnetometer drivers`,
+
+    papers: `Peer-Reviewed & Conference Publications:
+  1. Design and Demonstration of a Novel On-Chip Digipeater for Disaster Communication (IAC)
+  2. Seismo-Electromagnetic Wave Detection using Non-Boom Quad-Mag on 1U CubeSat Slippers2Sat (IAC)
+  3. Comparative Study of Object Detection Models for Fresh and Rotten Apples and Tomatoes (2025)
+  4. Recognition and Separation of Fresh and Rotten Fruits using YOLO Algorithm (2023)`,
 
     contact: `Connect with Prem:
   - Email: <a href="mailto:prembdrana999@gmail.com" target="_blank">prembdrana999@gmail.com</a>
   - GitHub: <a href="https://github.com/PrmBRana" target="_blank">github.com/PrmBRana</a>
-  - LinkedIn: <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank">prem-bahadur-r-a9726a176</a>
-  - ResearchGate: <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank">Prem-Bahadur-Rana</a>`,
+  - LinkedIn: <a href="https://linkedin.com/in/prem-bahadur-r-a9726a176" target="_blank">in/prem-bahadur-r-a9726a176</a>
+  - ResearchGate: <a href="https://www.researchgate.net/profile/Prem-Bahadur-Rana" target="_blank">profile/Prem-Bahadur-Rana</a>`,
 
     clear: 'CLEAR_ACTION'
   };
@@ -153,6 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!rawCmd) return;
 
+        if (window.playUiSound) window.playUiSound('click');
+
         if (cmd === 'clear') {
           terminalBody.innerHTML = `
             <div class="terminal-line" style="color: var(--text-muted);">
@@ -162,13 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Echo command
         const line = document.createElement('div');
         line.className = 'terminal-line';
         line.innerHTML = `<span class="prompt-user">prem@cubesat-obc</span>:<span class="prompt-path">~#</span> ${rawCmd}`;
         terminalBody.appendChild(line);
 
-        // Print response
         const respLine = document.createElement('div');
         respLine.className = 'terminal-line';
         if (COMMANDS[cmd]) {
@@ -178,31 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         terminalBody.appendChild(respLine);
 
-        // Auto scroll
         terminalBody.scrollTop = terminalBody.scrollHeight;
       }
     });
   }
-
-  /* -------------------------------------------------------------
-     4. PROJECT FILTERING TABS
-     ------------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll('.project-filter-btn');
-  const projectCards = document.querySelectorAll('.filterable-project');
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-      projectCards.forEach((card) => {
-        if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
 });

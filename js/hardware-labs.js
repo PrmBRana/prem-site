@@ -1,35 +1,116 @@
 /**
- * Interactive Hardware & Silicon Engineering Labs
- * Deep-dive simulations for:
- * 1. STM32 Dual-Core IPCC & Shared SRAM Mailbox
- * 2. Lock-Free Circular Ring Buffer with Memory Barriers
- * 3. Satellite RF Oscilloscope (GMSK, GFSK, CW Morse, AX.25 HDLC, G3RUH Scrambler)
- * 4. Tiny Tapeout RISC-V 5-Stage Pipeline
- * 5. LittleFS Fail-Safe Flash Memory & Crash Recovery
+ * Interactive Hardware & Silicon Engineering Labs 2.0
+ * Includes Web Audio UI sound synthesis, real flight firmware simulations, and interactive tabs.
  */
 
 (function () {
   'use strict';
 
   /* =============================================================
+     0. EMBEDDED WEB AUDIO SOUND SYNTHESIZER (NO EXTERNAL AUDIO FILES)
+     ============================================================= */
+  let audioCtx = null;
+  let isSoundMuted = false;
+
+  function initAudio() {
+    if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+
+  window.playUiSound = function (type) {
+    if (isSoundMuted) return;
+    try {
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const now = audioCtx.currentTime;
+
+      if (type === 'click') {
+        // High-tech click blip
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1200, now);
+        osc.frequency.exponentialRampToValueAtTime(600, now + 0.04);
+        gain.gain.setValueAtTime(0.06, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.04);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.04);
+
+      } else if (type === 'packet') {
+        // Telemetry dispatch chirp
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1760, now + 0.1);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.1);
+
+      } else if (type === 'alert') {
+        // Warning / power cut buzz
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.linearRampToValueAtTime(110, now + 0.15);
+        gain.gain.setValueAtTime(0.09, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.15);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+
+      } else if (type === 'success') {
+        // Success chime
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(659.25, now); // E5
+        osc.frequency.setValueAtTime(987.77, now + 0.08); // B5
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.22);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.22);
+      }
+    } catch (e) {
+      // Audio context might be restricted before user gesture
+    }
+  };
+
+  window.toggleSoundMute = function () {
+    isSoundMuted = !isSoundMuted;
+    const btn = document.getElementById('sound-toggle-btn');
+    if (btn) {
+      btn.classList.toggle('active', !isSoundMuted);
+      btn.title = isSoundMuted ? 'Sound Effects: Muted' : 'Sound Effects: Active';
+    }
+    if (!isSoundMuted) window.playUiSound('success');
+  };
+
+  /* =============================================================
      1. STM32 DUAL-CORE IPCC SIMULATION
      ============================================================= */
   const ipcc = {
-    c1State: 'IDLE',
-    c2State: 'LISTENING',
-    mailboxChannel1: 0, // 0 = free, 1 = occupied
-    sharedSramAddress: '0x38000400',
-    currentPacketId: 1042,
     packetTypes: [
-      { cmd: 'CMD_TELEMETRY_LOG', payload: '[OBC] BATT=4.12V | CURR=380mA | TEMP=18.4C' },
-      { cmd: 'CMD_ATTITUDE_UPDATE', payload: '[ADCS] Q=[0.707, 0.0, 0.707, 0.0] | B_NORM=42.1uT' },
-      { cmd: 'CMD_RF_DOWNLINK_BURST', payload: '[COMMS] AX.25 UI_FRAME LEN=64 | GMSK_9600' },
-      { cmd: 'CMD_EPDM_MAG_SAMPLE', payload: '[QUAD_MAG] RM3100[0..3] DELTA_B=1.42nT' }
+      { cmd: 'CMD_TELEMETRY_LOG', payload: '[OBC] BATT=4.18V | CURR=420mA | TEMP=16.8C | LEO=520km' },
+      { cmd: 'CMD_ATTITUDE_UPDATE', payload: '[ADCS] Q=[0.707, 0.0, 0.707, 0.0] | B_NORM=43.2uT' },
+      { cmd: 'CMD_RF_DOWNLINK_BURST', payload: '[COMMS] AX.25 UI_FRAME | CALLSIGN=S2S_PREM | GMSK_9600' },
+      { cmd: 'CMD_EPDM_MAG_BURST', payload: '[QUAD_RM3100] S0=49015.8nT | S1=49016.2nT | S2=49015.4nT' },
+      { cmd: 'CMD_DIGIPEATER_RELAY', payload: '[DPM] REPEAT_PKT FROM 9N1AA TO HAM_NET MSG="EMERGENCY_OK"' }
     ],
     packetIndex: 0
   };
 
   window.dispatchIpccPacket = function () {
+    window.playUiSound('packet');
+
     const c1El = document.getElementById('core1-block');
     const c2El = document.getElementById('core2-block');
     const busEl = document.getElementById('ipcc-bus');
@@ -45,7 +126,7 @@
     const packet = ipcc.packetTypes[ipcc.packetIndex % ipcc.packetTypes.length];
     ipcc.packetIndex++;
 
-    // Step 1: Core 1 (Cortex-M7) writes to shared SRAM & cleans D-Cache
+    // Step 1: Core 1 (M7) writes & cleans D-Cache
     c1El.classList.add('active-tx');
     c1StatusEl.textContent = 'D-CACHE CLEAN & WRITE SRAM';
     c1StatusEl.style.color = '#00f0ff';
@@ -55,14 +136,14 @@
     }
     if (regC1SCREl) regC1SCREl.textContent = '0x0001 (TXF)';
 
-    // Step 2: Trigger IPCC Interrupt via hardware bus
+    // Step 2: Trigger IPCC IRQ via bus
     setTimeout(() => {
       busEl.classList.add('transmitting');
       c1StatusEl.textContent = 'NOTIFYING IPCC CH1 IRQ';
       if (regC1MREl) regC1MREl.textContent = '0x0000 (UNMASKED)';
     }, 400);
 
-    // Step 3: Core 2 (Cortex-M4) receives IPCC RX interrupt & invalidates D-Cache
+    // Step 3: Core 2 (M4) receives IRQ & invalidates D-Cache
     setTimeout(() => {
       c2El.classList.add('active-rx');
       c2StatusEl.textContent = 'IRQ TRIGGERED -> D-CACHE INVALIDATE';
@@ -70,14 +151,14 @@
       if (regC2TOC1El) regC2TOC1El.textContent = '0x0001 (RXO)';
     }, 900);
 
-    // Step 4: Core 2 processes and acknowledges
+    // Step 4: Core 2 acknowledges
     setTimeout(() => {
       c2StatusEl.textContent = 'PACKET CONSUMED -> ACK CLEAR';
       if (regC1SCREl) regC1SCREl.textContent = '0x0000 (CLEARED)';
       if (regC2TOC1El) regC2TOC1El.textContent = '0x0000 (ACK_OK)';
     }, 1500);
 
-    // Reset back to idle
+    // Reset
     setTimeout(() => {
       c1El.classList.remove('active-tx');
       c2El.classList.remove('active-rx');
@@ -92,36 +173,35 @@
   /* =============================================================
      2. LOCK-FREE RING BUFFER SIMULATION
      ============================================================= */
-  const RING_SIZE = 16; // Power of 2 for fast masking (index & (SIZE - 1))
+  const RING_SIZE = 16;
   const ringBuffer = {
     buffer: new Array(RING_SIZE).fill(null),
-    head: 0, // Producer write pointer
-    tail: 0, // Consumer read pointer
+    head: 0,
+    tail: 0,
     overrunCount: 0,
-    byteSeq: 0x41 // ASCII 'A'
+    byteSeq: 0x41
   };
 
   function renderRingCanvas() {
     const canvas = document.getElementById('ring-buffer-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const w = canvas.width = 300;
-    const h = canvas.height = 260;
+    const w = canvas.width = 320;
+    const h = canvas.height = 280;
     ctx.clearRect(0, 0, w, h);
 
     const centerX = w / 2;
     const centerY = h / 2;
-    const radius = 95;
-    const slotRadius = 14;
+    const radius = 98;
+    const slotRadius = 15;
 
-    // Draw central circular track
+    // Track
     ctx.strokeStyle = 'rgba(148, 163, 184, 0.15)';
     ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Draw slots
     for (let i = 0; i < RING_SIZE; i++) {
       const angle = (i / RING_SIZE) * Math.PI * 2 - Math.PI / 2;
       const slotX = centerX + Math.cos(angle) * radius;
@@ -131,8 +211,7 @@
       const isHead = (i === (ringBuffer.head & (RING_SIZE - 1)));
       const isTail = (i === (ringBuffer.tail & (RING_SIZE - 1)));
 
-      // Slot circle
-      ctx.fillStyle = isOccupied ? 'rgba(0, 255, 157, 0.18)' : 'rgba(11, 18, 36, 0.9)';
+      ctx.fillStyle = isOccupied ? 'rgba(0, 255, 157, 0.2)' : 'rgba(8, 14, 30, 0.9)';
       ctx.strokeStyle = isOccupied ? '#00ff9d' : 'rgba(148, 163, 184, 0.3)';
       ctx.lineWidth = 2;
 
@@ -141,7 +220,6 @@
       ctx.fill();
       ctx.stroke();
 
-      // Slot index text
       ctx.font = '10px monospace';
       ctx.fillStyle = isOccupied ? '#fff' : '#64748b';
       ctx.textAlign = 'center';
@@ -149,30 +227,27 @@
       const text = isOccupied ? ringBuffer.buffer[i] : i.toString();
       ctx.fillText(text, slotX, slotY);
 
-      // Head pointer indicator (Producer / DMA)
       if (isHead) {
         ctx.fillStyle = '#00f0ff';
         ctx.beginPath();
-        const pX = centerX + Math.cos(angle) * (radius + 24);
-        const pY = centerY + Math.sin(angle) * (radius + 24);
-        ctx.arc(pX, pY, 4, 0, Math.PI * 2);
+        const pX = centerX + Math.cos(angle) * (radius + 25);
+        const pY = centerY + Math.sin(angle) * (radius + 25);
+        ctx.arc(pX, pY, 4.5, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Tail pointer indicator (Consumer / Main Task)
       if (isTail) {
         ctx.fillStyle = '#ffb703';
         ctx.beginPath();
-        const pX = centerX + Math.cos(angle) * (radius - 24);
-        const pY = centerY + Math.sin(angle) * (radius - 24);
-        ctx.arc(pX, pY, 4, 0, Math.PI * 2);
+        const pX = centerX + Math.cos(angle) * (radius - 25);
+        const pY = centerY + Math.sin(angle) * (radius - 25);
+        ctx.arc(pX, pY, 4.5, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // Center HUD readout
     const count = (ringBuffer.head - ringBuffer.tail);
-    ctx.font = 'bold 18px monospace';
+    ctx.font = 'bold 19px monospace';
     ctx.fillStyle = count === RING_SIZE ? '#ff3366' : '#00f0ff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -182,7 +257,6 @@
     ctx.fillStyle = '#94a3b8';
     ctx.fillText('OCCUPANCY', centerX, centerY + 14);
 
-    // Update stat DOM elements
     const headEl = document.getElementById('ring-head-val');
     const tailEl = document.getElementById('ring-tail-val');
     const countEl = document.getElementById('ring-count-val');
@@ -197,9 +271,11 @@
     const currentCount = ringBuffer.head - ringBuffer.tail;
     if (currentCount >= RING_SIZE) {
       ringBuffer.overrunCount++;
+      window.playUiSound('alert');
       renderRingCanvas();
       return;
     }
+    window.playUiSound('click');
     const idx = ringBuffer.head & (RING_SIZE - 1);
     const char = String.fromCharCode(ringBuffer.byteSeq);
     ringBuffer.byteSeq = ringBuffer.byteSeq >= 0x5A ? 0x41 : ringBuffer.byteSeq + 1;
@@ -211,6 +287,7 @@
   window.ringPopByte = function () {
     const currentCount = ringBuffer.head - ringBuffer.tail;
     if (currentCount <= 0) return;
+    window.playUiSound('click');
     const idx = ringBuffer.tail & (RING_SIZE - 1);
     ringBuffer.buffer[idx] = null;
     ringBuffer.tail++;
@@ -218,12 +295,23 @@
   };
 
   window.ringBurstPush = function () {
+    window.playUiSound('packet');
     for (let i = 0; i < 4; i++) {
-      window.ringPushByte();
+      const currentCount = ringBuffer.head - ringBuffer.tail;
+      if (currentCount < RING_SIZE) {
+        const idx = ringBuffer.head & (RING_SIZE - 1);
+        ringBuffer.buffer[idx] = String.fromCharCode(ringBuffer.byteSeq);
+        ringBuffer.byteSeq = ringBuffer.byteSeq >= 0x5A ? 0x41 : ringBuffer.byteSeq + 1;
+        ringBuffer.head++;
+      } else {
+        ringBuffer.overrunCount++;
+      }
     }
+    renderRingCanvas();
   };
 
   window.ringReset = function () {
+    window.playUiSound('click');
     ringBuffer.buffer.fill(null);
     ringBuffer.head = 0;
     ringBuffer.tail = 0;
@@ -235,40 +323,21 @@
   /* =============================================================
      3. SATELLITE RF OSCILLOSCOPE (GMSK / GFSK / CW / AX.25 / G3RUH)
      ============================================================= */
-  let currentModulation = 'gmsk'; // 'gmsk', 'gfsk', 'cw', 'ax25', 'g3ruh'
+  let currentModulation = 'gmsk';
   let scopeCanvas, scopeCtx;
   let scopePhase = 0;
-  let audioCtx = null;
   let cwAudioOsc = null;
   let isAudioEnabled = false;
 
-  // CW Morse code definition for "S2S PREM"
   const CW_MORSE_PATTERN = [
-    // S (...)
     1,0,1,0,1,0,0,0,
-    // 2 (..---)
     1,0,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,
-    // S (...)
     1,0,1,0,1,0,0,0,0,0,0,0,
-    // P (.--.)
     1,0,1,1,1,0,1,1,1,0,1,0,0,0,
-    // R (.-.)
     1,0,1,1,1,0,1,0,0,0,
-    // E (.)
     1,0,0,0,
-    // M (--)
     1,1,1,0,1,1,1,0,0,0,0,0,0,0
   ];
-
-  // G3RUH Scrambler polynomial: 1 + x^12 + x^17
-  let g3ruhShiftReg = 0x1FFFF; // 17-bit register
-  function g3ruhStep(inBit) {
-    const bit12 = (g3ruhShiftReg >> 11) & 1;
-    const bit17 = (g3ruhShiftReg >> 16) & 1;
-    const feedback = inBit ^ bit12 ^ bit17;
-    g3ruhShiftReg = ((g3ruhShiftReg << 1) | feedback) & 0x1FFFF;
-    return feedback;
-  }
 
   function renderScopeWaveform() {
     if (!scopeCanvas) {
@@ -278,23 +347,21 @@
     }
 
     const w = scopeCanvas.width = scopeCanvas.clientWidth;
-    const h = scopeCanvas.height = 240;
+    const h = scopeCanvas.height = 250;
     scopeCtx.clearRect(0, 0, w, h);
 
     const centerY = h / 2;
     scopePhase += 0.08;
 
-    scopeCtx.lineWidth = 2.5;
+    scopeCtx.lineWidth = 2.6;
     scopeCtx.shadowBlur = 10;
 
     if (currentModulation === 'gmsk') {
-      // Gaussian Minimum Shift Keying: Continuous phase, smooth frequency transitions
       scopeCtx.strokeStyle = '#00f0ff';
       scopeCtx.shadowColor = '#00f0ff';
       scopeCtx.beginPath();
       for (let x = 0; x < w; x++) {
         const symbolIdx = Math.floor((x + scopePhase * 25) / 50);
-        // Bitstream pattern
         const bit = ((symbolIdx * 7 + 3) % 5 > 2) ? 1 : -1;
         const freqMod = 0.05 + bit * 0.025 * Math.sin((x + scopePhase * 20) * 0.02);
         const y = centerY + Math.sin(x * freqMod + scopePhase) * 65;
@@ -304,7 +371,6 @@
       scopeCtx.stroke();
 
     } else if (currentModulation === 'gfsk') {
-      // Gaussian Frequency Shift Keying
       scopeCtx.strokeStyle = '#00ff9d';
       scopeCtx.shadowColor = '#00ff9d';
       scopeCtx.beginPath();
@@ -318,7 +384,6 @@
       scopeCtx.stroke();
 
     } else if (currentModulation === 'cw') {
-      // Continuous Wave (Morse Beacon) On/Off Keying
       scopeCtx.strokeStyle = '#ffb703';
       scopeCtx.shadowColor = '#ffb703';
       const patternIdx = Math.floor((scopePhase * 4) % CW_MORSE_PATTERN.length);
@@ -335,14 +400,13 @@
       scopeCtx.stroke();
 
     } else if (currentModulation === 'ax25') {
-      // AX.25 NRZI square-wave framing + 1200/2200 Bell 202 AFSK audio tones
       scopeCtx.strokeStyle = '#c77dff';
       scopeCtx.shadowColor = '#c77dff';
       scopeCtx.beginPath();
       for (let x = 0; x < w; x++) {
         const bytePhase = Math.floor((x + scopePhase * 30) / 40);
         const isMark = (bytePhase % 2 === 0);
-        const toneFreq = isMark ? 0.04 : 0.08; // 1200Hz Mark vs 2200Hz Space
+        const toneFreq = isMark ? 0.04 : 0.08;
         const y = centerY + Math.sin(x * toneFreq + scopePhase * 2) * 65;
         if (x === 0) scopeCtx.moveTo(x, y);
         else scopeCtx.lineTo(x, y);
@@ -350,7 +414,6 @@
       scopeCtx.stroke();
 
     } else if (currentModulation === 'g3ruh') {
-      // G3RUH 9600 Scrambler: NRZ Whitened Data Spectrum
       scopeCtx.strokeStyle = '#00f0ff';
       scopeCtx.shadowColor = '#00f0ff';
       scopeCtx.beginPath();
@@ -368,6 +431,7 @@
   }
 
   window.setRfModulation = function (mode) {
+    window.playUiSound('click');
     currentModulation = mode;
     document.querySelectorAll('.rf-mod-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.getAttribute('data-mod') === mode);
@@ -405,7 +469,7 @@
     const btn = document.getElementById('cw-audio-btn');
     if (!btn) return;
 
-    if (!audioCtx && window.AudioContext) {
+    if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
 
@@ -414,7 +478,7 @@
       btn.classList.add('btn-emerald');
       playMorseBeepLoop();
     } else {
-      btn.textContent = 'TEST CW AUDIO BEEP';
+      btn.textContent = 'TEST CW AUDIO BEEP (WEB AUDIO)';
       btn.classList.remove('btn-emerald');
       if (cwAudioOsc) {
         try { cwAudioOsc.stop(); } catch (e) {}
@@ -429,9 +493,8 @@
       cwAudioOsc = audioCtx.createOscillator();
       const gainNode = audioCtx.createGain();
       cwAudioOsc.type = 'sine';
-      cwAudioOsc.frequency.setValueAtTime(800, audioCtx.currentTime); // 800 Hz CW pitch
+      cwAudioOsc.frequency.setValueAtTime(800, audioCtx.currentTime);
 
-      // Beep 100ms
       gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
 
@@ -452,17 +515,18 @@
      4. TINY TAPEOUT RISC-V SILICON ASIC SIMULATION
      ============================================================= */
   const riscvProgram = [
-    { pc: '0x00', asm: 'ADDI x1, x0, 5', stage: 'WB', reg: 1, val: 5 },
-    { pc: '0x04', asm: 'ADDI x2, x0, 10', stage: 'MEM', reg: 2, val: 10 },
-    { pc: '0x08', asm: 'ADD x3, x1, x2', stage: 'EX', reg: 3, val: 15 },
-    { pc: '0x0C', asm: 'SW x3, 0(x0)', stage: 'ID', reg: null, val: null },
-    { pc: '0x10', asm: 'LW x4, 0(x0)', stage: 'IF', reg: 4, val: 15 }
+    { pc: '0x00', asm: 'ADDI x1, x0, 5', stage: 'WB' },
+    { pc: '0x04', asm: 'ADDI x2, x0, 10', stage: 'MEM' },
+    { pc: '0x08', asm: 'ADD x3, x1, x2', stage: 'EX' },
+    { pc: '0x0C', asm: 'SW x3, 0(x0)', stage: 'ID' },
+    { pc: '0x10', asm: 'LW x4, 0(x0)', stage: 'IF' }
   ];
 
   let riscvCycle = 0;
   const registers = { x0: 0, x1: 5, x2: 10, x3: 15, x4: 0, x5: 0, x6: 0, x7: 0 };
 
   window.stepRiscvPipeline = function () {
+    window.playUiSound('click');
     riscvCycle++;
     const stageBoxes = document.querySelectorAll('.pipeline-stage-box');
     stageBoxes.forEach((box, i) => {
@@ -473,7 +537,6 @@
       box.classList.toggle('active-stage', (riscvCycle % 5) === i);
     });
 
-    // Update a register value
     const targetReg = `x${(riscvCycle % 7) + 1}`;
     registers[targetReg] = (registers[targetReg] + 3) & 0xFF;
     const regEl = document.getElementById(`reg-${targetReg}`);
@@ -493,12 +556,12 @@
      5. LITTLEFS FAIL-SAFE FLASH STORAGE SIMULATION
      ============================================================= */
   const flashBlocks = [
-    { id: 0, type: 'SUPERBLOCK', rev: 12, status: 'VALID' },
-    { id: 1, type: 'SUPERBLOCK_MIRROR', rev: 12, status: 'VALID' },
-    { id: 2, type: 'DIR_METADATA_0', rev: 84, status: 'VALID' },
-    { id: 3, type: 'DIR_METADATA_1', rev: 85, status: 'ACTIVE_HEAD' },
-    { id: 4, type: 'LOG_CHUNK_0', rev: 41, status: 'COMMITTED' },
-    { id: 5, type: 'LOG_CHUNK_1', rev: 42, status: 'COMMITTED' },
+    { id: 0, type: 'SUPERBLOCK', rev: 14, status: 'VALID' },
+    { id: 1, type: 'SUPERBLOCK_MIRROR', rev: 14, status: 'VALID' },
+    { id: 2, type: 'DIR_METADATA_0', rev: 92, status: 'VALID' },
+    { id: 3, type: 'DIR_METADATA_1', rev: 93, status: 'ACTIVE_HEAD' },
+    { id: 4, type: 'LOG_CHUNK_0', rev: 48, status: 'COMMITTED' },
+    { id: 5, type: 'LOG_CHUNK_1', rev: 49, status: 'COMMITTED' },
     { id: 6, type: 'LOOKAHEAD_BUF', rev: 0, status: 'ERASED' },
     { id: 7, type: 'FREE_BLOCK', rev: 0, status: 'READY' }
   ];
@@ -524,6 +587,7 @@
   }
 
   window.littlefsWriteChunk = function () {
+    window.playUiSound('packet');
     const target = flashBlocks[5];
     target.status = 'WRITING';
     renderFlashBlocks();
@@ -532,10 +596,12 @@
       target.rev++;
       target.status = 'COMMITTED (CRC32_OK)';
       renderFlashBlocks();
+      window.playUiSound('success');
     }, 600);
   };
 
   window.littlefsSimulatePowerLoss = function () {
+    window.playUiSound('alert');
     const target = flashBlocks[5];
     target.status = 'CORRUPTED';
     const statusMsg = document.getElementById('littlefs-status-msg');
@@ -547,6 +613,7 @@
   };
 
   window.littlefsMountRecover = function () {
+    window.playUiSound('click');
     const target = flashBlocks[5];
     const statusMsg = document.getElementById('littlefs-status-msg');
     if (statusMsg) {
@@ -562,6 +629,7 @@
         statusMsg.style.color = '#00ff9d';
       }
       renderFlashBlocks();
+      window.playUiSound('success');
     }, 1000);
   };
 
@@ -569,12 +637,12 @@
      INITIALIZATION & TAB SWITCHING
      ============================================================= */
   document.addEventListener('DOMContentLoaded', () => {
-    // Lab tab switcher
     const tabBtns = document.querySelectorAll('.lab-tab-btn');
     const panels = document.querySelectorAll('.lab-panel');
 
     tabBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
+        window.playUiSound('click');
         const targetLab = btn.getAttribute('data-lab');
         tabBtns.forEach((b) => b.classList.remove('active'));
         panels.forEach((p) => p.classList.remove('active'));
@@ -583,13 +651,11 @@
         const targetPanel = document.getElementById(`lab-panel-${targetLab}`);
         if (targetPanel) targetPanel.classList.add('active');
 
-        // Re-render canvases if needed
         if (targetLab === 'ring') renderRingCanvas();
         if (targetLab === 'littlefs') renderFlashBlocks();
       });
     });
 
-    // Initial renders
     renderRingCanvas();
     renderFlashBlocks();
     renderScopeWaveform();
