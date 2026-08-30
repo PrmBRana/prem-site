@@ -730,12 +730,17 @@
        ========================================================================== -->
   <section id="articles">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Engineering Notes &amp; Tutorials</span>
-        <h2 class="section-title">Technical Articles &amp; Laboratory Logs</h2>
-        <p class="section-subtitle">
-          In-depth implementation notes, hardware walkthroughs, sensor calibration techniques, and microarchitecture analysis authored by Prem Bahadur Rana.
-        </p>
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-tag">Engineering Notes &amp; Tutorials</span>
+          <h2 class="section-title">Technical Articles &amp; Laboratory Logs</h2>
+          <p class="section-subtitle">
+            In-depth implementation notes, hardware walkthroughs, sensor calibration techniques, and microarchitecture analysis authored by Prem Bahadur Rana.
+          </p>
+        </div>
+        <button class="btn btn-primary" onclick="openComposer()" style="display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; white-space: nowrap; margin-bottom: 0.5rem;">
+          ✍️ Draft New Article
+        </button>
       </div>
 
       <!-- Populated dynamically from js/articles.js -->
@@ -907,6 +912,84 @@
       </div>
     </div>
   </div>
+
+  <!-- Interactive Article Composer Modal -->
+  <div class="composer-modal-backdrop" id="article-composer-modal">
+    <div class="composer-box">
+      <div class="composer-header">
+        <h3 class="composer-header-title">✍️ Compose Technical Article / Research Note</h3>
+        <button class="modal-close-btn" id="composer-close" aria-label="Close composer">✕</button>
+      </div>
+      <div class="composer-body">
+        <div>
+          <label class="composer-label">Article Title</label>
+          <input type="text" class="composer-input" id="composer-title" placeholder="e.g. Real-Time Telemetry Processing on STM32WL55 with LittleFS">
+        </div>
+
+        <div class="composer-row">
+          <div>
+            <label class="composer-label">Category</label>
+            <select class="composer-select" id="composer-category">
+              <option value="Embedded Systems">Embedded Systems &amp; RTOS</option>
+              <option value="Silicon VLSI">Silicon VLSI &amp; RISC-V</option>
+              <option value="Satellite RF">Satellite RF &amp; Telemetry</option>
+              <option value="Geomagnetics">Geomagnetics &amp; Sensors</option>
+              <option value="Computer Vision">Edge AI &amp; Computer Vision</option>
+              <option value="Aerospace Infrastructure">Aerospace Cleanroom &amp; Facilities</option>
+              <option value="Laboratory Logs">Laboratory Logs &amp; Tutorials</option>
+            </select>
+          </div>
+          <div>
+            <label class="composer-label">Date</label>
+            <input type="text" class="composer-input" id="composer-date" value="Aug 2026">
+          </div>
+          <div>
+            <label class="composer-label">Estimated Read Time</label>
+            <input type="text" class="composer-input" id="composer-readtime" value="5 min read">
+          </div>
+        </div>
+
+        <div>
+          <label class="composer-label">Short Executive Summary / Excerpt</label>
+          <input type="text" class="composer-input" id="composer-excerpt" placeholder="A 1-2 sentence overview of the article findings and technical approach.">
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label class="composer-label" style="margin-bottom: 0;">Article Content (HTML / Text)</label>
+            <div class="composer-toolbar">
+              <button type="button" class="composer-tool-btn" onclick="insertTag('h2')">+ H2 Heading</button>
+              <button type="button" class="composer-tool-btn" onclick="insertTag('p')">+ Paragraph</button>
+              <button type="button" class="composer-tool-btn" onclick="insertTag('code')">+ Code Block</button>
+              <button type="button" class="composer-tool-btn" onclick="insertTag('ul')">+ Bullet List</button>
+              <button type="button" class="composer-tool-btn" onclick="insertTag('img')">+ Image</button>
+              <button type="button" class="composer-tool-btn" onclick="insertTag('video')">+ Video</button>
+            </div>
+          </div>
+          <textarea class="composer-textarea" id="composer-content" placeholder="<h2>1. Overview</h2>
+<p>Write your technical findings, methodology, and design choices here.</p>
+
+<h2>2. Hardware & Firmware Architecture</h2>
+<pre><code>// Paste your C, Verilog, or Python code here</code></pre>"></textarea>
+        </div>
+      </div>
+
+      <div class="composer-footer">
+        <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);">
+          Preview or copy ready-to-paste code directly into <code>js/articles.js</code>
+        </div>
+        <div class="composer-footer-actions">
+          <button type="button" class="btn btn-outline btn-sm" onclick="previewDraft()">👁️ Preview</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="downloadDraft()">💾 Download File</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="copyDraftCode()">📋 Copy Code</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="addLiveDraft()" style="background: var(--accent-emerald); color: #0a0e17; border-color: var(--accent-emerald);">🚀 Add to Live Page</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notice -->
+  <div class="toast-notice" id="toast-notice"></div>
 
   <!-- Lightweight Scripts -->
   <script src="js/media-data.js"></script>

@@ -909,6 +909,156 @@ a:hover {
   color: var(--accent-blue);
 }
 
+/* ==========================================================================
+   INTERACTIVE ARTICLE COMPOSER & WRITING HELPER
+   ========================================================================== */
+.composer-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 23, 0.96);
+  backdrop-filter: blur(16px);
+  z-index: 3100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+}
+.composer-modal-backdrop.open {
+  display: flex;
+}
+.composer-box {
+  background: #0d1527;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+}
+.composer-header {
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 21, 39, 0.98);
+}
+.composer-header-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.composer-body {
+  padding: 1.6rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.composer-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr;
+  gap: 1rem;
+}
+.composer-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent-blue);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+.composer-input, .composer-select, .composer-textarea {
+  width: 100%;
+  background: #070c18;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  color: #e5e7eb;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color var(--transition);
+}
+.composer-input:focus, .composer-select:focus, .composer-textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+}
+.composer-textarea {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 220px;
+}
+.composer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.4rem;
+}
+.composer-tool-btn {
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.composer-tool-btn:hover {
+  border-color: var(--accent-blue);
+  color: #fff;
+}
+.composer-footer {
+  padding: 1.1rem 1.6rem;
+  border-top: 1px solid var(--border-color);
+  background: rgba(13, 21, 39, 0.98);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.composer-footer-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Toast message */
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--accent-emerald);
+  color: #0a0e17;
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+.toast-notice.show { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Lightbox Modal */
 .modal-backdrop {
   position: fixed;
